@@ -1,3 +1,5 @@
+--- @meta
+
 --- Moveable represents any game object that has the ability to move about the gamespace.\
 --- All Moveables have a T (transform) that describes their desired transform in game units,\
 --- as well as a VT (Visible Transform) that eases to T over time. This allows for simplified movement\
@@ -34,26 +36,26 @@
 --- @field static_rotation boolean
 --- @field offset Position
 --- @field Mid balatro.Moveable
---- @field shadow_parallax Position
+--- @field shadow_parrallax Position
 --- @field layered_parallax Position
 --- @field shadow_height number
 --- @field juice balatro.Moveable.Juice?
+--- @field float boolean?
 ---
---- @field CALCING boolean?
 --- @field STATIONARY boolean?
 --- @field NEW_ALIGNMENT boolean?
-Moveable = {}
+local IMoveable = {}
 
 --- @param X number
 --- @param Y number
 --- @param W number
 --- @param H number
-function Moveable:init(X,Y,W,H) end
+function IMoveable:init(X,Y,W,H) end
 
-function Moveable:draw() end
+function IMoveable:draw() end
 
 ---Sets the alignment of moveable using roles
----@param args balatro.Moveable.AlignmentArg
+---@param args balatro.Moveable.AlignmentArg?
 --- - `major` The moveable this moveable will attach to
 --- - `bond` The bond type, either 'Strong' or 'Weak'. Strong instantly adjusts VT, Weak manually calculates VT changes
 --- - `offset` {x , y} offset from the alignment
@@ -67,59 +69,63 @@ function Moveable:draw() end
 ---   - `m` - middle,
 ---   - `r` - right.
 ---   - `i` for inner
-function Moveable:set_alignment(args) end
+function IMoveable:set_alignment(args) end
 
-function Moveable:align_to_major() end
+function IMoveable:align_to_major() end
 
 --- @param X number
 --- @param Y number
 --- @param W number
 --- @param H number
-function Moveable:hard_set_T(X, Y, W, H) end
+function IMoveable:hard_set_T(X, Y, W, H) end
 
-function Moveable:hard_set_VT() end
+function IMoveable:hard_set_VT() end
 
---- @param offset number
-function Moveable:drag(offset) end
+--- @param offset Position
+function IMoveable:drag(offset) end
 
---- @param amount number
---- @param rot_amt number
-function Moveable:juice_up(amount, rot_amt) end
+--- @param amount number?
+--- @param rot_amt number?
+function IMoveable:juice_up(amount, rot_amt) end
+
+---- @param dt number
+function IMoveable:move_juice(dt) end
 
 --- @param dt number
-function Moveable:move_juice(dt) end
+function IMoveable:move(dt) end
 
---- @param dt number
-function Moveable:move(dt) end
-
-function Moveable:lr_clamp() end
+function IMoveable:lr_clamp() end
 
 --- @param major_tab balatro.Moveable
-function Moveable:glue_to_major(major_tab) end
+function IMoveable:glue_to_major(major_tab) end
 
 --- @param dt number
-function Moveable:move_with_major(dt) end
+function IMoveable:move_with_major(dt) end
 
 --- @param dt number
-function Moveable:move_xy(dt) end
+function IMoveable:move_xy(dt) end
+
+---- @param dt number
+function IMoveable:move_scale(dt) end
 
 --- @param dt number
-function Moveable:move_scale(dt) end
+function IMoveable:move_wh(dt) end
 
 --- @param dt number
-function Moveable:move_wh(dt) end
+--- @param vel Position
+function IMoveable:move_r(dt, vel) end
 
---- @param dt number
---- @param vel number
-function Moveable:move_r(dt, vel) end
+function IMoveable:calculate_parrallax() end
 
-function Moveable:calculate_parrallax() end
+function IMoveable:set_role(args) end
 
-function Moveable:set_role(args) end
+--- @return balatro.Node.Frame.Major
+function IMoveable:get_major() end
 
-function Moveable:get_major() end
+function IMoveable:remove() end
 
-function Moveable:remove() end
+--- @type balatro.Moveable | fun(X: number, Y: number, W: number, H: number): balatro.Moveable
+Moveable = function() end
 
 --- @class balatro.Moveable.Velocity: Position
 --- @field r number
@@ -141,8 +147,11 @@ function Moveable:remove() end
 --- @field offset Position
 --- @field prev_type balatro.Moveable.AlignmentType
 --- @field prev_offset Position
+--- @field lr_clamp boolean?
+--- @field type_list? table<'a' | 'm' | 'c' | 'b' | 't' | 'l' | 'r' | 'i'>
 
 --- @class balatro.Moveable.AlignmentArg
+--- @field major balatro.Moveable?
 --- @field offset? Position?
 --- @field bond 'Weak' | 'Strong'?
 --- @field type balatro.Moveable.AlignmentType?
@@ -163,6 +172,7 @@ function Moveable:remove() end
 --- @field scale_bond 'Strong' | 'Weak'?
 
 --- @class balatro.Moveable.Juice
+--- @field handled_elsewhere boolean?
 --- @field scale number
 --- @field scale_amt number
 --- @field r number

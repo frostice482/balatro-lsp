@@ -1,3 +1,5 @@
+--- @meta
+
 --- @class balatro.Controller: balatro.Object
 ---
 --- The node that was clicked this frame
@@ -23,18 +25,18 @@
 ---
 --- @field pressed_keys table<love.KeyConstant, boolean>
 --- @field held_keys table<love.KeyConstant, boolean>
---- @field held_key_times table<love.KeyConstant, boolean>
+--- @field held_key_times table<love.KeyConstant, number>
 --- @field released_keys table<love.KeyConstant, boolean>
 ---
 --- @field pressed_buttons table<number, boolean>
 --- @field held_buttons table<number, boolean>
---- @field held_button_times table<number, boolean>
+--- @field held_button_times table<number, number>
 --- @field released_buttons table<number, boolean>
 ---
 --- For all controller interrupts
 --- @field interrupt balatro.Controller.Interrupt
 --- For all controller locks. Key is mostly TagID
---- @field locks table<number, boolean>
+--- @field locks table<string, boolean>
 --- @field locked boolean?
 ---
 --- Buttons pressed and released during axis updates
@@ -59,7 +61,7 @@
 --- @field HID balatro.Controller.HID
 ---
 --- @field GAMEPAD balatro.Controller.Gamepad
---- @field GAMEPAD_CONSOLE balatro.Controller.GamepadType
+--- @field GAMEPAD_CONSOLE balatro.Controller.GamepadType | ""
 ---
 --- @field is_cursor_down boolean
 ---
@@ -70,93 +72,154 @@
 --- @field no_holdcap boolean?
 --- @field capslock boolean?
 --- @field L_cursor_queue Position?
-Controller = {}
+--- @field screen_keyboard balatro.UIBox?
+local IController = {}
 
-function Controller:init() end
+function IController:init() end
 
 --- Sets the gamepad to be the updated gamepad, searches for the console type and sets the art button pips accordingly
 --- Some code here is from github.com/idbrii/love-gamepadguesser (MIT License)
 --- @param _gamepad love.Joystick
-function Controller:set_gamepad(_gamepad) end
+function IController:set_gamepad(_gamepad) end
 
 --Some code here is from github.com/idbrii/love-gamepadguesser (MIT License)
---- @param _gamepad love.Joystick
-function Controller:get_console_from_gamepad(_gamepad) end
+--- @param _gamepad string
+--- @return string
+function IController:get_console_from_gamepad(_gamepad) end
 
 --- The universal controller for what type of HID Device the player is using to interact with the game.
 --- The Game should be able to handle switching to any viable HID at any time
 --- @param HID_type balatro.Controller.HIDType
---- @param button number
-function Controller:set_HID_flags(HID_type, button) end
+---- @param button number
+function IController:set_HID_flags(HID_type, button) end
 
 --- Sets the current position of the cursor
-function Controller:set_cursor_position() end
+function IController:set_cursor_position() end
 
 --- Called every game logic update frame
-function Controller:update(dt) end
+function IController:update(dt) end
 
 --- Brute force remove all registries that no longer have valid nodes
-function Controller:cull_registry() end
+function IController:cull_registry() end
 
 --- Adds a node to the controller registry. Supply the button that will be pressed in order to click this node
 ---@param node balatro.Node The node that will be clicked when the registry is pressed
 ---@param registry string The button to register, must be a valid gamepad input
-function Controller:add_to_registry(node, registry) end
+function IController:add_to_registry(node, registry) end
 
 --- Process any click function of any nodes that have been clicked in the button registry
-function Controller:process_registry() end
+function IController:process_registry() end
 
 
 --- Add or remove layers from the context for the cursor.
 --- This allows the cursor to 'snap' back to the previous layer when the current layer is removed
 --- in such cases where a menu on screen is removed or nested menus are being navigated
 --- @param delta number The direction to modify the cursor context, 1 to add a layer, -1 to remove a layer, -1000 to remove all layers except for the base
-function Controller:mod_cursor_context_layer(delta) end
+function IController:mod_cursor_context_layer(delta) end
 
---Snap the cursor to a particular node or transform
+--- Snap the cursor to a particular node or transform
 --- @param args { node: balatro.Node?, T: balatro.Node.TransformUnit? }
-function Controller:snap_to(args) end
+function IController:snap_to(args) end
 
---saves the focus context to be loaded in the future, for example if the shop is rerolled while a card is highlighted
-function Controller:save_cardarea_focus(_cardarea) end
+--- saves the focus context to be loaded in the future, for example if the shop is rerolled while a card is highlighted
+--- @param _cardarea balatro.CardArea
+function IController:save_cardarea_focus(_cardarea) end
 
---recalls the focus context for a particular cardarea
-function Controller:recall_cardarea_focus(_cardarea) end
+--- recalls the focus context for a particular cardarea
+--- @param _cardarea balatro.CardArea
+function IController:recall_cardarea_focus(_cardarea) end
 
---Updated the location of the cursor, either with a specific T or if there is a Node target
-function Controller:update_cursor(hard_set_T) end
+--- Updated the location of the cursor, either with a specific T or if there is a Node target
+--- @param hard_set_T Position
+function IController:update_cursor(hard_set_T) end
 
---Helper function to set the button presses/releases for the values determined in update_axis()
-function Controller:handle_axis_buttons() end
+--- Helper function to set the button presses/releases for the values determined in update_axis()
+function IController:handle_axis_buttons() end
 
---Handles all axis input for left stick, right stick and triggers. Treats them as buttons or cursors depending on context
-function Controller:update_axis(dt) end
+--- Handles all axis input for left stick, right stick and triggers. Treats them as buttons or cursors depending on context
+--- @param dt number
+function IController:update_axis(dt) end
 
-function Controller:button_press_update(button, dt) end
-function Controller:button_hold_update(button, dt) end
-function Controller:button_release_update(button, dt) end
-function Controller:button_press(button) end
-function Controller:button_release(button) end
-function Controller:key_press_update(key, dt) end
-function Controller:key_hold_update(key, dt) end
-function Controller:key_release_update(key, dt) end
-function Controller:key_press(key) end
-function Controller:key_release(key) end
-function Controller:get_cursor_collision(cursor_trans) end
-function Controller:set_cursor_hover() end
-function Controller:queue_L_cursor_press(x, y) end
-function Controller:queue_R_cursor_press(x, y) end
-function Controller:L_cursor_press(x, y) end
-function Controller:L_cursor_release(x, y) end
-function Controller:is_node_focusable(node) end
-function Controller:update_focus(dir) end
-function Controller:capture_focused_input(button, input_type, dt) end
-function Controller:navigate_focus(dir) end
+--- @param dt number
+--- @param button love.GamepadButton
+function IController:button_press_update(button, dt) end
 
+--- @param dt number
+--- @param button love.GamepadButton
+function IController:button_hold_update(button, dt) end
+
+--- @param dt number
+--- @param button love.GamepadButton
+function IController:button_release_update(button, dt) end
+
+--- @param button love.GamepadButton
+function IController:button_press(button) end
+
+--- @param button love.GamepadButton
+function IController:button_release(button) end
+
+--- @param key love.KeyConstant
+---- @param dt number
+function IController:key_press_update(key, dt) end
+
+--- @param key love.KeyConstant
+--- @param dt number
+function IController:key_hold_update(key, dt) end
+
+--- @param key love.KeyConstant
+---- @param dt number
+function IController:key_release_update(key, dt) end
+
+--- @param key love.KeyConstant
+function IController:key_press(key) end
+
+--- @param key love.KeyConstant
+function IController:key_release(key) end
+
+function IController:get_cursor_collision(cursor_trans) end
+
+function IController:set_cursor_hover() end
+
+--- @param x number
+--- @param y number
+function IController:queue_L_cursor_press(x, y) end
+
+---- @param x number
+---- @param y number
+function IController:queue_R_cursor_press(x, y) end
+
+--- @param x number
+--- @param y number
+function IController:L_cursor_press(x, y) end
+
+--- @param x number
+--- @param y number
+function IController:L_cursor_release(x, y) end
+
+--- @param node balatro.Node
+--- @return boolean
+function IController:is_node_focusable(node) end
+
+--- @param dir 'R' | 'L' | 'D' | 'U'
+function IController:update_focus(dir) end
+
+--- @param button love.GamepadButton
+--- @param input_type 'press' | 'hold'
+--- @param dt number
+--- @return boolean
+function IController:capture_focused_input(button, input_type, dt) end
+
+--- @param dir 'R' | 'L' | 'D' | 'U'
+function IController:navigate_focus(dir) end
+
+
+--- @type balatro.Controller | fun(): balatro.Controller
+Controller = function () end
 
 --- @class balatro.Controller.Target
+--- @field handled boolean?
 --- @field target balatro.Node?
---- @field handles boolean
+--- @field handles boolean?
 --- @field prev_target balatro.Node?
 
 --- @class balatro.Controller.TargetWithPos: balatro.Controller.Target
@@ -175,7 +238,7 @@ function Controller:navigate_focus(dir) end
 
 --- @class balatro.Controller.AxisButton
 --- @field current balatro.Controller.AxisButtonKey
---- @field stack balatro.Controller.AxisButtonKey
+--- @field previous balatro.Controller.AxisButtonKey
 
 --- @class balatro.Controller.ButtonRegistry
 --- @field click boolean?
@@ -192,7 +255,7 @@ function Controller:navigate_focus(dir) end
 --- @field interrupt boolean
 
 --- @class balatro.Controller.HID
---- @field last_type balatro.Controller.HIDType
+--- @field last_type balatro.Controller.HIDType | ""
 --- @field dpad boolean
 --- @field pointer boolean
 --- @field touch boolean
@@ -212,4 +275,4 @@ function Controller:navigate_focus(dir) end
 
 --- @alias balatro.Controller.HIDType "mouse" | "button" | "touch" | "axis"
 --- @alias balatro.Controller.GamepadType "Xbox" | "Playstation" | "Nintendo"
---- @alias balatro.Controller.AxisButtonKey "" | "dpright" | "dpleft" | "dpdown" | "dpup" | "triggerleft" | "triggerright" | string
+--- @alias balatro.Controller.AxisButtonKey "dpright" | "dpleft" | "dpdown" | "dpup" | "triggerleft" | "triggerright" | string

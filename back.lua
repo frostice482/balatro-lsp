@@ -1,38 +1,43 @@
+--- @meta
+
 --- @class balatro.Back: balatro.Object
 ---
 --- @field effect balatro.Back.Effect
 --- @field loc_name string
 --- @field name string
 --- @field pos Position
-Back = {}
+local IBack = {}
 
 --- @param selected_back balatro.Item.Back
-function Back:init(selected_back) end
+function IBack:init(selected_back) end
 
 --- @return string
-function Back:get_name() end
+function IBack:get_name() end
 
---- @param other balatro.Back?
+--- @param other balatro.Item.Back?
 --- @param ui_scale number?
 --- @param min_dims number?
 --- @param challenge string?
 --- @return balatro.UIElement.Config
-function Back:generate_UI(other, ui_scale, min_dims, challenge) end
+function IBack:generate_UI(other, ui_scale, min_dims, challenge) end
 
 --- @param back balatro.Item.Back
-function Back:change_to(back) end
+function IBack:change_to(back) end
 
 --- @return balatro.Back.Save
-function Back:save(back) end
+function IBack:save(back) end
 
 --- @param args balatro.Back.TriggerEffectParam
 --- @return number chips, number mult
-function Back:trigger_effect(args) end
+function IBack:trigger_effect(args) end
 
-function Back:apply_to_run() end
+function IBack:apply_to_run() end
 
 --- @param table balatro.Back.Save
-function Back:load(table) end
+function IBack:load(table) end
+
+--- @type balatro.Back | fun(selected_back: balatro.Item.Back): balatro.Back
+Back = function() end
 
 --- @class balatro.Back.Effect
 --- @field center balatro.Item.Back

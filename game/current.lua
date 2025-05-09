@@ -22,7 +22,7 @@
 --- @field edition_rate number
 --- @field first_shop_buffoon boolean
 --- @field hand_usage table<string, { count: number, order: PokerHand }>
---- @field hands table<PokerHand, balatro.Game.Current.Hand             >
+--- @field hands table<PokerHand, balatro.Game.Current.Hand>
 --- @field hands_played number
 --- @field inflation number
 --- @field interest_amount number
@@ -55,7 +55,7 @@
 --- @field selected_back_key balatro.Item.Back
 --- @field shop balatro.Game.Current.Shop
 --- @field skips number
---- @field sort "desc" | "asc" | "suit desc" | "suit asc" | "order"
+--- @field sort balatro.CardArea.Sort
 --- @field spectral_rate number
 --- @field stake number
 --- @field starting_deck_size number
@@ -70,6 +70,8 @@
 --- @field voucher_text string
 --- @field win_ante number
 --- @field won boolean
+--- @field STOP_USE number?
+--- @field starting_voucher_count number?
 
 --- @class balatro.Game.Current.CardPlayed
 --- @field suits table<Suit, boolean>

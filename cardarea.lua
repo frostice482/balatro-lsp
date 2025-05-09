@@ -1,26 +1,46 @@
---- @class balatro.CardArea
-CardArea = {}
+--- @meta
 
-function CardArea:init(X, Y, W, H, config) end
-function CardArea:emplace(card, location, stay_flipped) end
-function CardArea:remove_card(card, discarded_only) end
-function CardArea:change_size(delta) end
-function CardArea:can_highlight(card) end
-function CardArea:add_to_highlighted(card, silent) end
-function CardArea:parse_highlighted() end
-function CardArea:remove_from_highlighted(card, force) end
-function CardArea:unhighlight_all() end
-function CardArea:set_ranks() end
-function CardArea:move(dt) end
-function CardArea:update(dt) end
-function CardArea:draw() end
-function CardArea:align_cards() end
-function CardArea:hard_set_T(X, Y, W, H) end
-function CardArea:hard_set_cards() end
-function CardArea:shuffle(_seed) end
-function CardArea:sort(method) end
-function CardArea:draw_card_from(area, stay_flipped, discarded_only) end
-function CardArea:click() end
-function CardArea:save() end
-function CardArea:load(cardAreaTable) end
-function CardArea:remove() end
+--- @class balatro.CardArea: balatro.Moveable
+--- @field cards balatro.Card[]
+--- @field config balatro.CardArea.Config
+--- @field highlighted unknown
+--- @field shufflt_amt number
+local ICardArea = {}
+
+function ICardArea:init(X, Y, W, H, config) end
+function ICardArea:emplace(card, location, stay_flipped) end
+function ICardArea:remove_card(card, discarded_only) end
+function ICardArea:change_size(delta) end
+function ICardArea:can_highlight(card) end
+function ICardArea:add_to_highlighted(card, silent) end
+function ICardArea:parse_highlighted() end
+function ICardArea:remove_from_highlighted(card, force) end
+function ICardArea:unhighlight_all() end
+function ICardArea:set_ranks() end
+function ICardArea:move(dt) end
+function ICardArea:update(dt) end
+function ICardArea:draw() end
+function ICardArea:align_cards() end
+function ICardArea:hard_set_T(X, Y, W, H) end
+function ICardArea:hard_set_cards() end
+function ICardArea:shuffle(_seed) end
+function ICardArea:sort(method) end
+function ICardArea:draw_card_from(area, stay_flipped, discarded_only) end
+function ICardArea:click() end
+function ICardArea:save() end
+function ICardArea:load(cardAreaTable) end
+function ICardArea:remove() end
+
+CardArea = ICardArea
+
+--- @class balatro.CardArea.Config
+--- @field card_count number
+--- @field card_limit number
+--- @field highlighted_limit number
+--- @field lr_padding number
+--- @field sort balatro.CardArea.Sort
+--- @field temp_limit number
+--- @field type balatro.CardArea.Type
+
+--- @alias balatro.CardArea.Sort "desc" | "asc" | "suit desc" | "suit asc" | "order"
+--- @alias balatro.CardArea.Type "deck" | "discard" | "hand" | "joker" | "consumeable" | "shop" | "play" | "title_2"

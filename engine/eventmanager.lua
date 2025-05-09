@@ -1,23 +1,27 @@
---- @class balatro.EventManager
----
+--- @meta
+
+--- @class balatro.EventManager: balatro.Object
 --- @field queues balatro.EventManager.Queues
 --- @field queue_timer number
 --- @field queue_dt number
 --- @field queue_last_processed number
-EventManager = {}
+local IEventManager = {}
 
 --- @param event balatro.Event
 --- @param queue balatro.EventManager.QueueType?
 --- @param front boolean?
-function EventManager:add_event(event, queue, front) end
+function IEventManager:add_event(event, queue, front) end
 
 --- @param queue boolean?
 --- @param exception boolean?
-function EventManager:clear_queue(queue, exception) end
+function IEventManager:clear_queue(queue, exception) end
 
 --- @param dt number
 --- @param forced boolean?
-function EventManager:update(dt, forced) end
+function IEventManager:update(dt, forced) end
+
+--- @type balatro.EventManager | fun(): balatro.EventManager
+EventManager = function() end
 
 --- @class balatro.EventManager.Queues: { [string]: balatro.Event[] }
 --- @field unlock balatro.Event[]

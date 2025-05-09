@@ -1,4 +1,15 @@
 --- @class balatro.Game
+--- @field consumeables balatro.CardArea?
+--- @field deck balatro.CardArea?
+--- @field discard balatro.CardArea?
+--- @field hand balatro.CardArea?
+--- @field jokers balatro.CardArea?
+--- @field play balatro.CardArea?
+--- @field playing_cards balatro.CardArea?
+--- @field shop_booster balatro.CardArea?
+--- @field shop_jokers balatro.CardArea?
+--- @field pack_cards balatro.CardArea?
+---
 --- @field ACC number
 --- @field ACC_state balatro.Game.StateEnum
 --- @field CANVAS love.Canvas
@@ -28,20 +39,13 @@
 --- @field WINDOWTRANS PositionAndSize | { real_window_w: number, real_window_h: number }
 --- @field blind_prompt_box balatro.UIBox
 --- @field blind_select_opts { big: balatro.UIBox, boss: balatro.UIBox, small: balatro.UIBox }
---- @field consumeables balatro.CardArea
---- @field deck balatro.CardArea
---- @field discard balatro.CardArea
 --- @field exp_times table
---- @field hand balatro.CardArea
 --- @field hand_text_area balatro.Game.HandTextArea
 --- @field handlist PokerHand[]
---- @field jokers balatro.CardArea[]
 --- @field last_materializes number
 --- @field localization balatro.Game.Localization
 --- @field new_frame boolean
---- @field play balatro.CardArea
 --- @field playing_card number
---- @field playing_cards balatro.CardArea
 --- @field prev_boss_state BlindState
 --- @field prev_large_state BlindState
 --- @field prev_small_state BlindState
@@ -56,6 +60,13 @@
 --- @field viewed_stake boolean
 --- @field vortex_time boolean
 --- @field window_prev WidthHeight | { orig_ratio: number, orig_scale: number }
+--- @field screenwipe balatro.UIBox?
+--- @field OVERLAY_MENU balatro.UIBox?
+--- @field DEADZONE number?
+--- @field BRUTE_OVERLAY ColorHex?
+--- @field OVERLAY_TUTORIAL balatro.UIBox?
+--- @field NO_MOD_CURSOR_STACK boolean?
+--- @field jimboed boolean?
 
 --- @class balatro.Game.DiscoverTallies: { [string]: balatro.Tally }
 --- @field backs balatro.Tally

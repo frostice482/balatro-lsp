@@ -134,3 +134,5 @@
 --- @field stake number?
 --- @field ante number?
 --- @field amount number?
+
+--- @class balatro.Center

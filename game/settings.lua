@@ -11,7 +11,7 @@
 --- @field play_button_pos number
 --- @field GAMESPEED number
 --- @field paused boolean
---- @field SOUND balatro.Settings.Sound
+--- @field SOUND balatro.ExpTimes
 --- @field WINDOW balatro.Settings.Window
 --- @field CUSTOM_DECK balatro.Settings.CustomDecks
 --- @field GRAPHICS balatro.Settings.Graphics
@@ -23,29 +23,6 @@
 --- @field tutorial_complete boolean
 --- @field tutorial_progress table
 --- @field version string
-
---- @class balatro.Timers: { [string]: number }
---- @field TOTAL number
---- @field REAL number
---- @field REAL_SHADER number
---- @field UPTIME number
---- @field BACKGROUND number
-
---- @alias balatro.TimerType 'TOTAL' | 'REAL' | 'REAL_SHADER' | 'UPTIME' | 'BACKGROUND'
-
---- @class balatro.Frames
---- @field DRAW number
---- @field MOVE number
-
---- @class balatro.ExpTimes
---- @field xy number
---- @field scale number
---- @field r number
-
---- @class balatro.Settings.Sound
---- @field xy number
---- @field scale number
---- @field r number
 
 --- @class balatro.Settings.Display
 --- @field name string

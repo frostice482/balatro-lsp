@@ -23,3 +23,4 @@
 --- @alias PokerHand 'Flush Five' | 'Flush House' | 'Five of a Kind' | 'Straight Flush' | 'Four of a Kind' | 'Full House' | 'Flush' | 'Straight' | 'Three of a Kind' | 'Two Pair' | 'Pair' | 'High Card'
 --- @alias BlindType 'Small' | 'Big' | 'Boss'
 --- @alias BlindState 'Current'  | 'Defeated'  | 'Select'  | 'Selected'  | 'Skipped'  | 'Upcoming'
+--- @alias Sticker 'White' | 'Red' | 'Green' | 'Black' | 'Blue' | 'Purple' | 'Orange' | 'Gold'

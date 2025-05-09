@@ -112,6 +112,20 @@ VERSION = ""
 --- @field px number
 --- @field py number
 
+--- @class balatro.Timers: { [string]: number }
+--- @field TOTAL number
+--- @field REAL number
+--- @field REAL_SHADER number
+--- @field UPTIME number
+--- @field BACKGROUND number
+
+--- @alias balatro.TimerType 'TOTAL' | 'REAL' | 'REAL_SHADER' | 'UPTIME' | 'BACKGROUND'
+
+--- @class balatro.ExpTimes
+--- @field xy number
+--- @field scale number
+--- @field r number
+
 --- @class balatro.AnimationAtlas: balatro.Atlas
 --- @field frames number
 

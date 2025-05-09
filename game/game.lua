@@ -1,13 +1,13 @@
+--- @meta
+
 --- @class balatro.Game: balatro.Object
----
---- @field FPS_CAP number?
-Game = {}
+local IGame = {}
 
 --- Sets global G.
 --- Calls set_globals(), implemented in globals.lua
 ---
 --- @see balatro.Global
-function Game:init() end
+function IGame:init() end
 
 --- Called when love.load() is executed.
 --- - Loads settings
@@ -39,58 +39,58 @@ function Game:init() end
 --- @see balatro.Game.set_language
 --- @see balatro.Game.init_item_prototypes
 --- @see balatro.Game.splash_screen
-function Game:start_up() end
+function IGame:start_up() end
 
 --- Load item prototypes.
 --- @see balatro.GameDefs.InitItemProto
-function Game:init_item_prototypes() end
+function IGame:init_item_prototypes() end
 
 --- Loads profile
 --- @param profile number Which profile to load, 1 or 2 or 3
-function Game:load_profile(profile) end
+function IGame:load_profile(profile) end
 
 --- Set languages.
 --- Tnitializes LANGAUGES and FONTS if not exist.
 --- @see balatro.GameDefs.Language
-function Game:set_language() end
+function IGame:set_language() end
 
 --- Initializes animation atlas and asset atlas
-function Game:set_render_settings() end
+function IGame:set_render_settings() end
 
 --- Creates window configuration.
 --- Also calls `G.FUNCS.apply_window_changes`
-function Game:init_window(reset) end
+function IGame:init_window(reset) end
 
-function Game:delete_run() end
-function Game:save_progress() end
-function Game:save_notify(card) end
-function Game:save_settings() end
-function Game:save_metrics() end
-function Game:prep_stage(new_stage, new_state, new_game_obj) end
-function Game:sandbox() end
-function Game:splash_screen() end
-function Game:main_menu(change_context) end
-function Game:demo_cta() end
-function Game:init_game_object() end
-function Game:start_run(args) end
-function Game:update(dt) end
-function Game:draw() end
-function Game:state_col(_state) end
-function Game:update_selecting_hand(dt) end
-function Game:update_shop(dt) end
-function Game:update_play_tarot(dt) end
-function Game:update_hand_played(dt) end
-function Game:update_draw_to_hand(dt) end
-function Game:update_new_round(dt) end
-function Game:update_blind_select(dt) end
-function Game:update_round_eval(dt) end
-function Game:update_arcana_pack(dt) end
-function Game:update_spectral_pack(dt) end
-function Game:update_standard_pack(dt) end
-function Game:update_buffoon_pack(dt) end
-function Game:update_celestial_pack(dt) end
-function Game:update_game_over(dt) end
-function Game:update_menu(dt) end
+function IGame:delete_run() end
+function IGame:save_progress() end
+function IGame:save_notify(card) end
+function IGame:save_settings() end
+function IGame:save_metrics() end
+function IGame:prep_stage(new_stage, new_state, new_game_obj) end
+function IGame:sandbox() end
+function IGame:splash_screen() end
+function IGame:main_menu(change_context) end
+function IGame:demo_cta() end
+function IGame:init_game_object() end
+function IGame:start_run(args) end
+function IGame:update(dt) end
+function IGame:draw() end
+function IGame:state_col(_state) end
+function IGame:update_selecting_hand(dt) end
+function IGame:update_shop(dt) end
+function IGame:update_play_tarot(dt) end
+function IGame:update_hand_played(dt) end
+function IGame:update_draw_to_hand(dt) end
+function IGame:update_new_round(dt) end
+function IGame:update_blind_select(dt) end
+function IGame:update_round_eval(dt) end
+function IGame:update_arcana_pack(dt) end
+function IGame:update_spectral_pack(dt) end
+function IGame:update_standard_pack(dt) end
+function IGame:update_buffoon_pack(dt) end
+function IGame:update_celestial_pack(dt) end
+function IGame:update_game_over(dt) end
+function IGame:update_menu(dt) end
 
 --- @class balatro.Game: balatro.Game.AfterStartUp
 
@@ -101,6 +101,7 @@ function Game:update_menu(dt) end
 --- @field STAGE_OBJECT_INTERRUPT boolean
 --- @field E_MANAGER balatro.EventManager
 --- @field SPEEDFACTOR number
+--- @field CONTROLLER balatro.Controller
 
 --- Shared sprites only exists after `Game:start_up()`
 --- @class balatro.Game.SharedSprites
@@ -135,5 +136,8 @@ function Game:update_menu(dt) end
 --- @field vortex love.Shader
 --- @field voucher love.Shader
 
---- the Balatro Game object
-G = Game
+--- @type balatro.Game | fun(): balatro.Game
+Game = function() end
+
+--- @type balatro.Game
+G = IGame

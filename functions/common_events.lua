@@ -61,7 +61,7 @@ function ease_background_colour(args) end
 --- Eases color. Old color is modified.
 --- @param old_colour ColorHex
 --- @param new_colour ColorHex
---- @param delay number
+--- @param delay number?
 function ease_colour(old_colour, new_colour, delay) end
 
 --- Sets background type, depending on the stage
@@ -71,7 +71,7 @@ function ease_background_colour_blind(state, blind_override) end
 
 --- Adds an event with specified delay
 --- @param time number? Delay time, defaults to 1
---- @param queue balatro.EventManager.QueueType Queue type
+--- @param queue balatro.EventManager.QueueType? Queue type
 function delay(time, queue) end
 
 --- Adds a joker to a playing card.
@@ -127,8 +127,8 @@ function level_up_hand(card, hand, instant, amount) end
 --- @field modded boolean?
 
 --- @class UpdateHandValsArg
---- @field chips number?
---- @field mult number?
+--- @field chips number | string?
+--- @field mult number | string?
 --- @field handname string?
 --- @field chip_total number?
 --- @field level number | string?
@@ -228,7 +228,7 @@ function unlock_notify() end
 function create_unlock_overlay(key) end
 
 --- Makes a card discovered, used when the undiscovered card is bought in the shop. Does not work if the game is currently seeded or in challenge.
---- @param card balatro.Card?
+--- @param card balatro.Item.Card?
 function discover_card(card) end
 
 --- Gets data possible from `balatro.ItemCenters` from given name
@@ -383,11 +383,11 @@ function reset_blinds() end
 function get_new_boss() end
 
 --- Gets type color for card UI.
---- @param _c table Card center
+--- @param _c balatro.Center Card center
 function get_type_colour(_c, card) end
 
 --- Creates an interface when the card is hovered over
---- @param _c table Card center
+--- @param _c balatro.Center Card center
 --- @param full_UI_table table?
 --- @param specific_vars unknown?
 --- @param card_type 'Locked' | 'Undiscovered' | 'Default' | 'Enhanced' | 'Booster'?

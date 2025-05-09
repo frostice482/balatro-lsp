@@ -7,6 +7,10 @@ function GET_DISPLAYINFO(screenmode, display) end
 
 function timer_checkpoint(label, type, reset) end
 
+--- Renders loading screen
+--- @param _label string
+---@param _next string
+---@param progress number
 function boot_timer(_label, _next, progress) end
 
 --- Removes all properties from a table
@@ -22,7 +26,7 @@ function EMPTY(t) end
 function interp(per, max, min) end
 
 --- Recursively all children in a node
---- @param t balatro.Node
+--- @param t table<string, balatro.Node>
 function remove_all(t) end
 
 --- Gets distance between 2 vectors (x and y)
@@ -97,7 +101,7 @@ function get_first_legendary(_key) end
 --- Uses `math.randomseed(seed)` to set randomness
 --- @generic K, V
 --- @param _t table<K, V>
---- @param seed number
+--- @param seed number?
 --- @return V value
 --- @return K key
 function pseudorandom_element(_t, seed) end
@@ -212,10 +216,13 @@ function point_translate(_T, delta) end
 
 function point_rotate(_T, angle) end
 
+--- @return ColorHex
 function lighten(colour, percent, no_tab) end
 
+--- @return ColorHex
 function darken(colour, percent, no_tab) end
 
+--- @return ColorHex
 function adjust_alpha(colour, new_alpha, no_tab) end
 
 function alert_no_space(card, area) end
@@ -228,6 +235,10 @@ function number_format(num) end
 
 function score_number_scale(scale, amt) end
 
+--- Copies table.
+--- @generic T
+--- @param O `T`
+--- @return T
 function copy_table(O) end
 
 function send_score(_score) end
@@ -323,4 +334,5 @@ function RESTART_MUSIC(args) end
 
 function AMBIENT(args) end
 
+--- Resets sound states in SOURCES
 function RESET_STATES(state) end
