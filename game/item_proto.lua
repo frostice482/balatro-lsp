@@ -136,3 +136,4 @@
 --- @field amount number?
 
 --- @class balatro.Center
+--- @field key string

@@ -125,6 +125,7 @@ function pseudohash(str) end
 --- @param key string Seed key to use. If set to `seed`, this will return `math.random()`.
 --- @param predict_seed string? If this is not nil, then it will try to predict the first value for `pseudoseed(key)` with seed set as `predict_seed`. This will not affect the next value for given key.
 --- @return number 0 - 1
+--- @see balatro.Game.Current.Pseudorandom
 function pseudoseed(key, predict_seed) end
 
 --- Generates a pseudo-random number between min and max.
@@ -160,16 +161,27 @@ function get_blind_main_colour(blind) end
 --- UNDOCUMENTED
 function evaluate_poker_hand(hand) end
 
---- UNDOCUMENTED
+--- Gets flush hand from given hand.
+--- Hand size myst be at most 5, and atleast 5 (or 4 with four fingers)
+--- @param hand balatro.Card[]
+--- @return balatro.Card[][]. Flush hand
 function get_flush(hand) end
 
---- UNDOCUMENTED
+--- Gets straight hand from given hand.
+--- Hand size myst be at most 5, and atleast 5 (or 4 with four fingers)
+--- @param hand balatro.Card[]
+--- @return balatro.Card[][]. Straight hand
 function get_straight(hand) end
 
---- UNDOCUMENTED
+--- Gets same cards ranks from given hand
+--- @param num number Number of same card ranks, must be strictly equal
+--- @param hand balatro.Card[]
+--- @return balatro.Card[][]. Same jokers
 function get_X_same(num, hand) end
 
---- UNDOCUMENTED
+--- Gets highest nominal from given hand
+--- @param hand balatro.Card[]
+--- @return [balatro.Card|nil]. Highest hand
 function get_highest(hand) end
 
 --- Empties `G.DRAW_HASH`.
@@ -206,33 +218,69 @@ function play_sound(sound_code, per, vol) end
 
 function modulate_sound(dt) end
 
+--- Counts number of cards with given suit
+--- @param area balatro.CardArea
+--- @param suit Suit
+--- @return number
 function count_of_suit(area, suit) end
 
+--- Prepare srawing for moveable
+--- @param moveable balatro.Moveable
+--- @param scale number
+--- @param rotate number?
+--- @param offset Position?
 function prep_draw(moveable, scale, rotate, offset) end
 
+--- UNDOCUMENTED
 function get_chosen_triangle_from_rect(x, y, w, h, vert) end
 
+--- Translates point from A to B
+--- @param _T Position
+--- @param delta Position
 function point_translate(_T, delta) end
 
+--- Rotates point with given angle, clockwise
+--- @param _T Position
+--- @param angle number
 function point_rotate(_T, angle) end
 
---- @return ColorHex
+--- @overload fun(colour: ColorHex, percent: number, no_tab?: false | nil): ColorHex
+--- @overload fun(colour: ColorHex, percent: number, no_tab: true): number, number, number, number
 function lighten(colour, percent, no_tab) end
 
---- @return ColorHex
+--- @overload fun(colour: ColorHex, percent: number, no_tab?: false | nil): ColorHex
+--- @overload fun(colour: ColorHex, percent: number, no_tab: true): number, number, number, number
 function darken(colour, percent, no_tab) end
 
---- @return ColorHex
+--- @overload fun(colour: ColorHex, percent: number, no_tab?: false | nil): ColorHex
+--- @overload fun(colour: ColorHex, percent: number, no_tab: true): number, number, number, number
 function adjust_alpha(colour, new_alpha, no_tab) end
 
+--- Gives alert when no space for card
+--- @param card balatro.Card
+--- @param area balatro.CardArea
 function alert_no_space(card, area) end
 
+--- Finds joker from `G.jokers`
+--- @param name string Joker name
+--- @param non_debuff boolean? Includes debuffed joker
+--- @return balatro.Card[]
 function find_joker(name, non_debuff) end
 
+--- Gets required chips for given ante. May be affected by `G.GAME.modifiers.scaling`
+--- @param ante number
+--- @return number
 function get_blind_amount(ante) end
 
+--- Formats score
+--- @param num number
+--- @return string
 function number_format(num) end
 
+--- Gets scaling for score to be displayed
+--- @param scale number
+--- @param amt number
+--- @return number
 function score_number_scale(scale, amt) end
 
 --- Copies table.
@@ -241,14 +289,26 @@ function score_number_scale(scale, amt) end
 --- @return T
 function copy_table(O) end
 
+--- Sends score to `HTTP_MANAGER`.\
+--- Only effective when `F_HTTP_SCORES`, `SETTINGS.COMP`, and `F_STREAMER_EVENT` evaluates to true.\
+--- Also does nothing unless `http_manager.lua` is also implemented, which in normal Balatro distribution it doesn't.
 function send_score(_score) end
 
+--- Sends name to `HTTP_MANAGER`.\
+--- Only effective when `F_HTTP_SCORES`, `SETTINGS.COMP`, and `F_STREAMER_EVENT` evaluates to true.\
+--- Also does nothing unless `http_manager.lua` is also implemented, which in normal Balatro distribution it doesn't.
 function send_name() end
 
+--- Sets high score for current profile's high score.
+--- Does not work if the game is currently seeded or in challenge.
+--- @param score balatro.Profile.KnownHighScore
+--- @param amt number
 function check_and_set_high_score(score, amt) end
 
+--- Adds joker usage count for current profile from `G.jokers`
 function set_joker_usage() end
 
+--- Adds joker win antes for current profile from `G.jokers`
 function set_joker_win() end
 
 --- Gets highest sticker for which joker wins at.
@@ -258,68 +318,163 @@ function set_joker_win() end
 --- @overload fun(center: balatro.Item.Joker, index: true): number
 function get_joker_win_sticker(_center, index) end
 
+--- Adds joker loss antes for current profile from `G.jokers`
 function set_joker_loss() end
 
+--- Adds current decks for current profile
 function set_deck_usage() end
 
+--- Adds current winning deck for current profile
 function set_deck_win() end
 
+--- UNDOCUMENTED
 function set_challenge_unlock() end
 
+--- Gets number of stakes winned in a deck from current profile
+--- @param _deck_key string?
+--- @return number
 function get_deck_win_stake(_deck_key) end
 
+--- Gets sticket key from given deck from current profile
+--- @param _center balatro.Center
+--- @return string
 function get_deck_win_sticker(_center) end
 
+--- Adds current losing deck for current profile
 function set_deck_loss() end
 
+--- Adds a card to consumable usage count to current profile
+--- @param card balatro.Card
 function set_consumeable_usage(card) end
 
+--- Adds a voucher to voucher usage count to current profile
+--- @param card balatro.Card
 function set_voucher_usage(card) end
 
+--- Adds a poke rhand to hand usage count to current profile
+--- @param hand PokerHand
 function set_hand_usage(hand) end
 
+--- UDOCUMENTED
 function set_profile_progress() end
 
+--- UDOCUMENTED
 function set_discover_tallies() end
 
+--- Adds `G.GAME.STOP_USE` by 1 and calls `dec_stop_use(6)`
+---
+--- @see dec_stop_use
 function stop_use() end
 
+--- Reduces `G.GAME.STOP_USE` by 1
+--- @param _depth number Delay, possibly in number of event handles
 function dec_stop_use(_depth) end
 
+--- Incrementss career stat.
+--- Does not work if the game is currently seeded or in challenge.
+--- @param stat balatro.Profile.KnownCareerStat
+--- @param mod number
 function inc_career_stat(stat, mod) end
 
+--- Copies table recursively, excluding objects types
 function recursive_table_cull(t) end
 
+--- Sets `G.action` temporarily and calls `save_run()`
+---
+--- @see save_run
 function save_with_action(action) end
 
+--- Culls current run and queue to save.
+--- Ignored if `F_NO_SAVING` is true
 function save_run() end
 
+--- Removes saved run in current profile
 function remove_save() end
 
+--- Gets colours from given key
+--- @param _c balatro.misc.LocColor.KnownType
+--- @param _default ColorHex?
+--- @return ColorHex
 function loc_colour(_c, _default) end
 
+--- @alias balatro.misc.LocColor.KnownType string | "red" | "mult" | "blue" | "chips" | "green" | "money" | "gold" | "attention" | "purple" | "white" | "inactive" | "spades" | "hearts" | "clubs" | "diamonds" | "tarot" | "planet" | "spectral" | "edition" | "dark_edition" | "legendary" | "enhanced"
+
+--- Parses localizations
+---
+--- @see G.localization.misc.v_dictionary_parsed
+--- @see G.localization.misc.v_text_parsed
+--- @see G.localization.tutorial_parsed
+--- @see G.localization.quips_parsed
+---
+--- This also parses `G.descriptions` entries to make `name_parsed` and `text_parsed`
 function init_localization() end
 
+--- Makes effects to jokers (`G.jokers`) as an added playing card
+--- @param cards [true] | balatro.Card[] Added playing card
 function playing_card_joker_effects(cards) end
 
+--- Converts current save (`unlocked_jokers.jkr`, `discovered_jokers.jkr`, `alerted_jokers.jkr`) from current profile to meta (`meta.jkr`).
+--- This creates `meta.jkr`, and deletes the other 3.
 function convert_save_to_meta() end
 
+--- @class CardControlArg
+--- @field r string Single character rank (Club, Suit, Heart, Diamong)
+--- @field s string Single character suit
+--- @field e string? Enhancement
+--- @field d string? Edition
+--- @field g string? Seal
+
+--- Adds card to playing card (`G.playing_card`) from control
+--- @param control CardControlArg
 function card_from_control(control) end
 
+--- UNDOCUMENTED
+--- @return balatro.Loc.ParsedEntry
 function loc_parse_string(line) end
 
+--- @alias balatro.LocalizeTypeArg "other" | "descriptions" | "tutorial" | "quips" | "raw_descriptions" | "text" | "variable" | "name_text" | "name" | "unlocks"
+
+--- @class balatro.LocalizeArg
+--- @field type balatro.LocalizeTypeArg
+--- @field key string
+--- @field set string?
+--- @field vars string[] | {colours: ColorHex[]}?
+
+--- UNDOCUMENTED
+--- @param args balatro.LocalizeArg | string
+--- @param misc_cat string?
 function localize(args, misc_cat) end
 
+--- Gets stake sprite
+--- @param _stake number?
+--- @param _scale number?
 function get_stake_sprite(_stake, _scale) end
 
+--- Gets asset atlas from given card info
+--- @param _front balatro.Item.Card
+--- @return balatro.AssetAtlas
+--- @return Position
 function get_front_spriteinfo(_front) end
 
+--- Gets stake color from given stake
+--- @param _stake number
+--- @return ColorHex
 function get_stake_col(_stake) end
 
+--- Gets ndex from given challenge id.
+--- Return 0 if not found
+--- @param _id string
+--- @return number
 function get_challenge_int_from_id(_id) end
 
+--- Gets starting parameters for new game
+--- @return balatro.Game.Current.StartingParam
 function get_starting_params() end
 
+--- Gets challenge rule value from given challenge and id
+--- @param _challenge balatro.Challenge
+--- @param _type "modifiers" | "custom"
+--- @param _id string
 function get_challenge_rule(_challenge, _type, _id) end
 
 function PLAY_SOUND(args) end
@@ -334,5 +489,4 @@ function RESTART_MUSIC(args) end
 
 function AMBIENT(args) end
 
---- Resets sound states in SOURCES
 function RESET_STATES(state) end

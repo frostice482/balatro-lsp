@@ -54,6 +54,7 @@ VERSION = ""
 --- @field F_MOBILE_UI boolean                Feature: Scale desc to 1.5
 --- @field F_HIDE_BETA_LANGS boolean          Undocumented Feature
 --- @field F_DISCORD boolean                  Feature: Enable Discord button
+--- @field F_STREAMER_EVENT boolean           Feature: Sends score to be used in `send_score`
 
 --- @class balatro.Global.RenderScale
 --- @field TILESIZE number

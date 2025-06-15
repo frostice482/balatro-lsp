@@ -81,3 +81,6 @@
 --- @class balatro.Profile.ChallengeProgress
 --- @field unlocked table<string, boolean> Unused
 --- @field completed table<string, boolean>
+
+--- @alias balatro.Profile.KnownHighScore string | "furthest_round" | "furthest_ante" | "most_money" | "boss_streak" | "poker_hand" | "win_streak" | "collection" | "current_streak" | "hand"
+--- @alias balatro.Profile.KnownCareerStat string | "c_shop_dollars_spent" | "c_playing_cards_bought" | "c_losses" | "c_shop_rerolls" | "c_dollars_earned" | "c_vouchers_bought" | "c_tarot_reading_used" | "c_rounds" | "c_face_cards_played" | "c_planetarium_used" | "c_cards_sold" | "c_cards_played" | "c_round_interest_cap_streak" | "c_cards_discarded" | "c_hands_played" | "c_single_hand_round_streak" | "c_tarots_bought" | "c_wins" | "c_jokers_sold" | "c_planets_bought"

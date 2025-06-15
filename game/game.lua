@@ -71,6 +71,7 @@ function IGame:sandbox() end
 function IGame:splash_screen() end
 function IGame:main_menu(change_context) end
 function IGame:demo_cta() end
+--- @return balatro.Game.Current
 function IGame:init_game_object() end
 function IGame:start_run(args) end
 function IGame:update(dt) end

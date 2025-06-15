@@ -41,11 +41,11 @@ function ease_round(mod) end
 ---@param ref_table table
 ---@param ref_value any
 ---@param mod number Changes in the value
----@param floored boolean? If true, Floors the easing
----@param timer_type balatro.TimerType? Timer type
----@param not_blockable boolean? Prevents blocking
+---@param floored boolean? If true, Floors the value
+---@param timer_type balatro.TimerType? Timer type to use. Defaults to `TOTAL` if unpaused, `REAL` if paused
+---@param not_blockable boolean? Allows blocking the easing. By default, the event is blockable
 ---@param delay number? Delay before the value starts to ease, defaults to 0.3
----@param ease_type balatro.Event.EaseType? Easing type.
+---@param ease_type balatro.Event.EaseType? Easing type to use, defaults to 'lerp'
 function ease_value(ref_table, ref_value, mod, floored, timer_type, not_blockable, delay, ease_type) end
 
 --- @class EaseBgColArgs
@@ -192,6 +192,7 @@ function juice_card_until(card, eval_func, first, delay) end
 
 --- Checks for achievements to unlock.
 --- Immediately tries to unlock the achievement if still locked.
+--- Does not work if the game is currently seeded or in challenge.
 --- @param args CheckUnlockArgs
 --- @see unlock_achievement
 --- @see unlock_card
@@ -201,7 +202,8 @@ function check_for_unlock(args) end
 --- @param card balatro.Card
 function unlock_card(card) end
 
---- Initializes achievements (`G.ACHIEVEMENTS`)
+--- Initializes `G.ACHIEVEMENTS`
+--- @see balatro.Game.AchievementList
 function fetch_achievements() end
 
 --- Unlocks an achievement. Does not work if unlock all is used on the profile
@@ -256,6 +258,7 @@ function get_next_tag_key(append) end
 --- @param silent boolean?
 --- @param colours ColorHex?
 --- @return balatro.Card
+--- @see balatro.ItemList.Centers.EnhancedCard
 function create_playing_card(card_init, area, skip_materialize, silent, colours) end
 
 --- Gets next random booster pack.
@@ -281,7 +284,7 @@ function get_pack(_key, _type) end
 --- - `Voucher`: Locked, currently available, used vouchers are not included
 --- - `Planet`: Unplayed hidden poker hands are not included (Flush house, Flush five, Five of a Kind)
 --- - `Spectral`: Block Hole and The Soul is always excluded
---- - Anything else:
+--- - Anything else (also applies to planet):
 ---     - Does not include if repeated occurence unless Showman joker is present
 ---     - Does not include if locked unless legendary is forcibly set
 ---     - Does not include if gated behind an enhanced card and playing card does not include that card
@@ -364,7 +367,7 @@ function reset_mail_rank() end
 function reset_ancient_card() end
 
 --- Resets Castle joker.
---- Castle joker configuration is located at ``G.GAME.current_round.castle_card`.
+--- Castle joker configuration is located at `G.GAME.current_round.castle_card`.
 --- Calling this function will select random card in the deck (excluding Stone Card). If no card is valid, Ace of Spades is used.
 ---
 --- `This Joker gains +3 Chips per discarded [suit] card, suit changes every round (Currently +0 Chips)`

@@ -18,8 +18,8 @@
 --- @field pinned boolean?
 
 --- @class balatro.Challenge.Rule
---- @field custom balatro.Challenge.IdField[]
---- @field modifiers balatro.Challenge.IdField[]
+--- @field custom balatro.Challenge.RuleInfo[]
+--- @field modifiers balatro.Challenge.RuleInfo[]
 
 --- @class balatro.Challenge.Deck
 --- @field type 'Challenge Deck' | string
@@ -36,3 +36,6 @@
 
 --- @class balatro.Challenge.IdField: table
 --- @field id string
+
+--- @class balatro.Challenge.RuleInfo: balatro.Challenge.IdField
+--- @field value any

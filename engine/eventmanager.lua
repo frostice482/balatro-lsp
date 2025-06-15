@@ -1,9 +1,15 @@
 --- @meta
 
 --- @class balatro.EventManager: balatro.Object
+--- Queue list
 --- @field queues balatro.EventManager.Queues
+--- Current event time. This may deviate from `G.TIMERS`,
+--- Updated by `update()`.
 --- @field queue_timer number
+--- Update frequency. Defaults to `1/60`.
 --- @field queue_dt number
+--- Last time when the queue is processed.
+--- Updated by `update()`.
 --- @field queue_last_processed number
 local IEventManager = {}
 

@@ -1,4 +1,4 @@
---- @class balatro.Gane
+--- @class balatro.Game
 --- @field HTTP_MANAGER balatro.Game.ManagerIO
 --- @field SAVE_MANAGER balatro.Game.ManagerOutput
 --- @field SOUND_MANAGER balatro.Game.SoundManager

@@ -47,7 +47,7 @@ function IDynaText:pulse(amt) end
 function IDynaText:draw() end
 
 
---- @type balatro.DynaText | fun(config: any?): balatro.DynaText
+--- @type balatro.DynaText | fun(config: balatro.DynaText.Config?): balatro.DynaText
 DynaText = function() end
 
 --- @class balatro.DynaText.String

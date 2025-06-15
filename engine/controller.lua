@@ -1,7 +1,7 @@
 --- @meta
 
+--- The input controller, which handles mouse, touch, and keyboard inputs.
 --- @class balatro.Controller: balatro.Object
----
 --- The node that was clicked this frame
 --- @field clicked balatro.Controller.Target
 --- The node that is being focused on this frame, only applies when using controller
