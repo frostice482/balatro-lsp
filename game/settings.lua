@@ -54,7 +54,7 @@
 --- @class balatro.Settings.Comp Competition / Content specific setting
 --- @field name string
 --- @field prev_name string
---- @field submission_name boolean?
+--- @field submission_name? boolean
 --- @field score number
 
 --- @class balatro.Settings.Demo Demo specific setting

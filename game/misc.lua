@@ -1,14 +1,14 @@
 --- @class balatro.Game
---- @field consumeables balatro.CardArea?
---- @field deck balatro.CardArea?
---- @field discard balatro.CardArea?
---- @field hand balatro.CardArea?
---- @field jokers balatro.CardArea?
---- @field play balatro.CardArea?
---- @field playing_cards balatro.CardArea?
---- @field shop_booster balatro.CardArea?
---- @field shop_jokers balatro.CardArea?
---- @field pack_cards balatro.CardArea?
+--- @field consumeables? balatro.CardArea
+--- @field deck? balatro.CardArea
+--- @field discard? balatro.CardArea
+--- @field hand? balatro.CardArea
+--- @field jokers? balatro.CardArea
+--- @field play? balatro.CardArea
+--- @field playing_cards? balatro.CardArea
+--- @field shop_booster? balatro.CardArea
+--- @field shop_jokers? balatro.CardArea
+--- @field pack_cards? balatro.CardArea
 ---
 --- @field ACC number
 --- @field ACC_state balatro.Game.StateEnum
@@ -60,13 +60,13 @@
 --- @field viewed_stake boolean
 --- @field vortex_time boolean
 --- @field window_prev WidthHeight | { orig_ratio: number, orig_scale: number }
---- @field screenwipe balatro.UIBox?
---- @field OVERLAY_MENU balatro.UIBox?
---- @field DEADZONE number?
---- @field BRUTE_OVERLAY ColorHex?
---- @field OVERLAY_TUTORIAL balatro.UIBox?
---- @field NO_MOD_CURSOR_STACK boolean?
---- @field jimboed boolean?
+--- @field screenwipe? balatro.UIBox
+--- @field OVERLAY_MENU? balatro.UIBox
+--- @field DEADZONE? number
+--- @field BRUTE_OVERLAY? ColorHex
+--- @field OVERLAY_TUTORIAL? balatro.UIBox
+--- @field NO_MOD_CURSOR_STACK? boolean
+--- @field jimboed? boolean
 
 --- @class balatro.Game.DiscoverTallies: { [string]: balatro.Tally }
 --- @field backs balatro.Tally

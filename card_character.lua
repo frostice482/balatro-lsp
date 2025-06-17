@@ -3,8 +3,8 @@
 --- @class balatro.CardCharacter: balatro.Moveable
 --- @field children balatro.CardCharacter.Children
 --- @field talking boolean
---- @field highlight balatro.Node?
---- @field last_said number?
+--- @field highlight? balatro.Node
+--- @field last_said? number
 --- @field config balatro.CardCharacter.Config
 local ICardChar = {}
 
@@ -46,21 +46,21 @@ function ICardChar:remove() end
 Card_Character = function() end
 
 --- @class balatro.CardCharacter.Config: table
---- @field args balatro.CardCharacter.Init?
---- @field button_align balatro.UIBox.Config?
---- @field bubble_align balatro.UIBox.Config?
---- @field speech_bubble_align balatro.UIBox.Config?
+--- @field args? balatro.CardCharacter.Init
+--- @field button_align? balatro.UIBox.Config
+--- @field bubble_align? balatro.UIBox.Config
+--- @field speech_bubble_align? balatro.UIBox.Config
 
 --- @class balatro.CardCharacter.Init
---- @field x number?
---- @field y number?
---- @field w number?
---- @field h number?
---- @field center balatro.Item.Joker?
+--- @field x? number
+--- @field y? number
+--- @field w? number
+--- @field h? number
+--- @field center? balatro.Item.Joker
 
 --- @class balatro.CardCharacter.Children: { [string]: balatro.Node }
 --- @field card balatro.Card
 --- @field particles balatro.Particles
---- @field button balatro.UIBox?
---- @field speech_bubble balatro.UIBox?
---- @field highlight balatro.Node?
+--- @field button? balatro.UIBox
+--- @field speech_bubble? balatro.UIBox
+--- @field highlight? balatro.Node

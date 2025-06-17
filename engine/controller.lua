@@ -15,7 +15,7 @@
 ---
 --- A list of all node that the cursor currently collides with
 --- @field collision_list balatro.Node[]
---- @field nodes_at_cursor balatro.Node[]?
+--- @field nodes_at_cursor? balatro.Node[]
 ---
 --- @field cursor_down balatro.Controller.TargetWithPos
 --- @field cursor_up balatro.Controller.TargetWithPos
@@ -37,7 +37,7 @@
 --- @field interrupt balatro.Controller.Interrupt
 --- For all controller locks. Key is mostly TagID
 --- @field locks table<string, boolean>
---- @field locked boolean?
+--- @field locked? boolean
 ---
 --- Buttons pressed and released during axis updates
 --- @field axis_buttons balatro.Controller.AxisButtonList
@@ -48,7 +48,7 @@
 ---
 --- A node representing where the cursor should 'snap' to.
 --- When this is set, then next frame should have the cursor to that position or on that node.
---- @field snap_cursor_to balatro.Controller.Snap?
+--- @field snap_cursor_to? balatro.Controller.Snap
 ---
 --- A stack of cursor positions, this stack changes depending on the depth of menus on screen so the game can remember where you last had your cursor
 --- This needs to keep track of both positions and nodes if possible, as well as the depth
@@ -65,14 +65,14 @@
 ---
 --- @field is_cursor_down boolean
 ---
---- @field overlay_timer number?
---- @field frame_buttonpress boolean?
---- @field repress_timer number?
---- @field text_input_hook balatro.UIElement?
---- @field no_holdcap boolean?
---- @field capslock boolean?
---- @field L_cursor_queue Position?
---- @field screen_keyboard balatro.UIBox?
+--- @field overlay_timer? number
+--- @field frame_buttonpress? boolean
+--- @field repress_timer? number
+--- @field text_input_hook? balatro.UIElement
+--- @field no_holdcap? boolean
+--- @field capslock? boolean
+--- @field L_cursor_queue? Position
+--- @field screen_keyboard? balatro.UIBox
 local IController = {}
 
 function IController:init() end
@@ -217,18 +217,18 @@ function IController:navigate_focus(dir) end
 Controller = function () end
 
 --- @class balatro.Controller.Target
---- @field handled boolean?
---- @field target balatro.Node?
---- @field handles boolean?
---- @field prev_target balatro.Node?
+--- @field handled? boolean
+--- @field target? balatro.Node
+--- @field handles? boolean
+--- @field prev_target? balatro.Node
 
 --- @class balatro.Controller.TargetWithPos: balatro.Controller.Target
 --- @field T Position
 --- @field time number
 
 --- @class balatro.Controller.Interrupt
---- @field focus boolean?
---- @field stack boolean?
+--- @field focus? boolean
+--- @field stack? boolean
 
 --- @class balatro.Controller.AxisButtonList
 --- @field l_stick balatro.Controller.AxisButton
@@ -241,7 +241,7 @@ Controller = function () end
 --- @field previous balatro.Controller.AxisButtonKey
 
 --- @class balatro.Controller.ButtonRegistry
---- @field click boolean?
+--- @field click? boolean
 --- @field node balatro.Node
 --- @field menu boolean
 
@@ -264,13 +264,13 @@ Controller = function () end
 --- @field axis_cursor boolean
 
 --- @class balatro.Controller.Gamepad
---- @field object love.Joystick?
---- @field mapping string?
---- @field name string?
+--- @field object? love.Joystick
+--- @field mapping? string
+--- @field name? string
 
 --- @class balatro.Controller.Snap
---- @field node balatro.Node?
---- @field T balatro.Node.TransformUnit?
+--- @field node? balatro.Node
+--- @field T? balatro.Node.TransformUnit
 --- @field type 'node' | 'transform'
 
 --- @alias balatro.Controller.HIDType "mouse" | "button" | "touch" | "axis"

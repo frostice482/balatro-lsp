@@ -11,32 +11,32 @@
 --- @field config balatro.Blind.Config
 --- @field children balatro.Blind.Children
 ---
---- @field loc_name string?
---- @field loc_debuff_text string?
---- @field chip_text string?
---- @field name string?
---- @field dollars number?
---- @field sound_pings number?
---- @field debuff table?
---- @field pos Position?
---- @field mult number?
---- @field disabled boolean?
+--- @field loc_name? string
+--- @field loc_debuff_text? string
+--- @field chip_text? string
+--- @field name? string
+--- @field dollars? number
+--- @field sound_pings? number
+--- @field debuff? table
+--- @field pos? Position
+--- @field mult? number
+--- @field disabled? boolean
 --- @field discards_sub number? 0 for The Water
 --- @field hands_sub number? hands-1 for The Needle
---- @field boss boolean?
---- @field blind_set boolean?
---- @field triggered boolean?
+--- @field boss? boolean
+--- @field blind_set? boolean
+--- @field triggered? boolean
 --- @field prepped boolean? Nil for The Fish
 --- @field hands table<PokerHand, boolean>? Only for The Eye
 --- @field only_hand boolean? Only for The Mouth
---- @field hovering boolean?
---- @field hover_tilt number?
---- @field block_play boolean?
---- @field dissolve number?
+--- @field hovering? boolean
+--- @field hover_tilt? number
+--- @field block_play? boolean
+--- @field dissolve? number
 --- @field dissolve_colours ColorHex[]
 local IBlind = {}
 
---- @param color ColorHex?
+--- @param color? ColorHex
 function IBlind:change_colour(color) end
 
 function IBlind:set_text() end
@@ -48,7 +48,7 @@ function IBlind:alert_debuff(first) end
 --- @return string
 function IBlind:get_loc_debuff_text() end
 
---- @param silent boolean?
+--- @param silent? boolean
 function IBlind:defeat(silent) end
 
 function IBlind:disable() end
@@ -89,7 +89,7 @@ Blind = function() end
 
 --- @class balatro.Blind.Children: { [string]: balatro.Node }
 --- @field animatedSprite balatro.AnimatedSprite
---- @field particles balatro.Particles?
+--- @field particles? balatro.Particles
 
 --- @class balatro.Blind.Config: table
---- @field blind balatro.Item.Blind?
+--- @field blind? balatro.Item.Blind

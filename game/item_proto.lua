@@ -36,8 +36,8 @@
 
 --- @class balatro.Item.Tag: balatro.Item.Discoverable
 --- @field set 'Tag'
---- @field min_anite number?
---- @field requires string?
+--- @field min_anite? number
+--- @field requires? string
 --- @field config table | {type: string}
 
 --- @class balatro.Item.Seal: balatro.Item.Discoverable
@@ -72,7 +72,7 @@
 --- @field eternal_compat boolean
 --- @field rarity number
 --- @field cost_mult number? Not present for all jokers
---- @field enhancement_gate string?
+--- @field enhancement_gate? string
 
 --- @class balatro.Item.Consumable: balatro.Item.Buyable
 --- @field consumeable boolean
@@ -88,7 +88,7 @@
 
 --- @class balatro.Item.Spectral: balatro.Item.Consumable
 --- @field set 'Spectral'
---- @field hidden boolean?
+--- @field hidden? boolean
 --- @field cost_mult nil
 --- @field effect nil
 
@@ -98,13 +98,13 @@
 --- @field cost number
 --- @field config table
 --- @field requires string]
---- @field unlock_condition balatro.Item.UnlockCondition?
+--- @field unlock_condition? balatro.Item.UnlockCondition
 
 --- @class balatro.Item.Back: balatro.Item.DiscoverableUnlockable
 --- @field set 'Back'
 --- @field stake number
 --- @field config table
---- @field unlock_condition balatro.Item.UnlockCondition?
+--- @field unlock_condition? balatro.Item.UnlockCondition
 --- @field omit boolean? For challenge deck
 
 --- @class balatro.Item.EnhancedCard: balatro.Item, balatro.Item.Effect
@@ -130,10 +130,10 @@
 --- @class balatro.Item.UnlockCondition
 --- @field type string
 --- @field extra nil | number | string | {count: number, suit: string} for Vouchers, extra is always number
---- @field deck string?
---- @field stake number?
---- @field ante number?
---- @field amount number?
+--- @field deck? string
+--- @field stake? number
+--- @field ante? number
+--- @field amount? number
 
 --- @class balatro.Center
 --- @field key string

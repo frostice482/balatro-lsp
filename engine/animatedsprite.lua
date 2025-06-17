@@ -14,7 +14,7 @@
 --- @field atlas balatro.AnimationAtlas
 --- Scaling factor for the sprite. The larger, the smaller the sprite becomes.\
 --- This is set by `:rescale()` function.
---- @field scale_mag number?
+--- @field scale_mag? number
 local IAnimatedSprite = {}
 
 --- @param X number

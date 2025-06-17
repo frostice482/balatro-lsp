@@ -101,7 +101,7 @@ function get_first_legendary(_key) end
 --- Uses `math.randomseed(seed)` to set randomness
 --- @generic K, V
 --- @param _t table<K, V>
---- @param seed number?
+--- @param seed? number
 --- @return V value
 --- @return K key
 function pseudorandom_element(_t, seed) end
@@ -227,8 +227,8 @@ function count_of_suit(area, suit) end
 --- Prepare srawing for moveable
 --- @param moveable balatro.Moveable
 --- @param scale number
---- @param rotate number?
---- @param offset Position?
+--- @param rotate? number
+--- @param offset? Position
 function prep_draw(moveable, scale, rotate, offset) end
 
 --- UNDOCUMENTED
@@ -331,7 +331,7 @@ function set_deck_win() end
 function set_challenge_unlock() end
 
 --- Gets number of stakes winned in a deck from current profile
---- @param _deck_key string?
+--- @param _deck_key? string
 --- @return number
 function get_deck_win_stake(_deck_key) end
 
@@ -393,7 +393,7 @@ function remove_save() end
 
 --- Gets colours from given key
 --- @param _c balatro.misc.LocColor.KnownType
---- @param _default ColorHex?
+--- @param _default? ColorHex
 --- @return ColorHex
 function loc_colour(_c, _default) end
 
@@ -437,17 +437,17 @@ function loc_parse_string(line) end
 --- @class balatro.LocalizeArg
 --- @field type balatro.LocalizeTypeArg
 --- @field key string
---- @field set string?
---- @field vars string[] | {colours: ColorHex[]}?
+--- @field set? string
+--- @field vars? string[] | {colours: ColorHex[]}
 
 --- UNDOCUMENTED
 --- @param args balatro.LocalizeArg | string
---- @param misc_cat string?
+--- @param misc_cat? string
 function localize(args, misc_cat) end
 
 --- Gets stake sprite
---- @param _stake number?
---- @param _scale number?
+--- @param _stake? number
+--- @param _scale? number
 function get_stake_sprite(_stake, _scale) end
 
 --- Gets asset atlas from given card info

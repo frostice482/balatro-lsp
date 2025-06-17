@@ -52,7 +52,7 @@ function ease_value(ref_table, ref_value, mod, floored, timer_type, not_blockabl
 --- @field new_colour? ColorHexRgb
 --- @field special_colour? ColorHexRgb
 --- @field tertiary_colour? ColorHexRgb
---- @field contrast number?
+--- @field contrast? number
 
 --- Eases background color.
 --- @param args EaseBgColArgs
@@ -61,12 +61,12 @@ function ease_background_colour(args) end
 --- Eases color. Old color is modified.
 --- @param old_colour ColorHex
 --- @param new_colour ColorHex
---- @param delay number?
+--- @param delay? number
 function ease_colour(old_colour, new_colour, delay) end
 
 --- Sets background type, depending on the stage
 --- @param state balatro.Game.StateEnum
---- @param blind_override string?
+--- @param blind_override? string
 function ease_background_colour_blind(state, blind_override) end
 
 --- Adds an event with specified delay
@@ -107,7 +107,7 @@ function highlight_card(card, percent, dir) end
 --- Used when a card is not allowed to play during boss blind
 --- @param text string Status text
 --- @param silent boolean? If true, don't play sound
---- @param delay number?
+--- @param delay? number
 function play_area_status_text(text, silent, delay) end
 
 --- Level up poker hand with animation
@@ -118,20 +118,20 @@ function play_area_status_text(text, silent, delay) end
 function level_up_hand(card, hand, instant, amount) end
 
 --- @class UpdateHandConfigArg
---- @field delay number?
---- @field immediate boolean?
---- @field nopulse boolean?
---- @field sound string?
---- @field pitch number?
---- @field volume number?
---- @field modded boolean?
+--- @field delay? number
+--- @field immediate? boolean
+--- @field nopulse? boolean
+--- @field sound? string
+--- @field pitch? number
+--- @field volume? number
+--- @field modded? boolean
 
 --- @class UpdateHandValsArg
---- @field chips number | string?
---- @field mult number | string?
---- @field handname string?
---- @field chip_total number?
---- @field level number | string?
+--- @field chips? number | string
+--- @field mult? number | string
+--- @field handname? string
+--- @field chip_total? number
+--- @field level? number | string
 
 --- Updates poker hand text (poker hand name, chips, mults, total chips, hand level)
 --- @param config UpdateHandConfigArg
@@ -170,8 +170,8 @@ function update_canvas_juice(dt) end
 --- The function must return false to stop the juice effect.
 --- @param card balatro.Card
 --- @param eval_func fun(): boolean
---- @param first boolean?
---- @param delay number?
+--- @param first? boolean
+--- @param delay? number
 function juice_card_until(card, eval_func, first, delay) end
 
 --- @alias CheckUnlockType 'win_challenge' | 'career_stat' | 'ante_up' | 'win' | 'win_stake' | 'money' | 'hand' | 'shatter' | 'run_redeem' | 'upgrade_hand' | 'chip_score' | 'modify_deck' | 'spawn_legendary' | 'discover_amount' | 'career_stat' | 'hand' | 'min_hand_size' | 'interest_streak' | 'run_card_replays' | 'play_all_hearts' | 'run_redeem' | 'have_edition' | 'double_gold' | 'continue_game' | 'blank_redeems' | 'modify_deck' | 'discover_amount' | 'win_deck' | 'win_stake' | 'discover_planets' | 'blind_discoveries' | 'modify_jokers' | 'money' | 'round_win' | 'ante_up' | 'hand_contents' | 'discard_custom' | 'win_no_hand' | 'win_custom' | 'win' | 'chip_score'
@@ -230,7 +230,7 @@ function unlock_notify() end
 function create_unlock_overlay(key) end
 
 --- Makes a card discovered, used when the undiscovered card is bought in the shop. Does not work if the game is currently seeded or in challenge.
---- @param card balatro.Item.Card?
+--- @param card? balatro.Item.Card
 function discover_card(card) end
 
 --- Gets data possible from `balatro.ItemCenters` from given name
@@ -254,9 +254,9 @@ function get_next_tag_key(append) end
 --- `front` is the playing card to add, e.g. 9 of Spades, King of Hearts, etc. Can be obtained from `G.P_CARDS`\
 --- `center` is the enhancement effect, e.g. glass, stone, etc. Can also be c_base for no effect. `G.P_CENTERS.m_*` or `G.P_CENTER_POOLS.Enhanced`
 --- @param area balatro.CardArea The card area where the card will be added
---- @param skip_materialize boolean?
---- @param silent boolean?
---- @param colours ColorHex?
+--- @param skip_materialize? boolean
+--- @param silent? boolean
+--- @param colours? ColorHex
 --- @return balatro.Card
 --- @see balatro.ItemList.Centers.EnhancedCard
 function create_playing_card(card_init, area, skip_materialize, silent, colours) end
@@ -321,7 +321,7 @@ function poll_edition(key, mod, no_neg, guaranteed) end
 --- @param area balatro.CardArea? Card area where the card will be added to. Defaults to `G.jokers`
 --- @param legendary boolean? If true, sets joker to legendary
 --- @param _rarity number? Joker rarity 0.95 < rarity: Rare; 0.7 < rarity <= 0.95: Uncommon; rarity <= 0.7: Common
---- @param skip_materialize boolean?
+--- @param skip_materialize? boolean
 --- @param soulable boolean? If `true`, Spectral card `The Soul` for type Tarot/Spectral/Tarot_Planet and `Black Hole` for type Planet/Spectral may appear. ``forced_key` must not be set
 --- @param forced_key string? Card key, must be a key valid from `balatro.ItemCenters`
 --- @param key_append string? Seed to append on `get_current_pool`
@@ -331,8 +331,8 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 --- Copies card
 --- @param other balatro.Card Card to copy
 --- @param new_card balatro.Card? Target card
---- @param card_scale number?
---- @param playing_card number?
+--- @param card_scale? number
+--- @param playing_card? number
 --- @param strip_edition boolean? Removes edition from the card
 function copy_card(other, new_card, card_scale, playing_card, strip_edition) end
 
@@ -391,13 +391,13 @@ function get_type_colour(_c, card) end
 
 --- Creates an interface when the card is hovered over
 --- @param _c balatro.Center Card center
---- @param full_UI_table table?
---- @param specific_vars unknown?
---- @param card_type 'Locked' | 'Undiscovered' | 'Default' | 'Enhanced' | 'Booster'?
---- @param badges CardBadges[]?
+--- @param full_UI_table? table
+--- @param specific_vars? unknown
+--- @param card_type? 'Locked' | 'Undiscovered' | 'Default' | 'Enhanced' | 'Booster'
+--- @param badges? CardBadges[]
 --- @param hide_desc boolean? Replaces card description with undiscovered
---- @param main_start unknown?
---- @param main_end unknown?
+--- @param main_start? unknown
+--- @param main_end? unknown
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end) end
 
 --- @alias CardBadges 'foil' | 'holographic'  | 'polychrome'  | 'negative'  | 'negative_consumable'  | 'gold_seal'  | 'blue_seal'  | 'red_seal'  | 'purple_seal'  | 'eternal'  | 'perishable'  | 'rental'  | 'pinned_left'

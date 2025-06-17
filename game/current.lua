@@ -70,8 +70,8 @@
 --- @field voucher_text string
 --- @field win_ante number
 --- @field won boolean
---- @field STOP_USE number?
---- @field starting_voucher_count number?
+--- @field STOP_USE? number
+--- @field starting_voucher_count? number
 
 --- @class balatro.Game.Current.CardPlayed
 --- @field suits table<Suit, boolean>

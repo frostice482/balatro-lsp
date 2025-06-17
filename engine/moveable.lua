@@ -39,11 +39,11 @@
 --- @field shadow_parrallax Position
 --- @field layered_parallax Position
 --- @field shadow_height number
---- @field juice balatro.Moveable.Juice?
---- @field float boolean?
+--- @field juice? balatro.Moveable.Juice
+--- @field float? boolean
 ---
---- @field STATIONARY boolean?
---- @field NEW_ALIGNMENT boolean?
+--- @field STATIONARY? boolean
+--- @field NEW_ALIGNMENT? boolean
 local IMoveable = {}
 
 --- @param X number
@@ -84,8 +84,8 @@ function IMoveable:hard_set_VT() end
 --- @param offset Position
 function IMoveable:drag(offset) end
 
---- @param amount number?
---- @param rot_amt number?
+--- @param amount? number
+--- @param rot_amt? number
 function IMoveable:juice_up(amount, rot_amt) end
 
 ---- @param dt number
@@ -135,8 +135,8 @@ Moveable = function() end
 --- @class balatro.Moveable.Role
 --- @field role_type 'Major' | 'Minor' Major dictates movement, Minor is welded to some major
 --- @field offset Position Offset from Minor to Major
---- @field major balatro.Moveable?
---- @field draw_major balatro.Moveable?
+--- @field major? balatro.Moveable
+--- @field draw_major? balatro.Moveable
 --- @field xy_bond 'Strong' | 'Weak'
 --- @field wh_bond 'Strong' | 'Weak'
 --- @field r_bond 'Strong' | 'Weak'
@@ -147,32 +147,32 @@ Moveable = function() end
 --- @field offset Position
 --- @field prev_type balatro.Moveable.AlignmentType
 --- @field prev_offset Position
---- @field lr_clamp boolean?
+--- @field lr_clamp? boolean
 --- @field type_list? table<'a' | 'm' | 'c' | 'b' | 't' | 'l' | 'r' | 'i'>
 
 --- @class balatro.Moveable.AlignmentArg
---- @field major balatro.Moveable?
---- @field offset? Position?
---- @field bond 'Weak' | 'Strong'?
---- @field type balatro.Moveable.AlignmentType?
---- @field xy_bond balatro.Moveable.AlignmentType?
---- @field wh_bond balatro.Moveable.AlignmentType?
---- @field r_bond balatro.Moveable.AlignmentType?
---- @field scale_bond balatro.Moveable.AlignmentType?
---- @field lr_clamp boolean?
+--- @field major? balatro.Moveable
+--- @field offset?? Position
+--- @field bond? 'Weak' | 'Strong'
+--- @field type? balatro.Moveable.AlignmentType
+--- @field xy_bond? balatro.Moveable.AlignmentType
+--- @field wh_bond? balatro.Moveable.AlignmentType
+--- @field r_bond? balatro.Moveable.AlignmentType
+--- @field scale_bond? balatro.Moveable.AlignmentType
+--- @field lr_clamp? boolean
 
 --- @class balatro.Moveable.RoleArg
 --- @field role_type 'Major' | 'Minor'? Major dictates movement, Minor is welded to some major
 --- @field offset Position? Offset from Minor to Major
---- @field major balatro.Moveable?
---- @field draw_major balatro.Moveable?
---- @field xy_bond 'Strong' | 'Weak'?
---- @field wh_bond 'Strong' | 'Weak'?
---- @field r_bond 'Strong' | 'Weak'?
---- @field scale_bond 'Strong' | 'Weak'?
+--- @field major? balatro.Moveable
+--- @field draw_major? balatro.Moveable
+--- @field xy_bond? 'Strong' | 'Weak'
+--- @field wh_bond? 'Strong' | 'Weak'
+--- @field r_bond? 'Strong' | 'Weak'
+--- @field scale_bond? 'Strong' | 'Weak'
 
 --- @class balatro.Moveable.Juice
---- @field handled_elsewhere boolean?
+--- @field handled_elsewhere? boolean
 --- @field scale number
 --- @field scale_amt number
 --- @field r number

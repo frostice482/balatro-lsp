@@ -55,7 +55,7 @@
 
 --- @class balatro.Profile.HighScore
 --- @field amt number
---- @field tot number?
+--- @field tot? number
 --- @field label string
 
 --- @class balatro.Profile.UsageWinLoss: balatro.Profile.Usage

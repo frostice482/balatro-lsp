@@ -13,9 +13,9 @@
 
 --- @class balatro.Challenge.Joker
 --- @field id string
---- @field eternal boolean?
+--- @field eternal? boolean
 --- @field edition SpecialEdition | nil
---- @field pinned boolean?
+--- @field pinned? boolean
 
 --- @class balatro.Challenge.Rule
 --- @field custom balatro.Challenge.RuleInfo[]

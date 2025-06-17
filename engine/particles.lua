@@ -1,9 +1,9 @@
 --- @meta
 
 --- @class balatro.Particles: balatro.Moveable
---- @field fill boolean?
+--- @field fill? boolean
 --- @field padding number
---- @field parent balatro.Moveable?
+--- @field parent? balatro.Moveable
 --- @field timer number
 --- @field timer_type balatro.TimerType
 --- @field last_real_time number
@@ -33,11 +33,11 @@ function IParticles:update(dt) end
 --- @param dt number
 function IParticles:move(dt) end
 
---- @param delay number?
+--- @param delay? number
 --- @param to number
 function IParticles:fade(delay, to) end
 
---- @param alpha number?
+--- @param alpha? number
 function IParticles:draw(alpha) end
 
 function IParticles:remove() end
@@ -63,16 +63,16 @@ Particles = function() end
 --- @field offset Position
 
 --- @class balatro.Particles.Config
---- @field fill boolean?
---- @field padding number?
---- @field attach balatro.Moveable?
---- @field timer number?
---- @field timer_type balatro.TimerType?
---- @field lifespan number?
---- @field speed number?
---- @field max number?
---- @field pulse_max number?
---- @field vel_variation number?
---- @field scale number?
---- @field colours ColorHex[]?
---- @field initialize boolean?
+--- @field fill? boolean
+--- @field padding? number
+--- @field attach? balatro.Moveable
+--- @field timer? number
+--- @field timer_type? balatro.TimerType
+--- @field lifespan? number
+--- @field speed? number
+--- @field max? number
+--- @field pulse_max? number
+--- @field vel_variation? number
+--- @field scale? number
+--- @field colours? ColorHex[]
+--- @field initialize? boolean

@@ -34,9 +34,9 @@
 --- When the event is created.
 --- @field time number
 --- Only when trigger is `ease`. Contains information for easing.
---- @field ease balatro.Event.Ease?
+--- @field ease? balatro.Event.Ease
 --- Only when trigger is `condition`. Contains information for value comparison.
---- @field condition balatro.Event.Condition?
+--- @field condition? balatro.Event.Condition
 --- If false, sets `time` to current timer value when handle is called, then sets to true.
 --- @field start_timer boolean
 local IEvent = {}
@@ -57,8 +57,8 @@ Event = function() end
 --- @field start_timer boolean? Default: `false`
 --- @field func? fun(n: number?): boolean|number Default: `() => true`
 --- @field delay number? Default: `0`
---- @field no_delete boolean?
---- @field pause_force boolean?
+--- @field no_delete? boolean
+--- @field pause_force? boolean
 --- @field timer balatro.TimerType? Default: `TOTAL` if unpaused, `REAL` if paused
 --- @field ref_table table? Only for trigger == "ease" or "condition"
 --- @field ref_value any? Only for trigger == "ease" or "condition"
@@ -76,8 +76,8 @@ Event = function() end
 --- @field ref_value any
 --- @field start_val number
 --- @field end_val number
---- @field start_time number?
---- @field end_time number?
+--- @field start_time? number
+--- @field end_time? number
 
 --- @class balatro.Event.Condition
 --- @field ref_table table

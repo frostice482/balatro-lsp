@@ -6,18 +6,18 @@
 --- @field config balatro.Card.Config
 --- @field tilt_var table
 --- @field ambient_tilt number
---- @field playing_card boolean?
+--- @field playing_card? boolean
 --- @field sort_id number
 --- @field back 'viewed_back' | 'selected_back'
---- @field bypass_discovery_center boolean?
---- @field bypass_discovery_ui boolean?
---- @field bypass_lock boolean?
---- @field no_ui boolean?
+--- @field bypass_discovery_center? boolean
+--- @field bypass_discovery_ui? boolean
+--- @field bypass_lock? boolean
+--- @field no_ui? boolean
 --- @field base_cost number
 --- @field extra_cost number
 --- @field cost number
 --- @field sell_cost number
---- @field sell_cost_label number | string?
+--- @field sell_cost_label? number | string
 --- @field unique_val number
 --- @field edition balatro.Card.Edition
 --- @field zoom boolean
@@ -25,27 +25,27 @@
 --- @field sprite_facing 'front' | 'back'
 --- @field discard_pos Position | { r: number }
 --- @field flipping nil | 'f2b' | 'b2f'
---- @field area balatro.CardArea?
+--- @field area? balatro.CardArea
 --- @field highlighted boolean
 --- @field click_timeout number
 --- @field debuff boolean
---- @field rank number?
---- @field added_to_deck boolean?
+--- @field rank? number
+--- @field added_to_deck? boolean
 --- @field ability balatro.Card.Ability
---- @field shattered boolean?
+--- @field shattered? boolean
 --- @field dissolve number
 --- @field dissolve_colours ColorHex[]
 --- @field base balatro.Card.Base
---- @field label string?
---- @field mouse_damping number?
---- @field pinned boolean?
---- @field seal boolean?
---- @field sticker_run Sticker?
---- @field sticker Sticker?
---- @field hover_tilt number?
---- @field greyed boolean?
---- @field vortex boolean?
---- @field no_shadow boolean?
+--- @field label? string
+--- @field mouse_damping? number
+--- @field pinned? boolean
+--- @field seal? boolean
+--- @field sticker_run? Sticker
+--- @field sticker? Sticker
+--- @field hover_tilt? number
+--- @field greyed? boolean
+--- @field vortex? boolean
+--- @field no_shadow? boolean
 local ICard = {}
 
 --- @param X number
@@ -127,43 +127,43 @@ function ICard:remove() end
 Card = ICard
 
 --- @class balatro.Card.Param
---- @field playing_card boolean?
---- @field viewed_back boolean?
---- @field bypass_discovery_center boolean?
---- @field bypass_discovery_ui boolean?
---- @field bypass_lock boolean?
---- @field bypass_back boolean?
---- @field discover boolean?
+--- @field playing_card? boolean
+--- @field viewed_back? boolean
+--- @field bypass_discovery_center? boolean
+--- @field bypass_discovery_ui? boolean
+--- @field bypass_lock? boolean
+--- @field bypass_back? boolean
+--- @field discover? boolean
 
 --- @class balatro.Card.Children: { [string]: balatro.Node }
 --- @field shadow balatro.Moveable
 --- @field front balatro.Sprite
 --- @field back balatro.Sprite
 --- @field center balatro.Sprite
---- @field alert balatro.UIBox?
---- @field top_disp balatro.UIBox?
---- @field bot_disp balatro.UIBox?
---- @field particle balatro.Particles?
---- @field focused_ui balatro.UIBox?
---- @field floating_sprite balatro.Sprite?
---- @field use_button balatro.UIBox?
---- @field sell_button balatro.UIBox?
+--- @field alert? balatro.UIBox
+--- @field top_disp? balatro.UIBox
+--- @field bot_disp? balatro.UIBox
+--- @field particle? balatro.Particles
+--- @field focused_ui? balatro.UIBox
+--- @field floating_sprite? balatro.Sprite
+--- @field use_button? balatro.UIBox
+--- @field sell_button? balatro.UIBox
 
 --- @class balatro.Card.Config: balatro.Node.Config
 --- @field card balatro.Item.Card
 --- @field center balatro.Item.Card | balatro.Item.Joker
---- @field card_key string?
---- @field center_key string?
+--- @field card_key? string
+--- @field center_key? string
 
 --- @class balatro.Card.Edition: { [string]: boolean }
---- @field holo boolean?
---- @field polychrome boolean?
---- @field foil boolean?
---- @field negative boolean?
---- @field mult number?
---- @field chips number?
---- @field x_chips number?
---- @field type SpecialEdition?
+--- @field holo? boolean
+--- @field polychrome? boolean
+--- @field foil? boolean
+--- @field negative? boolean
+--- @field mult? number
+--- @field chips? number
+--- @field x_chips? number
+--- @field type? SpecialEdition
 
 --- @class balatro.Card.Ability: { [string]: any }
 --- @field name string
@@ -182,21 +182,21 @@ Card = ICard
 --- @field extra number
 --- @field extra_value number
 --- @field type string
---- @field order number?
---- @field forced_selection boolean?
+--- @field order? number
+--- @field forced_selection? boolean
 --- @field perma_bonus number
---- @field money number?
---- @field consumeable boolean?
---- @field blueprint_compat 'compatible' | 'incompatible'?
---- @field rental boolean?
---- @field couponed boolean?
---- @field sell_cost_label string | number?
---- @field eternal boolean?
---- @field driver_tally number?
---- @field steel_tally number?
---- @field nine_tally number?
---- @field stone_tally number?
---- @field perma_debuff boolean?
+--- @field money? number
+--- @field consumeable? boolean
+--- @field blueprint_compat? 'compatible' | 'incompatible'
+--- @field rental? boolean
+--- @field couponed? boolean
+--- @field sell_cost_label? string | number
+--- @field eternal? boolean
+--- @field driver_tally? number
+--- @field steel_tally? number
+--- @field nine_tally? number
+--- @field stone_tally? number
+--- @field perma_debuff? boolean
 
 --- @class balatro.Card.Base
 --- @field name string

@@ -39,10 +39,10 @@
 --- and inherited attributes like button click functions.
 --- @field children table<string, balatro.Node>
 ---
---- @field CALCING boolean?
---- @field DEBUG_VALUE string?
+--- @field CALCING? boolean
+--- @field DEBUG_VALUE? string
 ---
---- @field REMOVED boolean?
+--- @field REMOVED? boolean
 local INode = {}
 
 --- @param args {T: balatro.Node.TransformInit, container: balatro.Node}
@@ -142,16 +142,16 @@ Node = function() end
 --- @field can boolean
 
 --- @class balatro.Node.Config
---- @field d_popup balatro.UIElement.Config?
---- @field d_popup_config balatro.UIBox.Config?
---- @field h_popup balatro.UIElement.Config?
---- @field h_popup_config balatro.UIBox.Config?
+--- @field d_popup? balatro.UIElement.Config
+--- @field d_popup_config? balatro.UIBox.Config
+--- @field h_popup? balatro.UIElement.Config
+--- @field h_popup_config? balatro.UIBox.Config
 
 --- @class balatro.Node.Frame
 --- @field DRAW number
 --- @field MOVE number
---- @field MAJOR balatro.Node.Frame.Major?
---- @field OLD_MAJOR balatro.Node.Frame.Major?
+--- @field MAJOR? balatro.Node.Frame.Major
+--- @field OLD_MAJOR? balatro.Node.Frame.Major
 
 --- @class balatro.Node.Frame.Major
 --- @field major balatro.Moveable

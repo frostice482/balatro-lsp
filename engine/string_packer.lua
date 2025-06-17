@@ -2,7 +2,7 @@
 
 --- Packs string so it can be loaded
 --- @param data table Table data
---- @param recursive boolean?
+--- @param recursive? boolean
 --- @return string
 function STR_PACK(data, recursive) end
 

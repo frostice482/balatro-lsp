@@ -14,16 +14,16 @@
 local IEventManager = {}
 
 --- @param event balatro.Event
---- @param queue balatro.EventManager.QueueType?
---- @param front boolean?
+--- @param queue? balatro.EventManager.QueueType
+--- @param front? boolean
 function IEventManager:add_event(event, queue, front) end
 
---- @param queue boolean?
---- @param exception boolean?
+--- @param queue? boolean
+--- @param exception? boolean
 function IEventManager:clear_queue(queue, exception) end
 
 --- @param dt number
---- @param forced boolean?
+--- @param forced? boolean
 function IEventManager:update(dt, forced) end
 
 --- @type balatro.EventManager | fun(): balatro.EventManager
