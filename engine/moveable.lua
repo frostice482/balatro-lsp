@@ -32,14 +32,23 @@
 --- Keep track of the last time this Moveable was moved via :move(dt). When it is successfully moved, set to equal
 --- the current G.TIMERS.REAL, and if it is called again this frame, doesn't recalculate move(dt)
 --- @field last_aligned number
----
+--- Creates zoom effect when the Moveable is hoered (+0.05) / dragged (+0.1)
+--- @field zoom boolean?
+--- Current use is not found across Balatro code
 --- @field static_rotation boolean
+---
 --- @field offset Position
+---
 --- @field Mid balatro.Moveable
+--- Shadow effect
 --- @field shadow_parrallax Position
+--- Element offset
 --- @field layered_parallax Position
+--- Shadow height. Current effect is unknown
 --- @field shadow_height number
+--- Juice up effect, created from `:juice_up()`
 --- @field juice? balatro.Moveable.Juice
+---
 --- @field float? boolean
 ---
 --- @field STATIONARY? boolean
@@ -50,6 +59,7 @@ local IMoveable = {}
 --- @param Y number
 --- @param W number
 --- @param H number
+--- @overload fun(args: {T: balatro.Node.TransformInit, container: balatro.Node})
 function IMoveable:init(X,Y,W,H) end
 
 function IMoveable:draw() end
@@ -124,7 +134,7 @@ function IMoveable:get_major() end
 
 function IMoveable:remove() end
 
---- @type balatro.Moveable | fun(X: number, Y: number, W: number, H: number): balatro.Moveable
+--- @type balatro.Moveable | fun(X: number, Y: number, W: number, H: number): balatro.Moveable | fun(args: {T: balatro.Node.TransformInit, container: balatro.Node}): balatro.Moveable
 Moveable = function() end
 
 --- @class balatro.Moveable.Velocity: Position
@@ -152,7 +162,7 @@ Moveable = function() end
 
 --- @class balatro.Moveable.AlignmentArg
 --- @field major? balatro.Moveable
---- @field offset?? Position
+--- @field offset? Position
 --- @field bond? 'Weak' | 'Strong'
 --- @field type? balatro.Moveable.AlignmentType
 --- @field xy_bond? balatro.Moveable.AlignmentType

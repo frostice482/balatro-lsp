@@ -10,7 +10,7 @@
 --- @field parent? balatro.UIBox | balatro.UIElement
 --- @field UIRoot? balatro.UIElement
 --- @field draw_layers balatro.UIElement[]
---- @field definition balatro.UIElement.Config
+--- @field definition balatro.UIElement.Definition
 --- @field Mid? balatro.UIElement
 --- @field config? balatro.UIBox.Config
 local IUIBox = {}
@@ -28,7 +28,7 @@ function IUIBox:init(args) end
 --- @return balatro.UIElement
 function IUIBox:get_UIE_by_ID(id, node) end
 
---- @param node balatro.Node
+--- @param node balatro.UIElement
 --- @param _T Position
 --- @param recalculate? boolean
 --- @param _scale? number
@@ -39,8 +39,8 @@ function IUIBox:remove_group(node, group) end
 
 function IUIBox:get_group(node, group, ingroup) end
 
---- @param node balatro.UIElement.Config
---- @param parent balatro.UIElement
+--- @param node balatro.UIElement.Definition
+--- @param parent? balatro.UIElement
 function IUIBox:set_parent_child(node, parent) end
 
 function IUIBox:remove() end
@@ -69,7 +69,7 @@ function IUIBox:recalculate() end
 
 --- @class balatro.UIBox.Arg
 --- @field T? balatro.Node.TransformUnit
---- @field definition balatro.UIElement.Config
+--- @field definition balatro.UIElement.Definition
 --- @field config balatro.UIBox.Config
 
 --- @type balatro.UIBox | fun(args: balatro.UIBox.Arg): balatro.UIBox
@@ -87,6 +87,7 @@ UIBox = function() end
 --- @field disable_button? boolean
 --- @field focus_timer? number
 --- @field object_focus_timer? number
+--- @field pixellated_rect? balatro.UIElement.PixellatedRect
 local IUIElement = {}
 
 --- @param parent? balatro.UIBox
@@ -160,9 +161,17 @@ function IUIElement:release(other) end
 UIElement = IUIElement
 
 --- @class balatro.UIBox.Config: balatro.Moveable.AlignmentArg
---- @field parent? balatro.Node
+--- @field parent? balatro.UIElement
 --- @field align balatro.Moveable.AlignmentType? Alias for type
+--- @field can_collide  boolean?
 --- @field instance_type? balatro.Global.Instances.InstanceType
+
+--- @class balatro.UIElement.Definition
+--- @field n balatro.UITypeEnum
+--- @field nodes? balatro.UIElement.Definition[]
+--- @field config? balatro.UIElement.Config
+
+--- @class balatro.UIElement.Config: balatro.Node.Config
 --- @field id? unknown
 --- @field w? number
 --- @field h? number
@@ -171,13 +180,11 @@ UIElement = IUIElement
 --- @field minw? number
 --- @field minh? number
 --- @field mid? boolean
-
---- @class balatro.UIElement.Config: balatro.Node.Config
 --- @field emboss? number
 --- @field vert? boolean
 --- @field text_drawable? love.Text
 --- @field padding? number
---- @field align balatro.Moveable.AlignmentType? Alias for type
+--- @field align balatro.Moveable.AlignmentType?
 --- @field text? string
 --- @field scale? number
 --- @field lang? balatro.Language
@@ -189,10 +196,6 @@ UIElement = IUIElement
 --- @field can_collide? boolean
 --- @field button? string
 --- @field button_UIE? balatro.UIElement
----
---- @field n balatro.UITypeEnum
---- @field config? balatro.UIBox.Config
---- @field nodes? balatro.UIElement.Config[]
 --- @field on_demand_tooltip? boolean
 --- @field tooltip? string
 --- @field detailed_tooltip? string

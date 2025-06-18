@@ -1,6 +1,8 @@
 --- @meta
 
 --- Sptite, but animated.
+--- Animation rate is affected by `G.ANIMATION_FPS`.
+---
 --- @class balatro.AnimatedSprite: balatro.Sprite
 --- The sprite animation data, containing sprite's positionn, size, and frame count.
 --- @field animation balatro.AnimatedSprite.Animation

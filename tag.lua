@@ -1,3 +1,5 @@
+--- @meta
+
 --- @class balatro.Tag: balatro.Object
 --- @field key string
 --- @field config table
@@ -8,20 +10,23 @@
 --- @field triggered boolean
 --- @field ID number
 --- @field ability table
-Tag = {}
+local ITag = {}
 
 --- @param _tag string
----@param for_collection boolean?
----@param _blind_type boolean?
-function Tag:init(_tag, for_collection, _blind_type) end
-function Tag:nope() end
-function Tag:yep(message, _colour, func) end
-function Tag:set_ability() end
-function Tag:apply_to_run(_context) end
-function Tag:save() end
-function Tag:load(tag_savetable) end
-function Tag:juice_up(_scale, _rot) end
-function Tag:generate_UI(_size) end
-function Tag:get_uibox_table(tag_sprite) end
-function Tag:remove_from_game() end
-function Tag:remove() end
+--- @param for_collection boolean?
+--- @param _blind_type boolean?
+function ITag:init(_tag, for_collection, _blind_type) end
+function ITag:nope() end
+function ITag:yep(message, _colour, func) end
+function ITag:set_ability() end
+function ITag:apply_to_run(_context) end
+function ITag:save() end
+function ITag:load(tag_savetable) end
+function ITag:juice_up(_scale, _rot) end
+function ITag:generate_UI(_size) end
+function ITag:get_uibox_table(tag_sprite) end
+function ITag:remove_from_game() end
+function ITag:remove() end
+
+--- @type balatro.Tag | fun(tag: string, forCollection?: boolean, blindType?: boolean): balatro.Tag
+Tag = ITag

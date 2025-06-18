@@ -40,6 +40,7 @@
 --- @field children table<string, balatro.Node>
 ---
 --- @field CALCING? boolean
+---
 --- @field DEBUG_VALUE? string
 ---
 --- @field REMOVED? boolean

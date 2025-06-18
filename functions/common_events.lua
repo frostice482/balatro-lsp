@@ -199,7 +199,7 @@ function juice_card_until(card, eval_func, first, delay) end
 function check_for_unlock(args) end
 
 --- Unlocks a card. Does not work if the game is currently seeded or in challenge.
---- @param card balatro.Card
+--- @param card balatro.Item.Card
 function unlock_card(card) end
 
 --- Initializes `G.ACHIEVEMENTS`

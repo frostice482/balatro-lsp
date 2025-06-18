@@ -7,7 +7,7 @@
 --- @field bump_rate number
 --- @field bump_amount number
 --- @field font balatro.Font
---- @field string string[]
+--- @field string string
 --- @field text_offset Position
 --- @field colours ColorHex[]
 --- @field created_time number
@@ -19,6 +19,7 @@
 --- @field start_pop_in? number
 --- @field reset_pop_in? boolean
 --- @field pop_out_time? number
+--- @field pop_cycle? boolean
 local IDynaText = {}
 
 --- @param config balatro.DynaText.ConfigAsOptions
@@ -99,6 +100,7 @@ DynaText = function() end
 --- @field bump? boolean
 --- @field pitch_shift? number
 --- @field pulse? balatro.Dynatext.Config.Pulse
+--- @field random_element? boolean
 
 --- @class balatro.Dynatext.Config.Pulse
 --- @field speed number

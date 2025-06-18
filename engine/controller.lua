@@ -130,7 +130,7 @@ function IController:save_cardarea_focus(_cardarea) end
 function IController:recall_cardarea_focus(_cardarea) end
 
 --- Updated the location of the cursor, either with a specific T or if there is a Node target
---- @param hard_set_T Position
+--- @param hard_set_T? Position
 function IController:update_cursor(hard_set_T) end
 
 --- Helper function to set the button presses/releases for the values determined in update_axis()
@@ -192,8 +192,8 @@ function IController:queue_R_cursor_press(x, y) end
 --- @param y number
 function IController:L_cursor_press(x, y) end
 
---- @param x number
---- @param y number
+--- @param x? number
+--- @param y? number
 function IController:L_cursor_release(x, y) end
 
 --- @param node balatro.Node
