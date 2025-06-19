@@ -19,9 +19,6 @@
 --- @field E_SWITCH_POINT number
 --- @field FILE_HANDLER balatro.Game.FileHandler
 --- @field FRAMES { DRAW: number, MOVE: number }
---- @field HUD balatro.UIBox
---- @field HUD_blind balatro.UIBox
---- @field HUD_TAGS table
 --- @field ID number
 --- @field JUDDLE_VIBRATION number
 --- @field MAJORS number
@@ -61,7 +58,6 @@
 --- @field vortex_time boolean
 --- @field window_prev WidthHeight | { orig_ratio: number, orig_scale: number }
 --- @field screenwipe? balatro.UIBox
---- @field OVERLAY_MENU? balatro.UIBox
 --- @field DEADZONE? number
 --- @field BRUTE_OVERLAY? ColorHex
 --- @field OVERLAY_TUTORIAL? balatro.UIBox

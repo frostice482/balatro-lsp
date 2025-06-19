@@ -61,22 +61,59 @@ function IGame:set_render_settings() end
 --- Also calls `G.FUNCS.apply_window_changes`
 function IGame:init_window(reset) end
 
+--- Removes all game UI
 function IGame:delete_run() end
+
+--- Queues to save progress (settings `G.SETTINGS` and profile `G.PROFILES[profile]`)
 function IGame:save_progress() end
+
 function IGame:save_notify(card) end
+
+--- Queues to save settings (`G.SETTINGS`)
 function IGame:save_settings() end
+
+--- Queues to save metrics (`G.METRICS`)
 function IGame:save_metrics() end
+
+--- Prepares new `G.ROOM` and `G.ROOM_ATTACH`.
+--- if `new_game_obj` is true, sets `G.GAME` to `init_game_object()`
+--- @param new_stage balatro.Game.StagesObject
+--- @param new_state balatro.Game.StateObject
 function IGame:prep_stage(new_stage, new_state, new_game_obj) end
+
 function IGame:sandbox() end
+
+--- Shows splash screen
 function IGame:splash_screen() end
+
+--- Shows main menu
+--- @param change_context? 'game' | 'splash' 'splash' if from splash, 'game' if from game
 function IGame:main_menu(change_context) end
+
+--- Shows demo end screen, showing link to "playbalatro.com"
 function IGame:demo_cta() end
+
 --- @return balatro.Game.Current
 function IGame:init_game_object() end
+
+--- @class balatro.Game.StartRunArg
+--- @field stake? number
+--- @field savetext? balatro.Game.Current
+--- @field challenge? balatro.Challenge
+--- @field seed string?
+
+--- Starts a new / saved run
+--- @param args? balatro.Game.StartRunArg
 function IGame:start_run(args) end
+
 function IGame:update(dt) end
+
 function IGame:draw() end
+
+--- Gets color state, used for debugging
+--- @param _state number
 function IGame:state_col(_state) end
+
 function IGame:update_selecting_hand(dt) end
 function IGame:update_shop(dt) end
 function IGame:update_play_tarot(dt) end
