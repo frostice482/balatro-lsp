@@ -8,3 +8,4 @@
 --- @field hand? balatro.CardArea
 --- @field play? balatro.CardArea
 --- @field playing_cards? balatro.Card[]
+--- @field shop_vouchers? balatro.Card[]

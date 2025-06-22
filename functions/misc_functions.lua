@@ -438,7 +438,7 @@ function loc_parse_string(line) end
 --- @field type balatro.LocalizeTypeArg
 --- @field key string
 --- @field set? string
---- @field vars? string[] | {colours: ColorHex[]}
+--- @field vars? any[]
 
 --- UNDOCUMENTED
 --- @param args balatro.LocalizeArg | string

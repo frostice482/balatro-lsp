@@ -24,3 +24,4 @@
 --- @alias BlindType 'Small' | 'Big' | 'Boss'
 --- @alias BlindState 'Current'  | 'Defeated'  | 'Select'  | 'Selected'  | 'Skipped'  | 'Upcoming'
 --- @alias Sticker 'White' | 'Red' | 'Green' | 'Black' | 'Blue' | 'Purple' | 'Orange' | 'Gold'
+--- @alias Seal 'Gold' | 'Red' | 'Blue' | 'Purple'

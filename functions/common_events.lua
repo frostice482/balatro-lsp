@@ -117,7 +117,7 @@ function play_area_status_text(text, silent, delay) end
 --- @param amount number? How much level up, defaults to 1
 function level_up_hand(card, hand, instant, amount) end
 
---- @class UpdateHandConfigArg
+--- @class balatro.UpdateHandConfigArg
 --- @field delay? number
 --- @field immediate? boolean
 --- @field nopulse? boolean
@@ -126,7 +126,7 @@ function level_up_hand(card, hand, instant, amount) end
 --- @field volume? number
 --- @field modded? boolean
 
---- @class UpdateHandValsArg
+--- @class balatroUpdateHandValsArg
 --- @field chips? number | string
 --- @field mult? number | string
 --- @field handname? string
@@ -134,11 +134,41 @@ function level_up_hand(card, hand, instant, amount) end
 --- @field level? number | string
 
 --- Updates poker hand text (poker hand name, chips, mults, total chips, hand level)
---- @param config UpdateHandConfigArg
---- @param vals UpdateHandValsArg
+--- @param config balatro.UpdateHandConfigArg
+--- @param vals balatroUpdateHandValsArg
 function update_hand_text(config, vals) end
 
---- UNDOCUMENTED
+--- @class balatro.EvalCardContext
+--- @field cardarea balatro.CardArea
+--- @field full_hand balatro.Card[]
+--- @field poker_hand? PokerHand
+--- @field poker_hands? table<PokerHand, balatro.Card[]> | { top: balatro.Card[] }
+--- @field scoring_hand balatro.Card[]
+--- @field scoring_name? PokerHand
+--- @field repetition? boolean
+--- @field repetition_only? boolean
+--- @field other_card? balatro.Card
+--- @field individual? boolean
+--- @field before? boolean
+--- @field after? boolean
+--- @field card_effects? table
+
+--- @class balatro.EvalCardContext.Return
+--- @field seals? balatro.Card.CalcSealRet Only when `repetition_only` is true and given card has red seal
+--- @field chips? number
+--- @field mult? number
+--- @field x_mult? number
+--- @field p_dollars? number
+--- @field h_mult? number
+--- @field h_x_mult? number
+--- @field h_dollars? number
+--- @field jokers? balatro.Card.CalcJokerRet
+--- @field edition? balatro.Card.CalcEditionRet
+
+--- Evaluates a card
+--- @param card balatro.Card
+--- @param context balatro.EvalCardContext | balatro.Card.CalculateJokerContext
+--- @return balatro.EvalCardContext.Return
 function eval_card(card, context) end
 
 --- Sets alerts, used for newly unlocked jokers, tarots, etc.
