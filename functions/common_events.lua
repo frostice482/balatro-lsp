@@ -147,6 +147,7 @@ function update_hand_text(config, vals) end
 --- @field scoring_name? PokerHand
 --- @field repetition? boolean
 --- @field repetition_only? boolean
+--- @field edition? boolean
 --- @field other_card? balatro.Card
 --- @field individual? boolean
 --- @field before? boolean
@@ -162,7 +163,7 @@ function update_hand_text(config, vals) end
 --- @field h_mult? number
 --- @field h_x_mult? number
 --- @field h_dollars? number
---- @field jokers? balatro.Card.CalcJokerRet
+--- @field jokers? balatro.Card.CalcJokerRet | balatro.Card.CalcEditionRet
 --- @field edition? balatro.Card.CalcEditionRet
 
 --- Evaluates a card

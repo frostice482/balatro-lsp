@@ -350,7 +350,14 @@ local x = {
 --- @field Xmult_mod? number
 --- @field delay? number
 --- @field saved? boolean
+--- @field extra? balatro.Card.CalcJokerRet.Extra
 --- @field card balatro.Card
+
+--- @class balatro.Card.CalcJokerRet.Extra
+--- @field mult_mod? number
+--- @field chip_mod? number
+--- @field boolean? number
+--- @field func? fun()
 
 --- @class balatro.Card.CalcSealRet
 --- @field message string
@@ -358,7 +365,7 @@ local x = {
 --- @field card balatro.Card
 
 --- @class balatro.Card.CalcEditionRet
---- @field chips_mod? number
+--- @field chip_mod? number
 --- @field mult_mod? number
 --- @field x_mult_mod? number
 
