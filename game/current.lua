@@ -118,7 +118,7 @@
 --- @field chip_total_text string
 --- @field chips number
 --- @field hand_level number | ""
---- @field handname PokerHand | string
+--- @field handname string
 --- @field handname_text string
 --- @field mult number
 --- @field mult_text string

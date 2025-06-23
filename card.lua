@@ -132,7 +132,8 @@ function ICard:generate_UIBox_ability_table() end
 --- @return number
 function ICard:get_nominal(mod) end
 
---- Gets ID from this card
+--- Gets ID from this card.
+--- This may be rank, or anything random if a stone card
 function ICard:get_id() end
 
 --- Gets if this card is a face card
@@ -282,6 +283,8 @@ function ICard:draw(layer) end
 
 function ICard:release(dragged) end
 
+--- Highlights this card
+--- @param is_higlighted boolean
 function ICard:highlight(is_higlighted) end
 
 function ICard:click() end

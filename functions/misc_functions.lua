@@ -418,8 +418,8 @@ function playing_card_joker_effects(cards) end
 function convert_save_to_meta() end
 
 --- @class CardControlArg
---- @field r string Single character rank (Club, Suit, Heart, Diamong)
---- @field s string Single character suit
+--- @field r RankSingle
+--- @field s SuitSingle
 --- @field e string? Enhancement
 --- @field d string? Edition
 --- @field g string? Seal

@@ -29,8 +29,8 @@
 --- @field dictionary table<string, string | string[]>
 --- @field high_scores table<string, string>
 --- @field labels table<string, string>
---- @field poker_hand_description table<PokerHand, string[]>
---- @field poker_hands table<PokerHand, string>
+--- @field poker_hand_description table<PokerHandRoyal, string[]>
+--- @field poker_hands table<PokerHandRoyal, string>
 --- @field quips table<string, string[]>
 --- @field ranks table<Rank, string>
 --- @field suits_plural table<Suit, string>
@@ -52,3 +52,4 @@
 --- @class balatro.Loc.Parsed
 --- @field control table<string, string>
 --- @field strings string[]
+

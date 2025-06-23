@@ -142,7 +142,7 @@ function update_hand_text(config, vals) end
 --- @field cardarea balatro.CardArea
 --- @field full_hand balatro.Card[]
 --- @field poker_hand? PokerHand
---- @field poker_hands? table<PokerHand, balatro.Card[]> | { top: balatro.Card[] }
+--- @field poker_hands? balatro.PokerHandsEvalInfo
 --- @field scoring_hand balatro.Card[]
 --- @field scoring_name? PokerHand
 --- @field repetition? boolean

@@ -42,7 +42,7 @@ function ITag:set_ability() end
 --- @param _context balatro.Tag.ApplyContext
 function ITag:apply_to_run(_context) end
 
---- Returns table for saving purpose
+--- Saves this tag to be stored
 --- @return balatro.Tag.Save
 function ITag:save() end
 
@@ -53,7 +53,6 @@ function ITag:load(tag_savetable) end
 --- @param _rot? number
 function ITag:juice_up(_scale, _rot) end
 
---- Undocumented
 function ITag:generate_UI(_size) end
 
 --- @param tag_sprite? balatro.Sprite
