@@ -26,10 +26,10 @@ local ITag = {}
 --- @param _blind_type? boolean
 function ITag:init(_tag, for_collection, _blind_type) end
 
---- Creates remove tag effect
+--- Creates remove tag effect and removes this
 function ITag:nope() end
 
---- Creates applied tag effect
+--- Creates applied tag effect and removes this
 --- @param message string
 --- @param _colour? ColorHex
 --- @param func fun()
@@ -38,7 +38,7 @@ function ITag:yep(message, _colour, func) end
 --- Sets `self.ability` data
 function ITag:set_ability() end
 
---- Applies the tag to current run
+--- Applies this tag to current run
 --- @param _context balatro.Tag.ApplyContext
 function ITag:apply_to_run(_context) end
 

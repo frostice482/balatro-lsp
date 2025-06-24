@@ -211,7 +211,7 @@ function mod_chips(_chips) end
 --- Modifies number of mult.
 --- Currently does nothing.
 --- @param _mult number
---- @@return number
+--- @return number
 function mod_mult(_mult) end
 
 function play_sound(sound_code, per, vol) end

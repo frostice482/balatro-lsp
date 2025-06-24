@@ -1,4 +1,4 @@
---- @class balatro.Item
+--- @class balatro.Item: balatro.Center
 --- @field name string
 --- @field key string
 --- @field set string

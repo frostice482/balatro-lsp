@@ -5,10 +5,17 @@
 --- @field cards balatro.Card[]
 --- Card area configuration, containing card limit, highlighted limit, sort method, etc.
 --- @field config balatro.CardArea.Config
+--- Highlighted cards
 --- @field highlighted balatro.Card[]
---- @field shufflt_amt number
+--- Undocumented
+--- @field shuffle_amt number
 local ICardArea = {}
 
+--- @param X? number
+--- @param Y? number
+--- @param W? number
+--- @param H? number
+--- @param config? balatro.CardArea.ConfigParam
 function ICardArea:init(X, Y, W, H, config) end
 
 --- Puts a card in this card area
@@ -23,6 +30,8 @@ function ICardArea:emplace(card, location, stay_flipped) end
 --- @return balatro.Card?
 function ICardArea:remove_card(card, discarded_only) end
 
+--- Changes card limit
+--- @param delta number
 function ICardArea:change_size(delta) end
 
 ---Checks if any card in this card area can be highlighted.
@@ -51,7 +60,7 @@ function ICardArea:parse_highlighted() end
 --- If this card area is `G.hand`, `parse_highlighted` will be called
 function ICardArea:remove_from_highlighted(card, force) end
 
---- Unhighlights alll card
+--- Unhighlights all card
 --- If this card area is `G.hand`, `parse_highlighted` will be called
 function ICardArea:unhighlight_all() end
 
@@ -95,6 +104,7 @@ function ICardArea:load(cardAreaTable) end
 --- Removes this cardarea from `G.I.CARDAREA`, including its cards and childrens
 function ICardArea:remove() end
 
+--- @type balatro.CardArea | fun(X?: number, Y?: number, W?: number, H?: number, config?: balatro.CardArea.ConfigParam): balatro.CardArea
 CardArea = ICardArea
 
 --- @class balatro.CardArea.Config
@@ -127,3 +137,15 @@ CardArea = ICardArea
 --- @class balatro.CardArea.Save
 --- @field config balatro.CardArea.Config
 --- @field cards balatro.Card.Save[]
+
+--- @class balatro.CardArea.ConfigParam
+--- Highlighted card limit, defaults to 1
+--- @field highlight_limit? number
+--- Card limit, defaults to 52
+--- @field card_limit? number
+--- Area type, defaults to `desk`
+--- @field type? balatro.CardArea.Type
+--- Sorting method, defaults to `desc`
+--- @field sort? balatro.CardArea.Sort
+--- Defaults to 0.1
+--- @field lr_padding? number
