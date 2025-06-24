@@ -48,7 +48,7 @@
 
 --- @class balatro.Challenge.RuleCustom
 --- @field id balatro.Challenge.CustomRuleId
---- @field value? number
+--- @field value? any
 
 --- @class balatro.Challenge.RuleModifier
 --- @field id balatro.Challenge.ModifierRuleId

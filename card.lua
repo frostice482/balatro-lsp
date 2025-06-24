@@ -1,96 +1,55 @@
 --- @meta
 
 --- @class balatro.Card: balatro.Moveable
---- Undocumented
---- @field children balatro.Card.Children
---- Undocumented
---- @field params balatro.Card.Param
---- Card configuration, containing card / center info
---- @field config balatro.Card.Config
---- Undocumented
---- @field tilt_var table
---- Undocumented
---- @field ambient_tilt number
---- True if is a playing card
---- @field playing_card? boolean
---- Undocumented
---- @field sort_id number
---- Undocumented
---- @field back 'viewed_back' | 'selected_back'
---- Undocumented
---- @field bypass_discovery_center? boolean
---- Undocumented
---- @field bypass_discovery_ui? boolean
---- Undocumented
---- @field bypass_lock? boolean
---- Undocumented
---- @field no_ui? boolean
---- Base card cost
---- @field base_cost number
---- Additional cost, from inflation and editions
---- @field extra_cost number
---- Applied cost from base cost, extra code, and discount in percentage
---- @field cost number
---- Dollars earned from selling this card
---- @field sell_cost number
---- Undocumented
---- @field sell_cost_label number | string
---- Unique value
---- @field unique_val number
---- Edtition info
---- @field edition? balatro.Card.Edition
---- Facing direction
---- @field facing 'front' | 'back'
---- Sprite facing sirection
---- @field sprite_facing 'front' | 'back'
---- Discad position
---- @field discard_pos Position | { r: number }
---- Undocumented
---- @field flipping nil | 'f2b' | 'b2f'
---- The area this card is in
---- @field area? balatro.CardArea
---- True if highlighted
---- @field highlighted boolean
---- Selecting timeout
---- @field click_timeout number
---- True if this card is debuffed
---- @field debuff boolean
---- Ordering level
---- @field rank number
---- True if this card is added to playing
---- @field added_to_deck? boolean
---- Card ability info, containing mult, xmult, chips, etc.
---- @field ability balatro.Card.Ability
---- True if the card is shattered (via `shatter()`)
---- @field shattered? boolean
---- Dissolving progress (0-1)
---- @field dissolve? number
---- Dissolve colors
---- @field dissolve_colours? ColorHex[]
---- Base card info, containing nominal values, rank, and suit
---- @field base balatro.Card.Base
---- Undocumented
---- @field label string
---- Damoing effect when hovered. Lower than 1 = more aggresive
---- @field mouse_damping? number
---- Pins this joker to left
---- @field pinned? boolean
---- Card seal
---- @field seal? Seal
---- Highest sticker run for this joker
---- @field sticker_run? Sticker | "NONE"
---- Sticker to display
---- @field sticker? Sticker
---- Undocumented
---- @field hover_tilt? number
---- Creates opaque effect,
---- used when the card is already drawn
---- @field greyed? boolean
---- Creates a spinning effect,
---- used in splash screen effect
---- @field vortex? boolean
---- Hides shadow
---- @field no_shadow? boolean
+--- @field children balatro.Card.Children Undocumented
+--- @field params balatro.Card.Param Undocumented
+--- @field config balatro.Card.Config Card configuration, containing card / center info
+--- @field tilt_var table Undocumented
+--- @field ambient_tilt number Undocumented
+--- @field playing_card? boolean True if is a playing card
+--- @field sort_id number Undocumented
+--- @field back 'viewed_back' | 'selected_back' Undocumented
+--- @field bypass_discovery_center? boolean Undocumented
+--- @field bypass_discovery_ui? boolean Undocumented
+--- @field bypass_lock? boolean Undocumented
+--- @field no_ui? boolean Undocumented
+--- @field base_cost number Base card cost
+--- @field extra_cost number Additional cost, from inflation and editions
+--- @field cost number Applied cost from base cost, extra code, and discount in percentage
+--- @field sell_cost number Dollars earned from selling this card
+--- @field sell_cost_label number | string Undocumented
+--- @field unique_val number Unique value
+--- @field edition? balatro.Card.Edition Edtition info
+--- @field facing 'front' | 'back' Facing direction
+--- @field sprite_facing 'front' | 'back' Sprite facing sirection
+--- @field discard_pos Position | { r: number } Discad position
+--- @field flipping nil | 'f2b' | 'b2f' Undocumented
+--- @field area? balatro.CardArea The area this card is in
+--- @field parent? balatro.CardArea Same as `area`
+--- @field highlighted boolean True if highlighted
+--- @field click_timeout number Selecting timeout
+--- @field debuff boolean True if this card is debuffed
+--- @field rank number Ordering level
+--- @field added_to_deck? boolean True if this card is added to playing
+--- @field ability balatro.Card.Ability Card ability info, containing mult, xmult, chips, etc.
+--- @field shattered? boolean True if the card is shattered (via `shatter()`)
+--- @field dissolve? number Dissolving progress (0-1)
+--- @field dissolve_colours? ColorHex[] Dissolve colors
+--- @field base balatro.Card.Base Base card info, containing nominal values, rank, and suit
+--- @field label string Undocumented
+--- @field mouse_damping? number Damoing effect when hovered. Lower than 1 = more aggresive
+--- @field pinned? boolean Pins this joker to left
+--- @field seal? Seal Card seal
+--- @field sticker_run? Sticker | "NONE" Highest sticker run for this joker
+--- @field sticker? Sticker Sticker to display
+--- @field hover_tilt? number Undocumented
+--- @field greyed? boolean Creates opaque effect, used when the card is already drawn
+--- @field vortex? boolean Creates a spinning effect, used in splash screen effect
+--- @field no_shadow? boolean Hides shadow
+--- @field from_tag? boolean True if created from tag
+--- @field getting_sliced? boolean Used by Madness / Ceremonial Dagger
+--- @field vampired? boolean Used by vampire joker
+--- @field lucky_trigger? boolean True if lucky card is triggered
 local ICard = {}
 
 --- @param X? number
@@ -98,7 +57,7 @@ local ICard = {}
 --- @param W? number
 --- @param H? number
 --- @param card? balatro.Item.Card
---- @param center balatro.Center
+--- @param center balatro.Card.CenterType
 --- @param params? balatro.Card.Param
 function ICard:init(X, Y, W, H, card, center, params) end
 
@@ -110,12 +69,12 @@ function ICard:update_alert() end
 function ICard:set_base(card, initial) end
 
 --- Sets sprite for this card
---- @param _center? balatro.Item.Card
---- @param _front? balatro.Item.Card
+--- @param _center? balatro.Card.CenterType
+--- @param _front? balatro.Card.CenterType
 function ICard:set_sprites(_center, _front) end
 
 --- Sets ability for this card
---- @param center? balatro.Center Center. This should be a valid item from `G.P_CENTERS`
+--- @param center? balatro.Card.CenterType Center. This should be a valid item from `G.P_CENTERS`
 --- @param initial? boolean
 --- @param delay_sprites? boolean
 function ICard:set_ability(center, initial, delay_sprites) end
@@ -266,14 +225,14 @@ function ICard:shatter() end
 
 --- Creates dissolve effect (transition in) for this card.
 --- `remove` is also called
---- @param dissolve_colours? ColorHex
+--- @param dissolve_colours? ColorHex[]
 --- @param silent? boolean Do not play sound
 --- @param dissolve_time_fac? number
 --- @param no_juice? boolean
 function ICard:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice) end
 
 --- Creates materialize effect (transition in) for this card
---- @param dissolve_colours? ColorHex
+--- @param dissolve_colours? ColorHex[]
 --- @param silent? boolean Do not play sound
 --- @param timefac? number
 function ICard:start_materialize(dissolve_colours, silent, timefac) end
@@ -345,8 +304,10 @@ function ICard:load(cardTable) end
 
 function ICard:remove() end
 
---- @type balatro.Card | fun(X?: number, Y?: number, W?: number, H?: number, card?: balatro.Item.Card, center: balatro.Center, params?: balatro.Card.Param): balatro.Card
+--- @type balatro.Card | fun(X?: number, Y?: number, W?: number, H?: number, card?: balatro.Item.Card, center: balatro.Card.CenterType, params?: balatro.Card.Param): balatro.Card
 Card = ICard
+
+--- @alias balatro.Card.CenterType balatro.Item.Consumable | balatro.Item.Joker
 
 --- @class balatro.Card.CalculateJokerContext
 --- Triggered when a card is sold.
@@ -435,30 +396,18 @@ local x = {
 }
 
 --- @class balatro.Card.CalcJokerRet
---- Chips
---- @field chips? number
---- Mult
---- @field mult? number
---- XMult
---- @field x_mult? number
---- Dollars earned
---- @field dollars? number
---- Scoring color effect
---- @field colour? ColorHex
---- Scoring message
---- @field message? string
---- Number of repetitions. Only effective when `repetition` is `true`
---- @field repetitions? number
---- Levels up playing poker hand
---- @field level_up? boolean
---- Chips, value returned will be transformed by `mod_chips`
---- @field chip_mod? number
---- Mult, value returned will be transformed by `mod_mult`
---- @field mult_mod? number
---- XMult, value returned will be transformed by `mod_mult`
---- @field Xmult_mod? number
---- Prevents death. Only effective when `game_over` is true
---- @field saved? boolean
+--- @field chips? number Chips
+--- @field mult? number Mult
+--- @field x_mult? number XMult
+--- @field dollars? number Dollars earned
+--- @field colour? ColorHex Scoring color effect
+--- @field message? string Scoring message
+--- @field repetitions? number Number of repetitions. Only effective when `repetition` is `true`
+--- @field level_up? boolean Levels up playing poker hand
+--- @field chip_mod? number Chips, value returned will be transformed by `mod_chips`
+--- @field mult_mod? number Mult, value returned will be transformed by `mod_mult`
+--- @field Xmult_mod? number XMult, value returned will be transformed by `mod_mult`
+--- @field saved? boolean Prevents death. Only effective when `game_over` is true
 --- @field delay? number
 --- @field extra? balatro.Card.CalcJokerRet.Extra
 --- @field card balatro.Card
@@ -503,7 +452,7 @@ local x = {
 
 --- @class balatro.Card.Config: balatro.Node.Config
 --- @field card balatro.Item.Card
---- @field center balatro.Item.Card | balatro.Item.Joker
+--- @field center? balatro.Card.CenterType
 --- @field card_key? string
 --- @field center_key? string
 
@@ -521,52 +470,32 @@ local x = {
 --- @field name string
 --- @field effect string
 --- @field set string
---- Mult
---- @field mult number
---- XMult
---- @field x_mult number
---- Mult when this card stays in hand
---- @field h_mult number
---- XMult when this card stays in hand
---- @field h_x_mult number
---- Dollars earned at the end of round
---- @field h_dollars number
---- Dollars earned when played
---- @field p_dollars number
---- Mult earned when played played poker hand matches `type`
---- @field t_mult number
---- Chips earned when played played poker hand matches `type`
---- @field t_chips number
---- Hand size contained from this card
---- @field h_size number
---- Discard count contained from this card
---- @field d_size number
---- Poker hand to match for extra chips / mult
---- @field type PokerHand | ""
---- True if this card is forcibly selected
---- @field forced_selection? boolean
---- Permanent chips bonus
---- @field perma_bonus number
---- Money to be earned, used by Temperance
---- @field money? number
---- True if this joker is compatible for blueprint / brainstorm
---- @field blueprint_compat? 'compatible' | 'incompatible'
---- True if this joker is a rental (lose #3 at the end of round)
---- @field rental? boolean
---- True if this joker is couponed (cost is $0)
---- @field couponed? boolean
---- True if this joker is eternal (can't be sold)
---- @field eternal? boolean
---- True if this card is permanently debugged
---- @field perma_debuff? boolean
+--- @field mult number Mult
+--- @field x_mult number XMult
+--- @field h_mult number Mult when this card stays in hand
+--- @field h_x_mult number XMult when this card stays in hand
+--- @field h_dollars number Dollars earned at the end of round
+--- @field p_dollars number Dollars earned when played
+--- @field t_mult number Mult earned when played played poker hand matches `type`
+--- @field t_chips number Chips earned when played played poker hand matches `type`
+--- @field h_size number Hand size contained from this card
+--- @field d_size number Discard count contained from this card
+--- @field type PokerHand | "" Poker hand to match for extra chips / mult
+--- @field forced_selection? boolean True if this card is forcibly selected
+--- @field perma_bonus number Permanent chips bonus
+--- @field money? number Money to be earned, used by Temperance
+--- @field blueprint_compat? 'compatible' | 'incompatible' True if this joker is compatible for blueprint / brainstorm
+--- @field rental? boolean True if this joker is a rental (lose #3 at the end of round)
+--- @field couponed? boolean True if this joker is couponed (cost is $0)
+--- @field eternal? boolean True if this joker is eternal (can't be sold)
+--- @field perma_debuff? boolean True if this card is permanently debugged
 --- @field driver_tally? number
 --- @field steel_tally? number
 --- @field nine_tally? number
 --- @field stone_tally? number
 --- @field sell_cost_label? string | number
 --- @field extra number
---- Extra value from selling
---- @field extra_value number
+--- @field extra_value number Extra value from selling
 --- @field order? number
 --- @field consumeable? table
 
@@ -577,6 +506,8 @@ local x = {
 --- @field value Rank
 --- Rank in number
 --- @field nominal number
+--- Rank in number
+--- @field id number
 --- @field suit_nominal number
 --- @field face_nominal number
 --- @field suit_nominal_original number

@@ -72,6 +72,8 @@
 --- @field won boolean
 --- @field STOP_USE? number
 --- @field starting_voucher_count? number
+--- @field shop_free? boolean
+--- @field shop_d6ed? boolean
 
 --- @class balatro.Game.Current.CardPlayed
 --- @field suits table<Suit, boolean>

@@ -20,14 +20,14 @@
 --- @field DT_jimbo_talk? fun()
 ---
 --- Moves the tutorial to the next step in queue
---- @field tut_next fun(e )
+--- @field tut_next fun()
 --- Ensures the compatibility indicator for the Blueprint and Brainstorm Jokers
 --- matches with any new changes of compatibility determined by the Joker
 --- @field blueprint_compat fun(e)
 --- Sorts G.hand in descending order by suit (spades, hearts, clubs, diamonds, then rank)
---- @field sort_hand_suit fun(e)
+--- @field sort_hand_suit fun()
 --- Sorts G.hand in descending order by rank (rank, then spades, hearts, clubs, diamonds)
---- @field sort_hand_value fun(e)
+--- @field sort_hand_value fun()
 --- Checks if the cost of a non voucher card is greater than what the player can afford and changes the
 --- buy button visuals accordingly
 --- @field can_buy fun(e)
@@ -41,7 +41,7 @@
 --- adjusts booster button visuals accordingly
 --- @field can_open fun(e)
 --- Ensures that the HUD blind section is only visible when there is an active blind
---- @field HUD_blind_visible fun(e)
+--- @field HUD_blind_visible fun()
 --- Expands or contracts the 'debuff text' area of the blind HUD when it changes,
 --- either bigger with a new boss or smaller when it is disabled, or for a smaller blind
 --- @field HUD_blind_debuff fun(e)
@@ -171,35 +171,40 @@
 --- @field continue_unlock fun()
 ---
 --- @field test_framework fun(options)
---- @field options fun(e)
---- @field current_hands fun(e, simple)
---- @field run_info fun(e)
---- @field deck_info fun(e)
---- @field settings fun(e, instant)
---- @field show_credits fun(e)
---- @field language_selection fun(e)
---- @field your_collection fun(e)
---- @field your_collection_blinds fun(e)
---- @field your_collection_jokers fun(e)
---- @field your_collection_tarots fun(e)
---- @field your_collection_planets fun(e)
---- @field your_collection_spectrals fun(e)
---- @field your_collection_vouchers fun(e)
---- @field your_collection_enhancements_exit_overlay_menu fun(e)
---- @field your_collection_enhancements fun(e)
---- @field your_collection_decks fun(e)
---- @field your_collection_editions fun(e)
---- @field your_collection_tags fun(e)
---- @field your_collection_seals fun(e)
---- @field your_collection_boosters fun(e)
+--- Creates options menu UI
+--- @field options fun()
+--- Creates poker hand levels & times played
+--- @field current_hands fun(_, simple)
+--- Creates run info UI
+--- @field run_info fun()
+--- Creates deck info UI
+--- @field deck_info fun()
+--- Creates settings UI
+--- @field settings fun(_, instant)
+--- @field show_credits fun()
+--- @field language_selection fun()
+--- @field your_collection fun()
+--- @field your_collection_blinds fun()
+--- @field your_collection_jokers fun()
+--- @field your_collection_tarots fun()
+--- @field your_collection_planets fun()
+--- @field your_collection_spectrals fun()
+--- @field your_collection_vouchers fun()
+--- @field your_collection_enhancements_exit_overlay_menu fun()
+--- @field your_collection_enhancements fun()
+--- @field your_collection_decks fun()
+--- @field your_collection_editions fun()
+--- @field your_collection_tags fun()
+--- @field your_collection_seals fun()
+--- @field your_collection_boosters fun()
 --- Craeates challenge selection UI
 --- @field challenge_list fun(e)
 --- Creates high scores UI
---- @field high_scores fun(e)
+--- @field high_scores fun()
 --- Creates collab deck customization UI
---- @field customize_deck fun(e)
+--- @field customize_deck fun()
 --- Creates usage overlay UI
---- @field usage fun(e)
+--- @field usage fun()
 --- Creates run setup UI
 --- @field setup_run fun(e)
 --- @field wait_for_high_scores fun(e)
@@ -211,32 +216,32 @@
 --- Creates deck selection UI for challenge
 --- @field deck_view_challenge fun(e)
 --- Creates profile selection UI
---- @field profile_select fun(e)
+--- @field profile_select fun()
 --- Quits game
---- @field quit fun(e)
---- @field quit_cta fun(e)
+--- @field quit fun()
+--- @field quit_cta fun()
 ---
 --- Opens Balatro demo survey
---- @field demo_survey fun(e)
+--- @field demo_survey fun()
 --- Opens louisfsoundtracks's IG, the music composer for Balatro
---- @field louisf_insta fun(e)
+--- @field louisf_insta fun()
 --- Opens steam
---- @field wishlist_steam fun(e)
+--- @field wishlist_steam fun()
 --- Opens playbalatro.com
---- @field go_to_playbalatro fun(e)
+--- @field go_to_playbalatro fun()
 --- Opens Discard
---- @field go_to_discord fun(e)
+--- @field go_to_discord fun()
 --- Opens Discord localization channel
---- @field go_to_discord_loc fun(e)
+--- @field go_to_discord_loc fun()
 --- Open localization survey
---- @field loc_survey fun(e)
+--- @field loc_survey fun()
 --- Opens Twitter
---- @field go_to_twitter fun(e)
+--- @field go_to_twitter fun()
 ---
 --- Unlocks given achievement
 --- @field unlock_this fun(e)
 --- Resets achievements
---- @field reset_achievements fun(e)
+--- @field reset_achievements fun()
 --- Refresh card constrasts
 --- @field refresh_contrast_mode fun()
 --- Creates a warning for beta language
@@ -244,7 +249,7 @@
 --- Changes language
 --- @field change_lang fun(e)
 --- Copied seed to clipboard
---- @field copy_seed fun(e)
+--- @field copy_seed fun()
 --- Starts new / continues saved run
 --- @field start_setup_run fun(e)
 --- Starts challenge run
@@ -264,16 +269,16 @@
 --- Sells current card
 --- @field sell_card fun(e)
 --- @field can_confirm_contest_name fun(e)
---- @field confirm_contest_name fun(e)
---- @field change_contest_name fun(e)
+--- @field confirm_contest_name fun()
+--- @field change_contest_name fun()
 --- Skips current tutorial section
---- @field skip_tutorial_section fun(e)
+--- @field skip_tutorial_section fun()
 --- Checks for space available when trying to add a joker/consumable/card.
 --- @field check_for_buy_space fun(card: balatro.Card): boolean
 --- Buys an item from shop
 --- @field buy_from_shop fun(e)
 --- Removes shop. Used when "Next Round" button is clicked
---- @field toggle_shop fun(e)
+--- @field toggle_shop fun()
 --- Selects a blind
 --- @field select_blind fun(e)
 --- Skips currently opened booster
@@ -285,18 +290,18 @@
 --- @field skip_blind fun(e)
 --- Configures reroll button
 --- @field reroll_boss_button fun(e)
---- Rerolls the boss
+--- Rerolls the bos
 --- @field reroll_boss fun(e)
 --- Rerolls the shop
---- @field reroll_shop fun(e)
+--- @field reroll_shop fun()
 --- Cash out button handler when a round has ended
 --- @field cash_out fun(e)
 --- Starts new run
 --- @field start_run fun(e, args: balatro.Game.StartRunArg)
 --- Exits from current run to main menu
---- @field go_to_menu fun(e)
+--- @field go_to_menu fun()
 --- Demo use.
---- @field go_to_demo_cta fun(e)
+--- @field go_to_demo_cta fun()
 --- Demo use.
 --- @field show_main_cta fun(e)
 --- Creates a wiping transition (e.g. starting / leaving run)

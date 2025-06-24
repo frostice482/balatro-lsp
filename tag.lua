@@ -1,24 +1,16 @@
 --- @meta
 
 --- @class balatro.Tag: balatro.Object
---- The tag key, based in `G.P_TAGS`
---- @field key string
---- The config table from `G.P_TAGS[tag].config`. This is copied.
---- @field config table
---- The prototype tag `G.P_TAGS[tag]`
---- @field proto balatro.Item.Tag
---- Undocumented
---- @field pos Position
---- Tag name
---- @field name string
---- Undocumented
---- @field tally number
---- True if the tag is already applied to current run (`apply_to_run`)
---- @field triggered boolean
---- Unique ID from `G.tagid`, incremented
---- @field ID number
---- Contains additional information about the tag. For Orbital tag, this contains the `orbital_hand` for poker hand to level up
---- @field ability table
+--- @field key string The tag key, based in `G.P_TAGS`
+--- @field config table The config table from `G.P_TAGS[tag].config`. This is copied.
+--- @field proto balatro.Item.Tag The prototype tag `G.P_TAGS[tag]`
+--- @field pos Position Undocumented
+--- @field name string Tag name
+--- @field tally number Undocumented
+--- @field triggered boolean True if the tag is already applied to current run (`apply_to_run`)
+--- @field ID number Unique ID from `G.tagid`, incremented
+--- @field ability table Contains additional information about the tag. For Orbital tag, this contains the `orbital_hand` for poker hand to level up
+--- @field HUD_tag? balatro.UIBox
 local ITag = {}
 
 --- @param _tag string
@@ -32,7 +24,7 @@ function ITag:nope() end
 --- Creates applied tag effect and removes this
 --- @param message string
 --- @param _colour? ColorHex
---- @param func fun()
+--- @param func fun(): boolean?
 function ITag:yep(message, _colour, func) end
 
 --- Sets `self.ability` data

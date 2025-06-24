@@ -1,3 +1,10 @@
+--- @meta
+
+--- @type boolean?
+_RELEASE_MODE = nil
+--- @type boolean?
+_DEMO = nil
+
 --- @class WidthHeight
 --- @field w number
 --- @field h number
@@ -17,8 +24,8 @@
 --- @alias ColorHex [number, number, number, number]
 --- @alias ColorHexRgb [number, number, number]
 
---- @alias Rank '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'Ace' | 'Jack' | 'King' | 'Queen'
---- @alias RankChar '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'A' | 'J' | 'Q' | 'K'
+--- @alias Rank '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | 'Ace' | 'Jack' | 'King' | 'Queen'
+--- @alias RankChar '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'T' | 'A' | 'J' | 'Q' | 'K'
 --- @alias Suit 'Hearts' | 'Clubs' | 'Diamonds' | 'Spades'
 --- @alias SuitChar 'H' | 'C' | 'D' | 'S'
 --- @alias SpecialEdition 'foil' | 'holo' | 'polychrome' | 'negative' | string
@@ -28,3 +35,4 @@
 --- @alias BlindState 'Current'  | 'Defeated'  | 'Select'  | 'Selected'  | 'Skipped'  | 'Upcoming'
 --- @alias Sticker 'White' | 'Red' | 'Green' | 'Black' | 'Blue' | 'Purple' | 'Orange' | 'Gold'
 --- @alias Seal 'Gold' | 'Red' | 'Blue' | 'Purple'
+

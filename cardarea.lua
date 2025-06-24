@@ -1,14 +1,10 @@
 --- @meta
 
 --- @class balatro.CardArea: balatro.Moveable
---- Cards
---- @field cards balatro.Card[]
---- Card area configuration, containing card limit, highlighted limit, sort method, etc.
---- @field config balatro.CardArea.Config
---- Highlighted cards
---- @field highlighted balatro.Card[]
---- Undocumented
---- @field shuffle_amt number
+--- @field cards balatro.Card[] Cards
+--- @field config balatro.CardArea.Config Card area configuration, containing card limit, highlighted limit, sort method, etc.
+--- @field highlighted balatro.Card[] Highlighted cards
+--- @field shuffle_amt number Undocumented
 local ICardArea = {}
 
 --- @param X? number

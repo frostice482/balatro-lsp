@@ -161,7 +161,7 @@ function IUIElement:release(other) end
 UIElement = IUIElement
 
 --- @class balatro.UIBox.Config: balatro.Moveable.AlignmentArg
---- @field parent? balatro.UIElement
+--- @field parent? balatro.Moveable
 --- @field align balatro.Moveable.AlignmentType? Alias for type
 --- @field can_collide  boolean?
 --- @field instance_type? balatro.Global.Instances.InstanceType

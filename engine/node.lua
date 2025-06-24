@@ -5,8 +5,8 @@
 --- @class balatro.Node: balatro.Object
 ---
 --- Store all argument and return tables here for reuse, because Lua likes to generate garbage
---- @field ARGS table
---- @field RETS table
+--- @field ARGS any
+--- @field RETS any
 --- Config table used for any metadata about this node
 --- @field config balatro.Node.Config | table
 --- For transform init, accept params in the form x|1, y|2, w|3, h|4, r|5

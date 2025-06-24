@@ -34,7 +34,7 @@ function IParticles:update(dt) end
 function IParticles:move(dt) end
 
 --- @param delay? number
---- @param to number
+--- @param to? number
 function IParticles:fade(delay, to) end
 
 --- @param alpha? number

@@ -20,7 +20,7 @@ VERSION = ""
 
 --- @class balatro.Global.Collabs
 --- @field pos { Jack: Position, Queen: Position, King: Position }
---- @field Options CardSuit<string[]>
+--- @field options CardSuit<string[]>
 
 --- @class balatro.Global.FeatureFlags
 --- @field F_QUIT_BUTTON boolean              Feature: Include the main menu 'Quit' button
@@ -71,7 +71,7 @@ VERSION = ""
 --- @class balatro.Global.State
 --- @field STAGE balatro.Game.StagesEnum
 --- @field STATE balatro.Game.StateEnum
---- @field STAGE_OBJECTS balatro.Node[]
+--- @field STAGE_OBJECTS balatro.Node[][]
 --- @field TAROT_INTERRUPT balatro.Game.StateEnum
 --- @field STATE_COMPLETE boolean
 

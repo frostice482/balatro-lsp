@@ -1,68 +1,39 @@
 --- @meta
 
 --- @class balatro.Blind: balatro.Moveable
---- Required chips
---- @field chips number
---- Undocumented
---- @field tilt_var {mx: number, my: number, amt: number}
---- Undocumented
---- @field ambient_tilt number
---- Blind color
---- @field colour ColorHex
---- Blind dark color
---- @field dark_colour ColorHex
---- Blind configuration
---- @field config balatro.Blind.Config
+--- @field chips number Required chips
+--- @field tilt_var {mx: number, my: number, amt: number} Undocumented
+--- @field ambient_tilt number Undocumented
+--- @field colour ColorHex Blind color
+--- @field dark_colour ColorHex Blind dark color
+--- @field config balatro.Blind.Config Blind configuration
 --- @field children balatro.Blind.Children
 ---
 --- @field loc_name? string
 --- @field loc_debuff_text? string
 --- @field loc_debuff_lines string[]
 ---
---- Required chips in text
---- @field chip_text? string
---- Blind name
---- @field name? string
---- Blind reward
---- @field dollars? number
---- Number of sound to be played when the boss is defeated.
---- This is usually set to number of dollars.
---- Maximum is 7
---- @field sound_pings? number
---- Debuff info
---- @field debuff? balatro.Blind.Debuff
---- Undocumented
---- @field pos? Position
---- Required chips multiplier
---- @field mult? number
---- True if the blind is disabled
---- @field disabled? boolean
---- Only for The Water, number of discards taken
---- @field discards_sub number?
---- Only for The Needle, number of hands taken
---- @field hands_sub number?
---- True if the blind is a boss type
---- @field boss? boolean
---- True if blind has been set
---- @field blind_set? boolean
---- Undocumented
---- @field triggered? boolean
---- Undocumented
---- @field prepped boolean?
---- Undocumented
---- @field hovering? boolean
---- Undocumented
---- @field hover_tilt? number
---- Only for The Eye
---- @field hands table<PokerHand, boolean>?
---- Only for The Mouth
---- @field only_hand boolean?
---- Blocks the play button
---- @field block_play? boolean
---- Dissolve progress (0-1)
---- @field dissolve? number
---- Dissolve colors
---- @field dissolve_colours ColorHex[]
+--- @field chip_text? string Required chips in text
+--- @field name? string Blind name
+--- @field dollars? number Blind reward
+--- @field sound_pings? number Number of sound to be played when the boss is defeated. This is usually set to number of dollars. Maximum is 7
+--- @field debuff? balatro.Blind.Debuff Debuff info
+--- @field pos? Position Undocumented
+--- @field mult? number Required chips multiplier
+--- @field disabled? boolean True if the blind is disabled
+--- @field discards_sub number? Only for The Water, number of discards taken
+--- @field hands_sub number? Only for The Needle, number of hands taken
+--- @field boss? boolean True if the blind is a boss type
+--- @field blind_set? boolean True if blind has been set
+--- @field triggered? boolean Undocumented
+--- @field prepped boolean? Undocumented
+--- @field hovering? boolean Undocumented
+--- @field hover_tilt? number Undocumented
+--- @field hands table<PokerHand, boolean>? Only for The Eye
+--- @field only_hand PokerHand? Only for The Mouth
+--- @field block_play? boolean Blocks the play button
+--- @field dissolve? number Dissolve progress (0-1)
+--- @field dissolve_colours ColorHex[] Dissolve colors
 local IBlind = {}
 
 --- @param color? ColorHex
@@ -180,7 +151,7 @@ Blind = function() end
 --- @field boss boolean
 --- @field config_blind string
 --- @field chips number
---- @field chip_text number
+--- @field chip_text string
 --- @field hands? table<PokerHand, boolean>
 --- @field only_hand? PokerHand
 --- @field triggered? boolean

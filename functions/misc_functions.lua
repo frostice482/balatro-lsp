@@ -158,7 +158,9 @@ function HEX(hex) end
 --- @return ColorHex
 function get_blind_main_colour(blind) end
 
---- UNDOCUMENTED
+--- Evaluates poker hand to get possible match
+--- @param hand balatro.Card[]
+--- @return balatro.PokerHandsEvalInfo
 function evaluate_poker_hand(hand) end
 
 --- Gets flush hand from given hand.
@@ -418,8 +420,8 @@ function playing_card_joker_effects(cards) end
 function convert_save_to_meta() end
 
 --- @class CardControlArg
---- @field r RankSingle
---- @field s SuitSingle
+--- @field r RankChar
+--- @field s RankChar
 --- @field e string? Enhancement
 --- @field d string? Edition
 --- @field g string? Seal

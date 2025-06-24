@@ -111,7 +111,7 @@ function highlight_card(card, percent, dir) end
 function play_area_status_text(text, silent, delay) end
 
 --- Level up poker hand with animation
---- @param card? balatro.Card Planet card
+--- @param card? balatro.Moveable|balatro.Tag Planet card
 --- @param hand PokerHand Poker hand to level up
 --- @param instant boolean? Instantly levels up poker hand
 --- @param amount number? How much level up, defaults to 1
@@ -181,10 +181,49 @@ function set_alerts() end
 --- Displays main menu UI
 function set_main_menu_UI() end
 
---- UNDOCUMENTED
+--- @alias balatro.CardEvalStatysType "debuff" | "chips" | "mult" | "x_mult" | "h_mult" | "h_x_mult" | "dollars" | "swap" | "extra" | "jokers"
+
+--- @class balatro.CardEvalStatusExtra
+--- @field colour? ColorHex
+--- @field focus? balatro.Card
+--- @field instant? boolean
+--- @field no_juice? boolean
+--- @field playing_cards_created? balatro.Card[]
+
+--- @class balatro.CardEvalStatusExtra.Extra
+--- @field edition? any
+--- @field chip_mod? number
+--- @field mult_mod? number
+--- @field Xmult_mod? number
+--- @field swap? boolean
+--- @field delay? number
+--- @field message? string
+
+--- Creates card eval effect,
+--- used during card evaluation to create scoring effects (+chips, +mult, x mult, etc.)
+--- @param card balatro.Card
+--- @param eval_type balatro.CardEvalStatysType
+--- @param amt? number
+--- @param percent? number Pitch increase
+--- @param dir? 'down' Negates percent parameter to `1-percent`
+--- @param extra? balatro.CardEvalStatusExtra | balatro.CardEvalStatusExtra.Extra
 function card_eval_status_text(card, eval_type, amt, percent, dir, extra) end
 
---- UNDOCUMENTED
+--- @class balatro.AddRoundEvalRowParams
+--- - `blind1` sets the main reward from given blind
+--- - `bottom` creates cash out button
+--- @field name "blind1" | "bottom" | string
+--- True if saved by Mr. Bones. Should only be used when `name` is `blind1`
+--- @field saved? boolean
+--- @field dollars? number
+--- @field disp? number
+--- @field bonus? boolean
+--- @field pitch? number
+--- @field card? balatro.Card
+
+--- Adds round evaluation row,
+--- used to add money sources from cashing out
+--- @param config balatro.AddRoundEvalRowParams
 function add_round_eval_row(config) end
 
 --- Changes how much cards is available at the shop
@@ -368,6 +407,7 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 --- @param card_scale? number
 --- @param playing_card? number
 --- @param strip_edition boolean? Removes edition from the card
+--- @return balatro.Card
 function copy_card(other, new_card, card_scale, playing_card, strip_edition) end
 
 --- UNDOCUMENTED
