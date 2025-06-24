@@ -104,20 +104,13 @@ function ICardArea:remove() end
 CardArea = ICardArea
 
 --- @class balatro.CardArea.Config
---- Number of cards currently
---- @field card_count number
---- Limits number of cards
---- @field card_limit number
---- Limits highlighted cards
---- @field highlighted_limit number
---- Undocumented
---- @field lr_padding number
---- Sorting method
---- @field sort balatro.CardArea.Sort
---- Undocumented
---- @field temp_limit number
---- Card area type. Determines transformation effect for cards
---- @field type balatro.CardArea.Type
+--- @field card_count number Number of cards currently
+--- @field card_limit number Limits number of cards
+--- @field highlighted_limit number Limits highlighted cards
+--- @field lr_padding number Undocumented
+--- @field sort balatro.CardArea.Sort Sorting method
+--- @field temp_limit number Undocumented
+--- @field type balatro.CardArea.Type Card area type. Determines transformation effect for cards
 
 --- @alias balatro.CardArea.Sort "desc" | "asc" | "suit desc" | "suit asc" | "order"
 --- @alias balatro.CardArea.Type
