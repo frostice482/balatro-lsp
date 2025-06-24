@@ -1,36 +1,65 @@
 --- @meta
 
 --- @class balatro.Card: balatro.Moveable
+--- Undocumented
 --- @field children balatro.Card.Children
+--- Undocumented
 --- @field params balatro.Card.Param
+--- Card configuration, containing card / center info
 --- @field config balatro.Card.Config
+--- Undocumented
 --- @field tilt_var table
+--- Undocumented
 --- @field ambient_tilt number
+--- True if is a playing card
 --- @field playing_card? boolean
+--- Undocumented
 --- @field sort_id number
+--- Undocumented
 --- @field back 'viewed_back' | 'selected_back'
+--- Undocumented
 --- @field bypass_discovery_center? boolean
+--- Undocumented
 --- @field bypass_discovery_ui? boolean
+--- Undocumented
 --- @field bypass_lock? boolean
+--- Undocumented
 --- @field no_ui? boolean
+--- Base card cost
 --- @field base_cost number
+--- Additional cost, from inflation and editions
 --- @field extra_cost number
+--- Applied cost from base cost, extra code, and discount in percentage
 --- @field cost number
+--- Dollars earned from selling this card
 --- @field sell_cost number
+--- Undocumented
 --- @field sell_cost_label number | string
+--- Unique value
 --- @field unique_val number
---- @field edition balatro.Card.Edition
---- @field zoom boolean
+--- Edtition info
+--- @field edition? balatro.Card.Edition
+--- Facing direction
 --- @field facing 'front' | 'back'
+--- Sprite facing sirection
 --- @field sprite_facing 'front' | 'back'
+--- Discad position
 --- @field discard_pos Position | { r: number }
+--- Undocumented
 --- @field flipping nil | 'f2b' | 'b2f'
+--- The area this card is in
 --- @field area? balatro.CardArea
+--- True if highlighted
 --- @field highlighted boolean
+--- Selecting timeout
 --- @field click_timeout number
+--- True if this card is debuffed
 --- @field debuff boolean
+--- Ordering level
 --- @field rank number
+--- True if this card is added to playing
 --- @field added_to_deck? boolean
+--- Card ability info, containing mult, xmult, chips, etc.
 --- @field ability balatro.Card.Ability
 --- True if the card is shattered (via `shatter()`)
 --- @field shattered? boolean
@@ -536,6 +565,7 @@ local x = {
 --- @field stone_tally? number
 --- @field sell_cost_label? string | number
 --- @field extra number
+--- Extra value from selling
 --- @field extra_value number
 --- @field order? number
 --- @field consumeable? table

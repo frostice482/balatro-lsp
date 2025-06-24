@@ -11,6 +11,7 @@ local IBack = {}
 --- @param selected_back balatro.Item.Back
 function IBack:init(selected_back) end
 
+--- Gets localized name
 --- @return string
 function IBack:get_name() end
 
@@ -24,15 +25,18 @@ function IBack:generate_UI(other, ui_scale, min_dims, challenge) end
 --- @param back balatro.Item.Back
 function IBack:change_to(back) end
 
+--- Triggers back effect after eval or final scoring
+--- @param args balatro.Back.TriggerEffectParam
+function IBack:trigger_effect(args) end
+
+--- Applies back effect to current run
+function IBack:apply_to_run() end
+
+--- Saves this back to be stored
 --- @return balatro.Back.Save
 function IBack:save(back) end
 
---- @param args balatro.Back.TriggerEffectParam
---- @return number chips, number mult
-function IBack:trigger_effect(args) end
-
-function IBack:apply_to_run() end
-
+--- Loads back info from saved table
 --- @param table balatro.Back.Save
 function IBack:load(table) end
 
@@ -51,6 +55,8 @@ Back = function() end
 --- @field key string
 
 --- @class balatro.Back.TriggerEffectParam
---- @field context 'eval' | 'blind_amount' | 'final_scoring_step'
---- @field chips number
---- @field mult number
+--- - `eval` triggers at the end of round
+--- - `final_scoring_step` triggers after all scoring
+--- @field context 'eval' | 'final_scoring_step'
+--- @field chips? number
+--- @field mult? number
