@@ -144,12 +144,12 @@ function update_hand_text(config, vals) end
 --- @field poker_hands balatro.PokerHandsEvalInfo
 --- @field scoring_hand balatro.Card[]
 --- @field scoring_name PokerHand
---- @field repetition? boolean Calculates how many times to retrigger the card
---- @field repetition_only? boolean Calculates seal
---- @field edition? boolean Calculates edition effect. `jokers` will be `balatro.Card.CalcEditionRet`
---- @field other_card? balatro.Card
---- @field before? boolean
---- @field after? boolean
+--- Calculates seal effects.
+--- `cardarea` is `G.hand` or `G.play`.
+--- @field repetition_only? boolean
+--- Calculates edition effect. `jokers` will be `balatro.Card.CalcEditionRet`.
+--- `cardarea` is `G.jokers`
+--- @field edition? boolean
 --- @field card_effects? table
 local a = {
     --- @deprecated Redundant

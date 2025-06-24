@@ -342,10 +342,10 @@ Card = ICard
 --- Includes `full_hand`
 --- @field destroying_card? balatro.Card
 --- Triggered when a card is destroyed.
---- Includes `removed`, `cardarea = G.jokers`
+--- Includes `removed`. `cardarea` is `G.jokers`
 --- @field remove_playing_cards? boolean
 --- Triggered when a playing hand is debuffed (not allowed)
---- Iontains scoring information
+--- Iontains scoring information. `cardarea` is `G.jokers`
 --- @field debuffed_hand? boolean
 --- Triggered before discard.
 --- Includes `full_hand`
@@ -353,10 +353,6 @@ Card = ICard
 --- Triggered when discard.
 --- Includes `full_hand` and `other_card`
 --- @field discard? boolean
---- Triggered when each card is being evaluated.
---- Includes `other_card`. `cardarea` may be `G.hand` or `G.play`.
---- Can also includes `end_of_round` when triggered at the end of round.
---- @field individual? boolean
 --- Triggered before game over occurs. Can be used to cancel game over.
 --- @field game_over? boolean
 --- Triggered when this card is being sold.
@@ -371,13 +367,29 @@ Card = ICard
 --- @field reroll_shop? boolean
 --- Triggered when first hand has been drawn, when the round starts
 --- @field first_hand_drawn? boolean
---- Triggered at the end of round.
---- May include `other_card`
---- @field end_of_round? boolean
---- Triggered when the joker itself is being evaluated,
---- e.g. Observatory voucher + planet cards
---- @field joker_main? boolean
 ---
+--- Calculates how many times to retrigger the card.
+--- `cardarea` is `G.hand` or `G.play`.
+--- @field repetition? boolean
+--- Triggered before evaluation.
+--- `cardarea` is `G.jokers`
+--- @field before? boolean
+--- Triggered when each card is being evaluated.
+--- Includes `other_card`. `cardarea` may be `G.hand` or `G.play`.
+--- Can also includes `end_of_round` when triggered at the end of round.
+--- @field individual? boolean
+--- Triggered after evaluation.
+--- `cardarea` is `G.jokers`
+--- @field after? boolean
+--- Triggered when the joker itself is being evaluated,
+--- e.g. Observatory voucher + planet cards.
+--- `cardarea` is `G.jokers`
+--- @field joker_main? boolean
+--- Triggered at the end of round.
+--- May include `other_card`. `cardarea` is `G.hand`
+--- @field end_of_round? boolean
+---
+--- @field other_card? balatro.Card
 --- @field cards? balatro.Card[] | [true]
 --- @field card? balatro.Card
 --- @field consumeable? balatro.Card
