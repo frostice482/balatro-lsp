@@ -1,7 +1,7 @@
 --- @class balatro.Game
 --- @field GAME balatro.Game.Current
 
---- @class balatro.Game.Current: table
+--- @class balatro.Game.Current: { [string]: any }
 --- @field bankrupt_at number
 --- @field banned_keys string[]
 --- @field base_reroll_cost number
@@ -91,7 +91,7 @@
 --- @field tarot number
 --- @field tarot_planet number
 
---- @class balatro.Game.Current.CurrentRound: table
+--- @class balatro.Game.Current.CurrentRound: { [string]: any }
 --- @field ancient_card { suit: Suit }
 --- @field castle_card { suit: Suit }
 --- @field idol_card { id: number, rank: Rank, suit: Suit }
@@ -114,7 +114,7 @@
 --- @field used_packs table<number, string>
 --- @field voucher string
 
---- @class balatro.Game.Current.CurrentRound.CurrentHand: table
+--- @class balatro.Game.Current.CurrentRound.CurrentHand: { [string]: any }
 --- @field chip_text string
 --- @field chip_total number
 --- @field chip_total_text string
@@ -125,7 +125,7 @@
 --- @field mult number
 --- @field mult_text string
 
---- @class balatro.Game.Current.Hand: table
+--- @class balatro.Game.Current.Hand: { [string]: any }
 --- @field chips number
 --- @field example [string, boolean][]
 --- @field l_chips number
@@ -155,7 +155,7 @@
 --- @class balatro.Game.Current.Shop
 --- @field joker_max number
 
---- @class balatro.Game.Current.RoundResets: table
+--- @class balatro.Game.Current.RoundResets: { [string]: any }
 --- @field ante number
 --- @field blind balatro.Item.Blind
 --- @field blind_ante number
@@ -179,7 +179,7 @@
 --- @field poker_hand balatro.Profile.HighScore
 --- @field times_rerolled balatro.Profile.HighScore
 
---- @class balatro.Game.Current.StartingParam: table
+--- @class balatro.Game.Current.StartingParam: { [string]: any }
 --- @field ante_scaling number
 --- @field consumable_slots number
 --- @field discards number

@@ -1,4 +1,4 @@
---- @class balatro.Settings: table
+--- @class balatro.Settings: { [string]: any }
 --- @field COMP balatro.Settings.Comp
 --- @field DEMO balatro.Settings.Demo
 --- @field ACHIEVEMENTS_EARNED balatro.Settings.AchievementEarned

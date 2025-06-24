@@ -20,7 +20,7 @@
 --- @field Tarot table<string, balatro.Loc.NameText>
 --- @field Voucher table<string, balatro.Loc.NameText>
 
---- @class balatro.Loc.Misc: table
+--- @class balatro.Loc.Misc: { [string]: any }
 --- @field achievement_descriptions table<string, string>
 --- @field achievement_names table<string, string>
 --- @field blind_states table<BlindState, string>

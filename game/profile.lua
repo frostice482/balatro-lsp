@@ -1,12 +1,12 @@
 --- This assumed the profile is already initialized. If not, returns {}
---- @class balatro.Profile: table
+--- @class balatro.Profile: { [string]: any }
 --- @field name string
 --- @field stake number
 --- @field challenges_unlocked number
 --- @field deck_stakes balatro.Profile.Tally
 --- @field MEMORY balatro.Profile.Memory
 ---
---- @field career_stats balatro.Profile.CareerStats: table
+--- @field career_stats balatro.Profile.CareerStats
 --- @field progress balatro.Profile.Progress
 --- @field voucher_usage table<string, balatro.Profile.Usage>
 --- @field consumeable_usage table<string, balatro.Profile.Usage>
@@ -62,7 +62,7 @@
 --- @field wins table<number, number> nth stake
 --- @field losses table<number, number> nth stake
 
---- @class balatro.Profile.Progress: table
+--- @class balatro.Profile.Progress: { [string]: any }
 --- @field overall_tally number
 --- @field overall_of number
 --- @field challenges balatro.Profile.Tally
