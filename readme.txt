@@ -1,1 +1,0 @@
-Incomplete lua language server typing for Balatro
