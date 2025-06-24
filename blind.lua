@@ -1,55 +1,94 @@
 --- @meta
 
 --- @class balatro.Blind: balatro.Moveable
+--- Required chips
 --- @field chips number
+--- Undocumented
 --- @field tilt_var {mx: number, my: number, amt: number}
+--- Undocumented
 --- @field ambient_tilt number
---- @field zoom boolean
+--- Blind color
 --- @field colour ColorHex
+--- Blind dark color
 --- @field dark_colour ColorHex
---- @field loc_debuff_lines string[]
+--- Blind configuration
 --- @field config balatro.Blind.Config
 --- @field children balatro.Blind.Children
 ---
 --- @field loc_name? string
 --- @field loc_debuff_text? string
+--- @field loc_debuff_lines string[]
+---
+--- Required chips in text
 --- @field chip_text? string
+--- Blind name
 --- @field name? string
+--- Blind reward
 --- @field dollars? number
+--- Number of sound to be played when the boss is defeated.
+--- This is usually set to number of dollars.
+--- Maximum is 7
 --- @field sound_pings? number
---- @field debuff? table
+--- Debuff info
+--- @field debuff? balatro.Blind.Debuff
+--- Undocumented
 --- @field pos? Position
+--- Required chips multiplier
 --- @field mult? number
+--- True if the blind is disabled
 --- @field disabled? boolean
---- @field discards_sub number? 0 for The Water
---- @field hands_sub number? hands-1 for The Needle
+--- Only for The Water, number of discards taken
+--- @field discards_sub number?
+--- Only for The Needle, number of hands taken
+--- @field hands_sub number?
+--- True if the blind is a boss type
 --- @field boss? boolean
+--- True if blind has been set
 --- @field blind_set? boolean
+--- Undocumented
 --- @field triggered? boolean
---- @field prepped boolean? Nil for The Fish
---- @field hands table<PokerHand, boolean>? Only for The Eye
---- @field only_hand boolean? Only for The Mouth
+--- Undocumented
+--- @field prepped boolean?
+--- Undocumented
 --- @field hovering? boolean
+--- Undocumented
 --- @field hover_tilt? number
+--- Only for The Eye
+--- @field hands table<PokerHand, boolean>?
+--- Only for The Mouth
+--- @field only_hand boolean?
+--- Blocks the play button
 --- @field block_play? boolean
+--- Dissolve progress (0-1)
 --- @field dissolve? number
+--- Dissolve colors
 --- @field dissolve_colours ColorHex[]
 local IBlind = {}
 
 --- @param color? ColorHex
 function IBlind:change_colour(color) end
 
+--- Sets locatization texts for `loc_name`, `loc_debuff_text`, `loc_debuff_lines
 function IBlind:set_text() end
 
+--- @param blind? balatro.Item.Blind
+--- @param reset? boolean If true, do not set new blind; resets current blind instead
+--- @param silent? boolean Do not play sound
 function IBlind:set_blind(blind, reset, silent) end
 
+--- Alerts blind's debuff
 function IBlind:alert_debuff(first) end
 
 --- @return string
 function IBlind:get_loc_debuff_text() end
 
+--- Creates defeat effect and removes blind info
 --- @param silent? boolean
 function IBlind:defeat(silent) end
+
+--- Gets blind type
+--- @return BlindType
+function IBlind:get_type() end
 
 function IBlind:disable() end
 
@@ -59,37 +98,89 @@ function IBlind:stop_hover() end
 
 function IBlind:draw() end
 
+--- Triggers effect when scoring started
+--- @return boolean|nil hasEffect True if the blind caused some effect
 function IBlind:press_play() end
 
+--- Modifies played hand
+--- @param cards balatro.Card[]
+--- @param poker_hands balatro.PokerHandsEvalInfo
+--- @param text string
+--- @param mult number
+--- @param hand_chips number
 function IBlind:modify_hand(cards, poker_hands, text, mult, hand_chips) end
 
+--- Checks if played hand is debuffed (not allowed).
+--- This also triggers some effects, e.g. The Arm level down played poker hand.
+--- @param cards balatro.Card[]
+--- @param hand balatro.PokerHandsEvalInfo
+--- @param handname PokerHand
+--- @param check? boolean Only check, do not apply effects
+--- @return boolean|nil
 function IBlind:debuff_hand(cards, hand, handname, check) end
 
+--- Triggers effect when a card is drawn to hand
 function IBlind:drawn_to_hand() end
 
+--- Checks whether a card should be stay flipped
+--- @param area balatro.CardArea This should be `G.hand`, otherwise nil is always returned
+--- @param card balatro.Card
+--- @return boolean|nil
 function IBlind:stay_flipped(area, card) end
 
-function IBlind:debuff_card(card, from_blind) end
+--- Sets debuff for a card
+--- @param card balatro.Card
+function IBlind:debuff_card(card) end
 
 function IBlind:move(dt) end
 
+--- Changes dimension for this blind
+--- @param w? number
+--- @param h? number
 function IBlind:change_dim(w, h) end
 
 function IBlind:align() end
 
+--- Saves this blind to be stored
+--- @return balatro.Blind.Save
 function IBlind:save() end
 
---- @return BlindType
-function IBlind:get_type() end
-
+--- Loads saved table
+--- @param blindTable balatro.Blind.Save
 function IBlind:load(blindTable) end
 
---- @type balatro.Blind | fun(X: number, Y: number, W: number, H: number): balatro.Blind
+--- @type balatro.Blind | fun(X?: number, Y?: number, W?: number, H?: number): balatro.Blind
 Blind = function() end
 
 --- @class balatro.Blind.Children: { [string]: balatro.Node }
 --- @field animatedSprite balatro.AnimatedSprite
 --- @field particles? balatro.Particles
 
+--- @class balatro.Blind.Debuff
+--- @field hand? PokerHand
+--- @field h_size_ge? number
+--- @field h_size_le? number
+--- @field suit? Suit
+--- @field is_face? 'face'
+--- @field value? Rank
+--- @field nominal? number
+
 --- @class balatro.Blind.Config: table
 --- @field blind? balatro.Item.Blind
+
+--- @class balatro.Blind.Save
+--- @field name string
+--- @field dollars number
+--- @field debuff balatro.Blind.Debuff
+--- @field pos Position
+--- @field mult number
+--- @field disabled boolean
+--- @field discards_sub? number
+--- @field hands_sub? number
+--- @field boss boolean
+--- @field config_blind string
+--- @field chips number
+--- @field chip_text number
+--- @field hands? table<PokerHand, boolean>
+--- @field only_hand? PokerHand
+--- @field triggered? boolean

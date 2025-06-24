@@ -543,7 +543,9 @@ local x = {
 --- @class balatro.Card.Base
 --- @field name string
 --- @field suit Suit
+--- Rank
 --- @field value Rank
+--- Rank in number
 --- @field nominal number
 --- @field suit_nominal number
 --- @field face_nominal number
