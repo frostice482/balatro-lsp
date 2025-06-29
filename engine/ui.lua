@@ -66,7 +66,6 @@ function IUIBox:print_topology(indent) end
 
 function IUIBox:recalculate() end
 
-
 --- @class balatro.UIBox.Arg
 --- @field T? balatro.Node.TransformUnit
 --- @field definition balatro.UIElement.Definition
@@ -172,67 +171,219 @@ UIElement = IUIElement
 --- @field config? balatro.UIElement.Config
 
 --- @class balatro.UIElement.Config: balatro.Node.Config
+--- UIElement identifier, to be used in `get_UIE_by_ID. \
+--- Supported for all types.
 --- @field id? unknown
+---
+--- Width of the element. If unspecified, defaults to object's width. \
+--- **Supported: Box, Object**
 --- @field w? number
+--- Height of the element. If unspecified, defaults to object's height. \
+--- **Supported: Box, Object**
 --- @field h? number
+--- Maximum width of the element.
+--- If the children exceeds the maximum width, it will be scaled down. \
+--- **Supported: Anything except Box, Object, Text**
 --- @field maxw? number
+--- Maximum height of the element.
+--- If the children exceeds the maximum height, it will be scaled down. \
+--- **Supported: Anything except Box, Object, Text**
 --- @field maxh? number
+--- Minimum width of the element. \
+--- **Supported: Anything except Box, Object, Text**
 --- @field minw? number
+--- Minimum height of the element. \
+--- **Supported: Anything except Box, Object, Text**
 --- @field minh? number
---- @field mid? boolean
---- @field emboss? number
---- @field vert? boolean
---- @field text_drawable? love.Text
---- @field padding? number
+--- Element alignment. \
+--- Supported for all types.
 --- @field align balatro.Moveable.AlignmentType?
---- @field text? string
---- @field scale? number
---- @field lang? balatro.Language
---- @field func? string
---- @field ref_table? table
---- @field ref_value? any
---- @field group? unknown
---- @field object? balatro.Moveable
---- @field can_collide? boolean
---- @field button? string
---- @field button_UIE? balatro.UIElement
---- @field on_demand_tooltip? boolean
---- @field tooltip? string
---- @field detailed_tooltip? string
+--- If true, sets this element as a midpoint for center alignment for UIBox.
+--- See Moveable's Mid for more info. \
+--- Supported for all types.
+--- @field mid? boolean
+--- Determines the layer this element should be drawn on.
+--- This allows control over stacked elements. \
+--- Supported for all types.
 --- @field draw_layer? number
---- @field collideable? boolean
---- @field no_role? boolean
---- @field role? balatro.Moveable.RoleArg
---- @field prev_value? any
---- @field juice? boolean
---- @field colour? ColorHex
---- @field outline_colour? ColorHex
---- @field focus_args? unknown
---- @field force_focus? boolean
---- @field button_delay? number
---- @field button_delay_start? number
---- @field button_delay_end? unknown
---- @field button_delay_progress? number
---- @field insta_func? boolean
---- @field draw_after? boolean
+--- Do not fill children's row and column. \
+--- Supported for all types.
 --- @field no_fill? boolean
---- @field no_recalc? boolean
---- @field refresh_movement? boolean
---- @field force_collision? boolean
---- @field shadow? boolean
---- @field button_dist? number
---- @field shadow_colour? ColorHex
---- @field r? boolean
---- @field hover? boolean
---- @field progress_bar? table
---- @field focus_with_object? boolean
+---
+--- Element padding, inner gap between boundary and the element's childrens. \
+--- Supported for all types.
+--- @field padding? number
+--- Element scaling. \
+--- Supported for all types.
+--- @field scale? number
+--- Draws this element only after drawing all the children. \
+--- Supported for all types.
+--- @field draw_after? boolean
+---
+--- Creates emboess effect. This will create a solid shadow effetc with darker color from given `colour`. \
+--- **Supported: Box, Row, Column, Root**
+--- @field emboss? number
+--- Background / text color to use. \
+--- Supported for all types.
+--- @field colour? ColorHex
+--- Outline thickness. Must be used altogether with `outline_colour`. \
+--- Supported for all types.
 --- @field outline? number
---- @field line_emboss? number
---- @field chosen? boolean | 'vert'
+--- Outline color. \
+--- Supported for all types.
+--- @field outline_colour? ColorHex
+--- Draws shadow. Can be ignored if user's settings has disabled shadows. \
+--- Supported for all types.
+--- @field shadow? boolean
+--- Shadow color. \
+--- Supported for all types.
+--- @field shadow_colour? ColorHex
+--- Creates a progress bar. \
+--- **Supported: Box, Row, Column, Root**
+--- @field progress_bar? table
+---
+--- Reference table to hook the value from.
+--- Must be used altogether with `ref_value`.
+--- - For `T`, `text` is set.
+--- - For `O`, `object` is set.
+--- - If `progress_bar` is used, it it used as a percentage.
+---
+--- Supported for all types.
+--- @field ref_table? table
+--- Property key to use for reference table.
+--- Must be used altogether with `ref_table`.
+--- @field ref_value? any
+---
+--- Determines if corner is rounded. \
+--- **Supported: Box, Row, Column, Root**
+--- @field r? boolean
+--- ???
+--- Supported for all types.
 --- @field ext_up? number
---- @field res? boolean
---- @field one_press? boolean
+--- Sets rouneded corner radius scaling.
+--- Defaults:
+--- - W and H* > 3.5: 0.8
+--- - W and H* > 3: 0.6
+--- - 0.15
+---
+--- Supported for all types.
+--- @field res? number
+---
+--- Sets group key for this element. \
+--- Grouping allows definining some choice elements that has same group ID. \
+--- Grouping also allows removing elements in group. \
+--- Supported for all types.
+--- @field group? unknown
+--- Determines if this element is a choice element.
+--- If `true`, must also include `group`. \
+--- Supported for all types.
 --- @field choice? boolean
+--- True if this element is chosen among same `groups` from element's UIBox.
+--- This is set automatically by UIElement when clicked, only when `choice` is true. \
+--- Supported for all types.
+--- @field chosen? boolean | 'vert'
+---
+--- Function name to be called everytime `update` is called.
+--- This should be a valid key from `G.FUNCS`.
+--- Called function will receive single argument `UIElement`, which represents current element. \
+--- Supported for all types.
+--- @field func? string
+--- Allows `func` to be called unconditionally when calculating.
+--- `func` usually called during calculation if `button` or `button_UIE` is specified. \
+--- Supported for all types.
+--- @field insta_func? boolean
+---
+--- Function name to be called when the element is clicked.
+--- This should be a valid key from `G.FUNCS`. \
+--- Called function will receive single argument `UIElement`, which represents current element. \
+--- Supported for all types.
+--- @field button? string
+--- Only allows clicking this once, then the button is disabled automatically. \
+--- Supported for all types.
+--- @field one_press? boolean
+--- Another element to be clicked when this element is clicked. \
+--- Supported for all types.
+--- @field button_UIE? balatro.Node
+--- Distance offset to the bottom right when the button is being held. \
+--- Supported for all types.
+--- @field button_dist? number
+--- How much delay in seconds before the button can be clicked. \
+--- Supported for all types.
+--- @field button_delay? number
+--- Time when button delay has started progressing.
+--- Setting this value initially requires `button_delay_end` to be also set. \
+--- Supported for all types.
+--- @field button_delay_start? number
+--- When the button should become clickable.
+--- Setting this value initially requires `button_delay_start`, otherwise this will be set to `0`. \
+--- Supported for all types.
+--- @field button_delay_end? unknown
+--- button delay progress (0-1).
+--- Setting this value initially requires `button_delay_start`, otherwise this will be set to `0`. \
+--- Supported for all types.
+--- @field button_delay_progress? number
+---
+--- Createa a tooltip when hovered. \
+--- Supported for all types.
+--- @field tooltip? balatro.CreateTooltipParam
+--- Createa a tooltip when hovered.
+--- Automatically sets popup's Y position at the bottom of the element if at the top hald,
+--- or at the top of the element if at the bottom half. \
+--- Supported for all types.
+--- @field on_demand_tooltip? balatro.CreateTooltipParam
+--- Creates a detailed tooltip from given Center when hovered. \
+--- Supported for all types.
+--- @field detailed_tooltip? balatro.Center
+---
+--- Contains information on how the element should be focused when navigating via gamepad. \
+--- Supported for all types.
+--- @field focus_args?  balatro.UIElement.FocusArgData
+--- Allows this element to be focused.
+--- @field force_focus? boolean
+--- Allows collision. Also makes `object` collidable if specified.\
+--- Supported for all types.
+--- @field can_collide? boolean
+--- Allows collision. \
+--- Supported for all types.
+--- @field collideable? boolean
+--- Allows this element to be collided.
+--- Supported for all types.
+--- @field force_collision? boolean
+---
+--- Sets text. for this element. \
+--- **Supported: Text**
+--- @field text? string
+--- Font from specified language to use for the drawable text. \
+--- **Supported: Text**
+--- @field lang? balatro.Language
+--- Displays the text vertically, and rotates w and h. \
+--- **Supported: Text**
+--- @field vert? boolean
+--- Drawable Text to be used for rendering texts. \
+--- **Supported: Text**
+--- @field text_drawable? love.Text
+--- Do not recalculate the UIBox after the text is updated.
+--- **Supported: Text**
+--- @field no_recalc? boolean
+---
+--- Sets object to render inside the element. \
+--- **Supported: Object**
+--- @field object? balatro.Moveable
+--- Do not set role to given `object`. \
+--- **Supported: Object**
+--- @field no_role? boolean
+--- Role to set on given `object`.
+--- Defaults to `{role_type = 'Minor', major = self, xy_bond = 'Strong', wh_bond = 'Weak', scale_bond = 'Weak'}`. \
+--- **Supported: Object**
+--- @field role? balatro.Moveable.RoleArg
+--- Also highlights the object if current element is focused. \
+--- **Supported: Object**
+--- @field focus_with_object? boolean
+---
+--- ???
+--- @field hover? boolean
+--- ???
+--- @field refresh_movement? boolean
 
 --- @class balatro.UIElement.PixellatedRect: WidthHeight
 --- @field sw number
@@ -248,6 +399,24 @@ UIElement = IUIElement
 
 --- @class balatro.UIElement.PixellatedRectData
 --- @field vertices number[]
+
+--- @class balatro.UIElement.ProgressBarData
+--- @field empty_col? ColorHex Fill color for empty
+--- @field filled_col? ColorHex Fill color for finished
+--- @field ref_table? any
+--- @field ref_value? any
+--- @field max number Maximum value
+
+--- @class balatro.UIElement.FocusArgData
+--- Gamepad button to add to registry.
+--- Setting this will call `Controller:add_to_registry`
+--- @field button? love.GamepadButton
+--- The parent that controls which element (`funnel_to`) should be focused.
+--- Used when navigating via gamepad.
+--- @field funnel_from? boolean|balatro.UIElement
+--- The child element that should be focused when the parent (`funnel_from`) is focused.
+--- Used when navigating via gamepad.
+--- @field funnel_to? boolean|balatro.UIElement
 
 --- @param node any
 --- @return boolean

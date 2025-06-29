@@ -39,8 +39,10 @@
 --- and inherited attributes like button click functions.
 --- @field children table<string, balatro.Node>
 ---
+--- Set by `Moveable`. For `Node`, this is used for debugging.
 --- @field CALCING? boolean
 ---
+--- Text value to show when G.DEBUG is true. Used for debugging.
 --- @field DEBUG_VALUE? string
 ---
 --- @field REMOVED? boolean

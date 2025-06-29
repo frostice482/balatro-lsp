@@ -104,7 +104,7 @@ function IController:cull_registry() end
 
 --- Adds a node to the controller registry. Supply the button that will be pressed in order to click this node
 ---@param node balatro.Node The node that will be clicked when the registry is pressed
----@param registry string The button to register, must be a valid gamepad input
+---@param registry love.GamepadButton The button to register, must be a valid gamepad input
 function IController:add_to_registry(node, registry) end
 
 --- Process any click function of any nodes that have been clicked in the button registry

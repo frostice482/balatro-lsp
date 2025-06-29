@@ -84,6 +84,11 @@ function UIBox_dyn_container(inner_table, horizontal, colour_override, backgroun
 function simple_text_container(_loc, args) end
 function UIBox_button(args) end
 
+--- @class balatro.CreateTooltipParam
+--- @field title? string
+--- @field text? ( string | { ref_table: any, ref_value: any } )[]
+--- @field filler? { func: fun(), args?: any }
+
 --- @class balatro.Game
 --- @field UIDEF balatro.Functions.Uidef
 

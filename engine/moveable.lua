@@ -21,7 +21,7 @@
 --- For finer control over what parts of T and VT are inherited, xy_bond, wh_bond, and r_bond can be set to one of
 --- 'Strong' or 'Weak'. Strong simply copies the values, Weak allows the 'Minor' moveable to calculate their own.
 --- @field role balatro.Moveable.Role
---- ((Undocumented))
+--- Alignment parameters to use when aligning to Major role.
 --- @field alignment balatro.Moveable.Alignment
 --- The pinch table is used to modify the VT.w and VT.h compared to T.w and T.h. If either x or y pinch is
 --- Set to true, the VT width and or height will ease to 0. If pinch is false, they ease to T.w or T.h
@@ -38,7 +38,8 @@
 --- @field static_rotation boolean
 ---
 --- @field offset Position
----
+--- Midpoint for center / middle alignment.
+--- If this Moveable's role type is Minor, then setting this to another Moveable allows that Moveable to be used as a center point for alignment.
 --- @field Mid balatro.Moveable
 --- Shadow effect
 --- @field shadow_parrallax Position
@@ -49,9 +50,15 @@
 --- Juice up effect, created from `:juice_up()`
 --- @field juice? balatro.Moveable.Juice
 ---
---- @field float? boolean
+--- True if current Moveable is currently moving with its major.
+--- This is set when `move()` is called, when current role is `Minor`,
+--- and `xy_bond` or `r_bond` is `Weak`, or not `STATIONARY`, or `NEW_ALIGNMENT`, or `juice`.
+--- Current use purpose is used by `Node` for debugging purpose.
+--- @field CALCING? boolean
 ---
+--- True if current Moveable is not moving
 --- @field STATIONARY? boolean
+---
 --- @field NEW_ALIGNMENT? boolean
 local IMoveable = {}
 
@@ -70,45 +77,48 @@ function IMoveable:draw() end
 --- - `bond` The bond type, either 'Strong' or 'Weak'. Strong instantly adjusts VT, Weak manually calculates VT changes
 --- - `offset` {x , y} offset from the alignment
 --- - `type` the alignment type.
---- - Vertical options:
----   - `c`- center,
----   - `t`- top,
----   - `b`- bottom.
---- - Horizontal options:
----   - `l` - left,
----   - `m` - middle,
----   - `r` - right.
----   - `i` for inner
 function IMoveable:set_alignment(args) end
 
+--- Aligns this role offset to this major
 function IMoveable:align_to_major() end
 
+--- Sets current transformation to given X, Y, W, and H.
+--- This also sets visual transformation.
 --- @param X number
 --- @param Y number
 --- @param W number
 --- @param H number
 function IMoveable:hard_set_T(X, Y, W, H) end
 
+--- Sets current visual transformation to current transformation
 function IMoveable:hard_set_VT() end
 
+--- Handles dragging effect.
+--- Called by Controller each frame when the current Moveable is currently dragged.
 --- @param offset Position
 function IMoveable:drag(offset) end
 
---- @param amount? number
---- @param rot_amt? number
+--- Creates a pulse (juice up) effect.
+--- @param amount? number Scale amount, defaults to `
+--- @param rot_amt? number Rotation amount, defaults to -0.6 ot +0.6
 function IMoveable:juice_up(amount, rot_amt) end
 
----- @param dt number
-function IMoveable:move_juice(dt) end
+--- Handles juice up effect.
+--- Automatically called by `move` or `move_with_major`.
+function IMoveable:move_juice() end
 
+--- Handles moving this node.
 --- @param dt number
 function IMoveable:move(dt) end
 
+--- Clamps left and right.
 function IMoveable:lr_clamp() end
 
+--- Copies transformation effect from major.
 --- @param major_tab balatro.Moveable
 function IMoveable:glue_to_major(major_tab) end
 
+--- Moves current Moveable with current Major, only when current role is Minor
 --- @param dt number
 function IMoveable:move_with_major(dt) end
 
@@ -127,6 +137,7 @@ function IMoveable:move_r(dt, vel) end
 
 function IMoveable:calculate_parrallax() end
 
+--- @param args balatro.Moveable.RoleArg
 function IMoveable:set_role(args) end
 
 --- @return balatro.Node.Frame.Major
@@ -201,3 +212,36 @@ Moveable = function() end
 ---   - `i` for inner
 --- - Exactly "a": Do not align
 --- @alias balatro.Moveable.AlignmentType "a" | "m" | "c" | "b" | "t" | "l" | "r" | "i" | string
+
+-- More info on Moveable's Mid, because this is too big to fit in LSP
+-- e.g. #1=Major, #2=Minor (align = cm), #3=Minor (align = br)
+-- ```
+-- #1
+-- +---------+
+-- | #2      |
+-- | +-----+ |
+-- | |     | |
+-- | |  #3 | |
+-- | |  +-+| |
+-- | |  | || |
+-- | |  +-+| |
+-- | +-----+ |
+-- |         |
+-- +---------+
+-- ```
+-- When #2's mid is set to #3, then it should look like:
+-- ```
+-- #1
+-- +---------+
+-- |+-----+  |
+-- ||     |  |
+-- ||  #3 |  |
+-- ||  +-+|  |
+-- ||  | ||  |
+-- ||  +-+|  |
+-- |+-----+  |
+-- |#2       |
+-- |         |
+-- +---------+
+-- ```
+-- where #3 is used as a center point for #2.

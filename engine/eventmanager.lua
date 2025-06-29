@@ -13,13 +13,14 @@
 --- @field queue_last_processed number
 local IEventManager = {}
 
---- @param event balatro.Event
---- @param queue? balatro.EventManager.QueueType
---- @param front? boolean
+--- Adds an event to EventManager
+--- @param event balatro.Event Event to add
+--- @param queue? balatro.EventManager.QueueType Where to add the event. Defaults to `base``
+--- @param front? boolean Adds the event in front of the queue
 function IEventManager:add_event(event, queue, front) end
 
---- @param queue? boolean
---- @param exception? boolean
+--- @param queue? balatro.EventManager.QueueType Queue type to delete.
+--- @param exception? balatro.EventManager.QueueType If specified, deletes all but this queue type.
 function IEventManager:clear_queue(queue, exception) end
 
 --- @param dt number

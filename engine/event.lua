@@ -51,20 +51,56 @@ function IEvent:handle(resultTarget) end
 Event = function() end
 
 --- @class balatro.Event.Config
---- @field trigger balatro.Event.TriggerType? Detault: `immediate`
---- @field blocking boolean? Default: `true`
---- @field blockable boolean? Default: `true`
---- @field start_timer boolean? Default: `false`
---- @field func? fun(n: number?): boolean|number Default: `() => true`
---- @field delay number? Default: `0`
+--- Determines how an event is triggered.
+--- - `immediate` Executes handler immediately
+--- - `before` Executes handler immediately, but only after some delay the event is fully marked as completed
+--- - `afterward` Executes handler after specified delay
+--- - `confition` Same as immediate, but only used when default handler is used
+--- - `ease` Eases value and modifies value in table.
+---   Function is called back with eased value during that time.
+---   Handler return value determines the value to set on the table.
+---
+--- Detault: `immediate`
+--- @field trigger balatro.Event.TriggerType?
+--- Prevents subsequent events  in queues from being handled.
+--- Default: `true`
+--- @field blocking boolean?
+--- Allows this event to be blocked from being handled.
+--- Default: `true`
+--- @field blockable boolean?
+--- If false, sets `time` to current timer value when handle is called.
+--- Default: `false`
+--- @field start_timer boolean?
+--- Function handler.
+--- The `n: number` parameter is only effective for trigger type `ease`.
+--- This should return boolean to determine if the event is completed or not.
+---
+--- Default: `() => true`
+--- @field func? fun(n: number?): boolean|number
+--- Use depends on trigger type.
+--- - `ease` Easing duration
+--- - `after` Delay before handler is executed
+--- - `before` Delay before event is fully marked as completed
+---
+--- Default: `0`
+--- @field delay number?
+--- Prevents the event from being removed from queue when `EventManager:clear_queue` is called.
+--- Default: `false`
 --- @field no_delete? boolean
+--- Sets `created_on_pause` to true.
 --- @field pause_force? boolean
---- @field timer balatro.TimerType? Default: `TOTAL` if unpaused, `REAL` if paused
---- @field ref_table table? Only for trigger == "ease" or "condition"
---- @field ref_value any? Only for trigger == "ease" or "condition"
---- @field ease balatro.Event.EaseType? Only for trigger == "ease". Default: `lerp`
---- @field ease_to number? Only for trigger == "ease"
---- @field stop_val any? Only for trigger == "condition"
+--- Default: `TOTAL` if unpaused, `REAL` if paused
+--- @field timer balatro.TimerType?
+--- Only for trigger == "ease" or "condition"
+--- @field ref_table table?
+--- Only for trigger == "ease" or "condition"
+--- @field ref_value any?
+--- Only for trigger == "ease". Default: `lerp`
+--- @field ease balatro.Event.EaseType?
+--- Only for trigger == "ease"
+--- @field ease_to number?
+--- Only for trigger == "condition"
+--- @field stop_val any?
 
 --- @class balatro.Event.Ease
 --- Easing type
