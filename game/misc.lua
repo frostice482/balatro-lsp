@@ -6,6 +6,7 @@
 --- @field jokers? balatro.CardArea
 --- @field play? balatro.CardArea
 --- @field playing_cards? balatro.CardArea
+--- @field shop_vouchers? balatro.CardArea
 --- @field shop_booster? balatro.CardArea
 --- @field shop_jokers? balatro.CardArea
 --- @field pack_cards? balatro.CardArea

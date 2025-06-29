@@ -15,8 +15,8 @@ VERSION = ""
 --- @field STAGES balatro.Game.StagesObject
 --- @field UIT balatro.UITypeObject
 --- @field handlist string[]
---- @field button_mapping table<string, string|nil>
---- @field keybind_mapping table<string, string>[]
+--- @field button_mapping table<love.GamepadButton, string|nil>
+--- @field keybind_mapping table<love.KeyConstant, love.GamepadButton>[]
 
 --- @class balatro.Global.Collabs
 --- @field pos { Jack: Position, Queen: Position, King: Position }

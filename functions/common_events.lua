@@ -319,7 +319,7 @@ function get_next_voucher_key(_from_tag) end
 
 --- Gets next tag. If `G.FORCE_TAG` exists, it will be returned instead.
 --- @param append string? Seed to append
---- @return balatro.Item.Tag
+--- @return string
 function get_next_tag_key(append) end
 
 --- Creates a playing card
