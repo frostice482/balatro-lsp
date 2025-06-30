@@ -173,7 +173,7 @@ UIElement = IUIElement
 --- @class balatro.UIElement.Config: balatro.Node.Config
 --- UIElement identifier, to be used in `get_UIE_by_ID. \
 --- Supported for all types.
---- @field id? unknown
+--- @field id? string
 ---
 --- Width of the element. If unspecified, defaults to object's width. \
 --- **Supported: Box, Object**
@@ -240,7 +240,7 @@ UIElement = IUIElement
 --- @field shadow_colour? ColorHex
 --- Creates a progress bar. \
 --- **Supported: Box, Row, Column, Root**
---- @field progress_bar? table
+--- @field progress_bar? balatro.UIElement.ProgressBarData
 ---
 --- Reference table to hook the value from.
 --- Must be used altogether with `ref_value`.
@@ -317,7 +317,7 @@ UIElement = IUIElement
 --- When the button should become clickable.
 --- Setting this value initially requires `button_delay_start`, otherwise this will be set to `0`. \
 --- Supported for all types.
---- @field button_delay_end? unknown
+--- @field button_delay_end? number
 --- button delay progress (0-1).
 --- Setting this value initially requires `button_delay_start`, otherwise this will be set to `0`. \
 --- Supported for all types.

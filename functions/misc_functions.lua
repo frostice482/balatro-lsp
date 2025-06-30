@@ -129,11 +129,12 @@ function pseudohash(str) end
 function pseudoseed(key, predict_seed) end
 
 --- Generates a pseudo-random number between min and max.
---- Uses `math.randomseed(seed)` to set randomness.
+--- Uses `math.randomseed(seed)` to set randomness. \
+--- This function is designed to return an integer. For floating number between 0 to 1, use `pseudoseed` instead.
 --- @param seed string | number Seed to use. If string is passed, it will be converted to number through `pseudoseed`.
 --- @param min number? Inclusive
 --- @param max number? Inclusive
---- @return number
+--- @return integer
 function pseudorandom(seed, min, max) end
 
 --- Stringifies table to human-readable.
