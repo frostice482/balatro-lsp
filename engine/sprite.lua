@@ -65,7 +65,7 @@ function ISprite:define_draw_steps(draw_step_definitions) end
 --- @param my? number Only used when `other_obj` is specified. Y offset for other sprite.
 --- @param custom_shader? boolean If specified, uses `_send` as an array to send values to the shader
 --- @param tilt_shadow? number
---- @overload fun(_shader: string, _shadow_height?: number, _send: balatro.Sprite.SendArray[], _no_tilt?: boolean, other_obj?: balatro.Sprite, ms?: number, mr?: number, mx?: number, my?: number, custom_shader: true, tilt_shadow?: number)
+--- @overload fun(self: self, _shader: string, _shadow_height?: number, _send: balatro.Sprite.SendArray[], _no_tilt?: boolean, other_obj?: balatro.Sprite, ms?: number, mr?: number, mx?: number, my?: number, custom_shader: true, tilt_shadow?: number)
 function ISprite:draw_shader(_shader, _shadow_height, _send, _no_tilt, other_obj, ms, mr, mx, my, custom_shader, tilt_shadow) end
 
 --- @param overlay?  ColorHex

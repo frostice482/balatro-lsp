@@ -66,7 +66,7 @@ local IMoveable = {}
 --- @param Y? number
 --- @param W? number
 --- @param H? number
---- @overload fun(args: {T: balatro.Node.TransformInit, container: balatro.Node})
+--- @overload fun(self: self, args: {T: balatro.Node.TransformInit, container: balatro.Node})
 function IMoveable:init(X,Y,W,H) end
 
 function IMoveable:draw() end

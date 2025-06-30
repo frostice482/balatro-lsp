@@ -25,22 +25,35 @@ local IUIBox = {}
 --ex - `{ align = 'cm', offset = {x = 1, y = 1}, parent_rect = A, attach_rect = B, can_collide = true }`
 function IUIBox:init(args) end
 
+--- Gets an element that matches config.id for given id.
+--- @param id? any
+--- @param node? balatro.UIElement
 --- @return balatro.UIElement
 function IUIBox:get_UIE_by_ID(id, node) end
 
+--- Calculates position and size for given element
 --- @param node balatro.UIElement
---- @param _T Position
---- @param recalculate? boolean
+--- @param _T PositionAndSize
+--- @param recalculate? boolean If true, forcibly sets the element's transformation instead of calling `Moveable.init` again
 --- @param _scale? number
 --- @return number, number
 function IUIBox:calculate_xywh(node, _T, recalculate, _scale) end
 
+--- Removes nodes that matches config.group for given group.
+--- @param node? balatro.UIElement
+--- @param group? any
 function IUIBox:remove_group(node, group) end
 
+--- Gets nodes that matches config.group for given group.
+--- @param node? balatro.UIElement
+--- @param group? any
+--- @param ingroup? balatro.UIElement[]
+--- @return balatro.UIElement[]
 function IUIBox:get_group(node, group, ingroup) end
 
+--- Creates an `UIElement` and sets its parent with given parent.1
 --- @param node balatro.UIElement.Definition
---- @param parent? balatro.UIElement
+--- @param parent? balatro.UIElement If not set, then this will be the root of this box
 function IUIBox:set_parent_child(node, parent) end
 
 function IUIBox:remove() end
@@ -53,17 +66,19 @@ function IUIBox:move(dt) end
 --- @param offset Position
 function IUIBox:drag(offset) end
 
+--- Adds a new child, then recalculate.
 --- @param node balatro.UIElement.Config
---- @param parent balatro.UIElement
+--- @param parent balatro.UIElement If not set, then this will be the root of this box
 function IUIBox:add_child(node, parent) end
 
 --- @param container balatro.Node
 function IUIBox:set_container(container) end
 
---- @param indent number
+--- @param indent? number
 --- @return string
 function IUIBox:print_topology(indent) end
 
+--- Recalculates the root's position and size.
 function IUIBox:recalculate() end
 
 --- @class balatro.UIBox.Arg
@@ -96,7 +111,7 @@ local IUIElement = {}
 function IUIElement:init(parent, new_UIBox, new_UIT, config) end
 
 --- @param _T PositionAndSize
---- @param recalculate? boolean
+--- @param recalculate? boolean If true, forcibly sets the element's transformation instead of calling `Moveable.init` again
 function IUIElement:set_values(_T, recalculate) end
 
 --- @param indent number
@@ -130,7 +145,7 @@ function IUIElement:update_object() end
 
 function IUIElement:draw_self() end
 
---- @param _type balatro.UIElement.PixellatedRect
+--- @param _type balatro.UIElement.PixellatedRectType
 --- @param _parallax number
 --- @param _emboss? number
 --- @param _progress? number
@@ -173,7 +188,7 @@ UIElement = IUIElement
 --- @class balatro.UIElement.Config: balatro.Node.Config
 --- UIElement identifier, to be used in `get_UIE_by_ID. \
 --- Supported for all types.
---- @field id? string
+--- @field id? any
 ---
 --- Width of the element. If unspecified, defaults to object's width. \
 --- **Supported: Box, Object**
@@ -273,7 +288,7 @@ UIElement = IUIElement
 --- Grouping allows definining some choice elements that has same group ID. \
 --- Grouping also allows removing elements in group. \
 --- Supported for all types.
---- @field group? unknown
+--- @field group? any
 --- Determines if this element is a choice element.
 --- If `true`, must also include `group`. \
 --- Supported for all types.
