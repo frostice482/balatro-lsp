@@ -7,17 +7,31 @@ function new_round() end
 --- @class balatro.Global.Functions: balatro.Functions.StateEvents
 
 --- @class balatro.Functions.StateEvents
---- @field draw_from_deck_to_hand fun(e)
---- @field discard_cards_from_highlighted fun(e, hook)
---- @field play_cards_from_highlighted fun(e)
---- @field evaluate_play fun(e)
---- @field draw_from_play_to_discard fun(e)
---- @field draw_from_play_to_hand fun(cards)
---- @field draw_from_discard_to_deck fun(e)
---- @field draw_from_hand_to_deck fun(e)
---- @field draw_from_hand_to_discard fun(e)
+--- Draws cards from `G.deck` to `G.hand`.
+--- @field draw_from_deck_to_hand fun(count: number)
+--- Discard cards from highlighted cards.
+--- @field discard_cards_from_highlighted fun(_, hook)
+--- Play cards from highlighted cards.
+--- This will also evaluate playing cards.
+--- @field play_cards_from_highlighted fun()
+--- UNDOCUMENTED
+--- @field evaluate_play fun()
+--- Draws card from `G.play` to `G.discard`.
+--- @field draw_from_play_to_discard fun()
+--- Draws card from `G.play` to `G.hand`.
+--- @field draw_from_play_to_hand fun(cards: balatro.Card[])
+--- Draws cards from `G.discard` to `G.deck`.
+--- @field draw_from_discard_to_deck fun()
+--- Draws cards from `G.hand` to `G.deck`.
+--- @field draw_from_hand_to_deck fun()
+--- Draws cards from `G.hand` to `G.discard`.
+--- @field draw_from_hand_to_discard fun()
+--- Evaluates current round, triggers at the end of round.
+--- Used for calculating cashouts.
 --- @field evaluate_round fun()
+--- UNDOCUMENTED
 --- @field tutorial_controller fun()
+--- UNDOCUMENTED
 --- @field tutorial_part fun(_part)
 local x = {}
 

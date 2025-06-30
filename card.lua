@@ -215,16 +215,15 @@ function ICard:redeem() end
 --- @param center? balatro.Item.Voucher
 function ICard:apply_to_run(center) end
 
---- Creates explode effect
+--- Creates explode effect and removes this card
 --- @param dissolve_colours? ColorHex
 --- @param explode_time_fac? number
 function ICard:explode(dissolve_colours, explode_time_fac) end
 
---- Creates shatter effect
+--- Creates shatter effect and removes this card
 function ICard:shatter() end
 
---- Creates dissolve effect (transition in) for this card.
---- `remove` is also called
+--- Creates dissolve effect (transition in) for this card and removes this card
 --- @param dissolve_colours? ColorHex[]
 --- @param silent? boolean Do not play sound
 --- @param dissolve_time_fac? number

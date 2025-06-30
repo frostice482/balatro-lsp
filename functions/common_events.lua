@@ -69,7 +69,8 @@ function ease_colour(old_colour, new_colour, delay) end
 --- @param blind_override? string
 function ease_background_colour_blind(state, blind_override) end
 
---- Adds an event with specified delay
+--- Adds an event with specified delay.
+--- This does not block the current thread, but rather the event queue.
 --- @param time number? Delay time, defaults to 1
 --- @param queue balatro.EventManager.QueueType? Queue type
 function delay(time, queue) end
@@ -111,7 +112,7 @@ function highlight_card(card, percent, dir) end
 function play_area_status_text(text, silent, delay) end
 
 --- Level up poker hand with animation
---- @param card? balatro.Moveable|balatro.Tag Planet card
+--- @param card? balatro.Moveable|balatro.Tag Planet card to cause juice up effect
 --- @param hand PokerHand Poker hand to level up
 --- @param instant boolean? Instantly levels up poker hand
 --- @param amount number? How much level up, defaults to 1
