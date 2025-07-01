@@ -44,4 +44,4 @@ local x = {}
 --- @return PokerHandRoyal|'NULL' displayHand Display hand. May be different from given string (e.g. Royal Flush)
 function x.get_poker_hand_info(cards) end
 
---- @alias balatro.PokerHandsEvalInfo table<PokerHand, balatro.Card[]> | { top: balatro.Card[] }
+--- @alias balatro.PokerHandsEvalInfo table<PokerHand, balatro.Card[][]> | { top: balatro.Card[][] }

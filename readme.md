@@ -5,7 +5,6 @@ Incomplete lua language server typing for Balatro
 - Add & improve typing descriptions for:
     - [`localize`](functions/misc_functions.lua#L448)
     - [`Game`](game)
-    - [functions/state_events.lua](functions/state_events.lua)
     - [functions/UI_definitions.lua](functions/UI_definitions.lua)
     - [`Card_Character`](card_character.lua)
 
