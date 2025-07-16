@@ -78,14 +78,6 @@ function SWAP(t, i, j) end
 function pseudoshuffle(list, seed) end
 
 --- Generates random starting seed string with length 8.
---- The random seed generated is \
---- `f() = G.CONTROLLER.cursor_hover.T.x * 0.33411983 + G.CONTROLLER.cursor_hover.T.y * 0.874146 + 0.412311010 * G.CONTROLLER.cursor_hover.time`.
----
---- For the gold stake run, the generated seed may be different: \
---- If there is a legendary joker that is won at any stake lower than gold,
---- and a legendary joker that is won at gold stake or higher, \
---- then the random seed generated is `extra_num + f()`. \
---- Extra num increments by `0.561892350821` until the first legendary joker found is not win at gold stake.
 --- @return string
 function generate_starting_seed() end
 
@@ -130,7 +122,8 @@ function pseudoseed(key, predict_seed) end
 
 --- Generates a pseudo-random number between min and max.
 --- Uses `math.randomseed(seed)` to set randomness. \
---- This function is designed to return an integer. For floating number between 0 to 1, use `pseudoseed` instead.
+--- If min or max is not specified, returns float between 0 to 1.
+--- Otherwise, returns integer between min (inc) and max (inc)
 --- @param seed string | number Seed to use. If string is passed, it will be converted to number through `pseudoseed`.
 --- @param min number? Inclusive
 --- @param max number? Inclusive

@@ -370,9 +370,9 @@ Card = ICard
 --- Triggered after evaluation.
 --- `cardarea` is `G.jokers`
 --- @field after? boolean
---- Triggered when the joker itself is being evaluated,
+--- Triggered when the joker / consumable itself is being evaluated,
 --- e.g. Observatory voucher + planet cards.
---- `cardarea` is `G.jokers`
+--- `cardarea` is `G.jokers`, however evaluated card may be in `G.jokers` / `G.consumeables`
 --- @field joker_main? boolean
 --- Triggered at the end of round.
 --- May include `other_card`. `cardarea` is `G.hand`

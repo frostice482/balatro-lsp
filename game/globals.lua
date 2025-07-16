@@ -105,7 +105,7 @@ VERSION = ""
 --- @field CARDAREA balatro.CardArea[]
 --- @field ALERT balatro.Node[] Unused
 
---- @alias balatro.Global.Instances.InstanceType 'NODE' | 'MOVEABLE' | 'SPRITE' | 'UIBOX' | 'POPUP' | 'CARD' | 'CARDAREA' | 'ALERT'
+--- @alias balatro.Global.Instances.InstanceType 'NODE' | 'MOVEABLE' | 'SPRITE' | 'UIBOX' | 'POPUP' | 'CARD' | 'CARDAREA' | 'ALERT' | 'POPUP'
 
 --- @class balatro.Atlas
 --- @field name string
