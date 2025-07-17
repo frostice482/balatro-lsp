@@ -1,0 +1,20 @@
+-- to make most of this lsp to be compatible with smods' lsp
+
+--- @class Object: balatro.Object
+--- @class Node: balatro.Node
+--- @class Event: balatro.Event
+--- @class EventManager: balatro.EventManager
+--- @class Back: balatro.Back
+--- @class Tag: balatro.Tag
+--- @class Game: balatro.Game
+--- @class Moveable: balatro.Moveable
+--- @class UIBox: balatro.UIBox
+--- @class UIElement: balatro.UIElement
+--- @class DynaText: balatro.DynaText
+--- @class Particles: balatro.Particles
+--- @class Sprite: balatro.Sprite
+--- @class AnimatedSprite: balatro.AnimatedSprite
+--- @class Blind: balatro.Blind
+--- @class Card: balatro.Card
+--- @class Card_Character: balatro.CardCharacter
+--- @class CardArea: balatro.CardArea
