@@ -3,7 +3,7 @@
 --- @class balatro.EventManager: balatro.Object
 --- Queue list
 --- @field queues balatro.EventManager.Queues
---- Current event time. This may deviate from `G.TIMERS`,
+--- Current event time.
 --- Updated by `update()`.
 --- @field queue_timer number
 --- Update frequency. Defaults to `1/60`.
@@ -15,7 +15,7 @@ local IEventManager = {}
 
 --- Adds an event to EventManager
 --- @param event balatro.Event Event to add
---- @param queue? balatro.EventManager.QueueType Where to add the event. Defaults to `base``
+--- @param queue? balatro.EventManager.QueueType Where to add the event. Defaults to `base`
 --- @param front? boolean Adds the event in front of the queue
 function IEventManager:add_event(event, queue, front) end
 

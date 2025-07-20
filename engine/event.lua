@@ -5,7 +5,7 @@
 --- - `immediate` Executes handler immediately
 --- - `before` Executes handler immediately, but only after some delay the event is fully marked as completed
 --- - `afterward` Executes handler after specified delay
---- - `confition` Same as immediate, but only used when default handler is used
+--- - `condition` Same as immediate, but only used when default handler is used
 --- - `ease` Eases value and modifies value in table.
 ---   Function is called back with eased value during that time.
 ---   Handler return value determines the value to set on the table.
@@ -55,14 +55,14 @@ Event = function() end
 --- - `immediate` Executes handler immediately
 --- - `before` Executes handler immediately, but only after some delay the event is fully marked as completed
 --- - `afterward` Executes handler after specified delay
---- - `confition` Same as immediate, but only used when default handler is used
+--- - `condition` Same as immediate, but only used when default handler is used
 --- - `ease` Eases value and modifies value in table.
 ---   Function is called back with eased value during that time.
 ---   Handler return value determines the value to set on the table.
 ---
---- Detault: `immediate`
+--- Default: `immediate`
 --- @field trigger balatro.Event.TriggerType?
---- Prevents subsequent events  in queues from being handled.
+--- Prevents subsequent events in queues from being handled.
 --- Default: `true`
 --- @field blocking boolean?
 --- Allows this event to be blocked from being handled.
@@ -91,22 +91,18 @@ Event = function() end
 --- @field pause_force? boolean
 --- Default: `TOTAL` if unpaused, `REAL` if paused
 --- @field timer balatro.TimerType?
---- Only for trigger == "ease" or "condition"
+--- Only for trigger is `ease` or "condition"
 --- @field ref_table table?
---- Only for trigger == "ease" or "condition"
+--- Only for trigger is `ease` or "condition"
 --- @field ref_value any?
---- Only for trigger == "ease". Default: `lerp`
+--- Only for trigger is `ease`. Default: `lerp`
 --- @field ease balatro.Event.EaseType?
---- Only for trigger == "ease"
+--- Only for trigger is `ease`
 --- @field ease_to number?
---- Only for trigger == "condition"
+--- Only for trigger is `condition`
 --- @field stop_val any?
 
 --- @class balatro.Event.Ease
---- Easing type
---- - `lerp` x
---- - `quad` `x^2`
---- - `elastic` `-(2 ^ (10 * x - 10)) * sin((x * 10 - 10.75) * 2*pi/3)`
 --- @field type balatro.Event.EaseType
 --- @field ref_table table
 --- @field ref_value any
@@ -125,12 +121,12 @@ Event = function() end
 --- This behaves the same as having everything set to `false`.
 --- @field pause_skip boolean
 --- Blocks rest of the events, preventing them from being handled,
---- unless blockable is false.
+--- unless `blockable` is false.
 --- @field blocking boolean
---- Marks this event as completed amd removed this event from list.
+--- Marks this event as completed and removed this event from list.
 --- Requires `time_done` to be also true.
 --- @field completed boolean
---- Marks this event as done amd removed this event from list.
+--- Marks this event as done and removed this event from list.
 --- Requires `completed` to be also true.
 --- @field time_done boolean
 

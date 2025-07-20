@@ -22,7 +22,7 @@ function ICardArea:emplace(card, location, stay_flipped) end
 
 --- Removes a card from this card area
 --- @param card? balatro.Card Card to remove. If unspecified, removes last card if `type` is `discard` or `deck`, or removes first otherwise.
---- @param discarded_only? boolean Removes only discarded card from curreny cards
+--- @param discarded_only? boolean Removes only discarded card from current cards
 --- @return balatro.Card?
 function ICardArea:remove_card(card, discarded_only) end
 
@@ -119,7 +119,7 @@ CardArea = ICardArea
 --- | "hand" Playing cards, slightly arced to up
 --- | "joker" Joker cards
 --- | "consumeable" Consumable cards, wavy
---- | "shop" Shop cards, rotates less aggresively
+--- | "shop" Shop cards, rotates less aggressively
 --- | "play" Same as "shop"
 --- | "title_2" Same as "joker"
 

@@ -1,6 +1,6 @@
 --- @meta
 
---- Node represent any game object that needs to have some transform available in the game itself. \
+--- Node represents any game object that needs to have some transform available in the game itself. \
 --- Everything that you see in the game is a Node, and some invisible things like the G.ROOM are also represented here.
 --- @class balatro.Node: balatro.Object
 ---
@@ -101,7 +101,7 @@ function INode:set_container(container) end
 --- translates this node according to the transform of the container node
 function INode:translate_container() end
 
---- When this Node needs to be deleted, removes self from any tables it may have been added to to destroy any weak references.
+--- When this Node needs to be deleted, removes self from any tables it may have been added to destroy any weak references.
 --- Also calls the remove method of all children to have them do the same
 function INode:remove() end
 

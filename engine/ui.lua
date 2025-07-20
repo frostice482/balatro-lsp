@@ -25,7 +25,7 @@ local IUIBox = {}
 --ex - `{ align = 'cm', offset = {x = 1, y = 1}, parent_rect = A, attach_rect = B, can_collide = true }`
 function IUIBox:init(args) end
 
---- Gets an element that matches config.id for given id.
+--- Gets an element that matches `config.id` for given `id`.
 --- @param id? any
 --- @param node? balatro.UIElement
 --- @return balatro.UIElement
@@ -39,12 +39,12 @@ function IUIBox:get_UIE_by_ID(id, node) end
 --- @return number, number
 function IUIBox:calculate_xywh(node, _T, recalculate, _scale) end
 
---- Removes nodes that matches config.group for given group.
+--- Removes nodes that match `config.group` for given group.
 --- @param node? balatro.UIElement
 --- @param group? any
 function IUIBox:remove_group(node, group) end
 
---- Gets nodes that matches config.group for given group.
+--- Gets nodes that match `config.group` for given group.
 --- @param node? balatro.UIElement
 --- @param group? any
 --- @param ingroup? balatro.UIElement[]
@@ -186,7 +186,7 @@ UIElement = IUIElement
 --- @field config? balatro.UIElement.Config
 
 --- @class balatro.UIElement.Config: balatro.Node.Config
---- UIElement identifier, to be used in `get_UIE_by_ID. \
+--- `UIElement` identifier, to be used in ``get_UIE_by_ID`. \
 --- Supported for all types.
 --- @field id? any
 ---
@@ -213,7 +213,7 @@ UIElement = IUIElement
 --- Element alignment. \
 --- Supported for all types.
 --- @field align balatro.Moveable.AlignmentType?
---- If true, sets this element as a midpoint for center alignment for UIBox.
+--- If true, sets this element as a midpoint for center alignment for `UIBox`.
 --- See Moveable's Mid for more info. \
 --- Supported for all types.
 --- @field mid? boolean
@@ -235,7 +235,7 @@ UIElement = IUIElement
 --- Supported for all types.
 --- @field draw_after? boolean
 ---
---- Creates emboess effect. This will create a solid shadow effetc with darker color from given `colour`. \
+--- Creates emboss effect. This will create a solid shadow effect with darker color from given `colour`. \
 --- **Supported: Box, Row, Column, Root**
 --- @field emboss? number
 --- Background / text color to use. \
@@ -261,7 +261,7 @@ UIElement = IUIElement
 --- Must be used altogether with `ref_value`.
 --- - For `T`, `text` is set.
 --- - For `O`, `object` is set.
---- - If `progress_bar` is used, it it used as a percentage.
+--- - If `progress_bar` is used, it is used as a percentage.
 ---
 --- Supported for all types.
 --- @field ref_table? table
@@ -270,12 +270,13 @@ UIElement = IUIElement
 --- @field ref_value? any
 ---
 --- Determines if corner is rounded. \
+--- This is mostly referenced as a number in vanilla UI definitions, however the code only checks for boolean.
 --- **Supported: Box, Row, Column, Root**
---- @field r? boolean
+--- @field r? boolean | number
 --- ???
 --- Supported for all types.
 --- @field ext_up? number
---- Sets rouneded corner radius scaling.
+--- Sets rounded corner radius scaling.
 --- Defaults:
 --- - W and H* > 3.5: 0.8
 --- - W and H* > 3: 0.6
@@ -285,7 +286,7 @@ UIElement = IUIElement
 --- @field res? number
 ---
 --- Sets group key for this element. \
---- Grouping allows definining some choice elements that has same group ID. \
+--- Grouping allows defining some choice elements that has same group ID. \
 --- Grouping also allows removing elements in group. \
 --- Supported for all types.
 --- @field group? any
@@ -293,12 +294,12 @@ UIElement = IUIElement
 --- If `true`, must also include `group`. \
 --- Supported for all types.
 --- @field choice? boolean
---- True if this element is chosen among same `groups` from element's UIBox.
---- This is set automatically by UIElement when clicked, only when `choice` is true. \
+--- True if this element is chosen among same `groups` from element's `UIBox1.
+--- This is set automatically by `UIElement` when clicked, only when `choice` is true. \
 --- Supported for all types.
 --- @field chosen? boolean | 'vert'
 ---
---- Function name to be called everytime `update` is called.
+--- Function name to be called every time `update` is called.
 --- This should be a valid key from `G.FUNCS`.
 --- Called function will receive single argument `UIElement`, which represents current element. \
 --- Supported for all types.
@@ -342,7 +343,7 @@ UIElement = IUIElement
 --- Supported for all types.
 --- @field tooltip? balatro.CreateTooltipParam
 --- Createa a tooltip when hovered.
---- Automatically sets popup's Y position at the bottom of the element if at the top hald,
+--- Automatically sets popup's Y position at the bottom of the element if at the top half,
 --- or at the top of the element if at the bottom half. \
 --- Supported for all types.
 --- @field on_demand_tooltip? balatro.CreateTooltipParam

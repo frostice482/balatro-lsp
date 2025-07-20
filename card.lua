@@ -19,10 +19,10 @@
 --- @field sell_cost number Dollars earned from selling this card
 --- @field sell_cost_label number | string Undocumented
 --- @field unique_val number Unique value
---- @field edition? balatro.Card.Edition Edtition info
+--- @field edition? balatro.Card.Edition Edition info
 --- @field facing 'front' | 'back' Facing direction
---- @field sprite_facing 'front' | 'back' Sprite facing sirection
---- @field discard_pos Position | { r: number } Discad position
+--- @field sprite_facing 'front' | 'back' Sprite facing direction
+--- @field discard_pos Position | { r: number } Discard position
 --- @field flipping nil | 'f2b' | 'b2f' Undocumented
 --- @field area? balatro.CardArea The area this card is in
 --- @field parent? balatro.CardArea Same as `area`
@@ -37,7 +37,7 @@
 --- @field dissolve_colours? ColorHex[] Dissolve colors
 --- @field base balatro.Card.Base Base card info, containing nominal values, rank, and suit
 --- @field label string Undocumented
---- @field mouse_damping? number Damoing effect when hovered. Lower than 1 = more aggresive
+--- @field mouse_damping? number Damoing effect when hovered. Lower than 1 = more aggressive
 --- @field pinned? boolean Pins this joker to left
 --- @field seal? Seal Card seal
 --- @field sticker_run? Sticker | "NONE" Highest sticker run for this joker
@@ -192,7 +192,7 @@ function ICard:use_consumeable(area, copier) end
 function ICard:can_use_consumeable(any_state, skip_check) end
 
 --- Checks if the card can be used
---- @return boolean|nil check True if can't be used
+--- @return boolean|nil check True if the card can't be used
 function ICard:check_use() end
 
 --- Sells this card
@@ -249,11 +249,12 @@ function ICard:calculate_perishable() end
 
 --- Calculates / triggers card effect
 --- @param context balatro.Card.CalculateJokerContext | balatro.EvalCardContext
+--- @return balatro.Card.CalcJokerRet
 function ICard:calculate_joker(context) end
 
 --- Checks if suit is same.
 --- @param suit Suit
---- @param bypass_debuff? boolean Bypasses debugg
+--- @param bypass_debuff? boolean Bypasses debuff
 --- @param flush_calc? boolean Calculates for flush
 function ICard:is_suit(suit, bypass_debuff, flush_calc) end
 
@@ -339,7 +340,7 @@ Card = ICard
 --- Triggered before discard.
 --- Includes `full_hand`
 --- @field pre_discard? boolean
---- Triggered when discard.
+--- Triggered when discarded.
 --- Includes `full_hand` and `other_card`
 --- @field discard? boolean
 --- Triggered before game over occurs. Can be used to cancel game over.
@@ -365,7 +366,7 @@ Card = ICard
 --- @field before? boolean
 --- Triggered when each card is being evaluated.
 --- Includes `other_card`. `cardarea` may be `G.hand` or `G.play`.
---- Can also includes `end_of_round` when triggered at the end of round.
+--- Can also include `end_of_round` when triggered at the end of round.
 --- @field individual? boolean
 --- Triggered after evaluation.
 --- `cardarea` is `G.jokers`

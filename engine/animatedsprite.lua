@@ -1,15 +1,15 @@
 --- @meta
 
---- Sptite, but animated.
+--- Sprite, but animated.
 --- Animation rate is affected by `G.ANIMATION_FPS`.
 ---
 --- @class balatro.AnimatedSprite: balatro.Sprite
---- @field animation balatro.AnimatedSprite.Animation The sprite animation data, containing sprite's positionn, size, and frame count.
+--- @field animation balatro.AnimatedSprite.Animation The sprite animation data, containing sprite's position, size, and frame count.
 --- @field current_animation balatro.AnimatedSprite.CurrentAnimation The current sprite animation data, containing size, frame count, and current frame
 --- @field frame_offset number The horizontal offset in the sprite for current animation frame, defined as `width * frame`.
 --- @field offset_seconds number The time when the animation started.
 --- @field atlas balatro.AnimationAtlas Sprite atlas data.
---- @field float? boolean Creates a floating effect, slightly rotating and offseting the sprite. This is used in Blinds collection.
+--- @field float? boolean Creates a floating effect, slightly rotating and offsetting the sprite. This is used in Blinds collection.
 local IAnimatedSprite = {}
 
 --- @param X number
@@ -27,7 +27,7 @@ function IAnimatedSprite:reset() end
 
 --- Sets sprite position in atlas dimension unit.
 ---
---- Note that X is currently obsolete, and first animation frame will always start at X=0
+--- _X is currently obsolete, and first animation frame will always start at X=0_
 --- @param sprite_pos? Position
 function IAnimatedSprite:set_sprite_pos(sprite_pos) end
 

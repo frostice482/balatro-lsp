@@ -101,7 +101,7 @@ function draw_card(from, to, percent, dir, sort, card, delay, mute, stay_flipped
 --- Highlights a card, while also plays sound
 --- @param card balatro.Card
 --- @param percent number? Volume pitch
---- @param dir 'up' | 'down'? Card direction. Currently only affects pitch percentage
+--- @param dir 'up' | 'down'? Card direction. Currently, only affects pitch percentage
 function highlight_card(card, percent, dir) end
 
 --- Sets status text display in a run.
@@ -227,7 +227,7 @@ function card_eval_status_text(card, eval_type, amt, percent, dir, extra) end
 --- @param config balatro.AddRoundEvalRowParams
 function add_round_eval_row(config) end
 
---- Changes how much cards is available at the shop
+--- Changes how many cards is available at the shop
 --- @param mod number Number of adds to add / delete
 function change_shop_size(mod) end
 
@@ -292,7 +292,7 @@ function unlock_achievement(achievement_name) end
 --- @see balatro.Settings.AchievementEarned
 function notify_alert(_achievement, _type) end
 
---- Increases Steam statistics. Currently only used in demo play.
+--- Increases Steam statistics. Currently, only used in demo play.
 --- @param stat_name string
 function inc_steam_stat(stat_name) end
 
@@ -349,28 +349,6 @@ function get_pack(_key, _type) end
 --- @param _append string? Seed to append to `pseudorandom` function.
 --- @return string[] keys Pool keys, may contain `UNAVAILABLE`
 --- @return string poolKey Pool key
----
---- Type info:
---- - `Enhanced`: Returns all keys from enhanced
---- - `Tag`: Some tag is excluded until related item is discovered and an ante is reached, e.g.
----     Rare tag requires Blueprint joker discovered,
----     Negative tag available at ante 2 or higher
---- - `Voucher`: Locked, currently available, used vouchers are not included
---- - `Planet`: Unplayed hidden poker hands are not included (Flush house, Flush five, Five of a Kind)
---- - `Spectral`: Block Hole and The Soul is always excluded
---- - Anything else (also applies to planet):
----     - Does not include if repeated occurence unless Showman joker is present
----     - Does not include if locked unless legendary is forcibly set
----     - Does not include if gated behind an enhanced card and playing card does not include that card
----     - Some items require pool flags to be set, e.g. Gros Michel/Cavendish (Banana)
----
---- Default pool if pool size is 0:
---- - `Tarot`: Strength (Increases rank of up to 2 cards by 1)
---- - `Planet`: Pluto (+High card)
---- - `Spectral`: Incantation (destroy 1 random, add 4 random numbered card)
---- - `Joker`: Joker (+4 mult)
---- - `Voucher`: Blank
---- - `Tag`: Handy ($1 / hand played)
 function get_current_pool(_type, _rarity, _legendary, _append) end
 
 --- Gets next edition.
@@ -387,7 +365,7 @@ function get_current_pool(_type, _rarity, _legendary, _append) end
 --- 4. Foil: `R < 4% * M` (50% on guarantee)
 ---
 --- `R` is random. `M` is `G.GAME.edition_rate * mod`. \
---- `G.GAME.edition_rate` can be increassed ingame by using Home and Glow Up voucher.
+--- `G.GAME.edition_rate` can be increased in game by using Home and Glow Up voucher.
 function poll_edition(key, mod, no_neg, guaranteed) end
 
 --- Creates a playing card.
@@ -448,15 +426,15 @@ function reset_ancient_card() end
 --- `This Joker gains +3 Chips per discarded [suit] card, suit changes every round (Currently +0 Chips)`
 function reset_castle_card() end
 
---- Resets blinds states `G.GAME.round_resets.blind_states`.
+--- Resets blind states `G.GAME.round_resets.blind_states`.
 --- Used when a boss is defeated. or when a new run is started.
 function reset_blinds() end
 
 --- Gets new boss.
---- - If prescribed bosses existss in the ante, that boss is used.
+--- - If prescribed bosses exists in the ante, that boss is used.
 --- - If `FORCE_BOSS` exists, that boss is used.
 --- - Showdown bosses can only appear every winning antes after ante 1.
---- - All bosses will have equal chance of occuring
+--- - All bosses will have equal chance of occurring
 --- @return balatro.Item.Blind
 function get_new_boss() end
 

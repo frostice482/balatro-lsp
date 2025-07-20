@@ -10,7 +10,7 @@
 --- The larger, the smaller the sprite becomes.
 --- @field scale_mag number
 --- Sprite position, in atlas dimension unit.
---- If atlas dimension is (10 x 15) and pos is (1,2) then the QUad position will be (10, 30)
+--- If atlas dimension is (10 x 15) and pos is (1,2) then the Quad position will be (10, 30)
 --- @field sprite_pos balatro.Sprite.SpritePos
 --- Used for comparison when drawing if the position differs from `sprite_pos`.
 --- @field sprite_pos_copy Position

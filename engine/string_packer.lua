@@ -11,7 +11,7 @@ function STR_PACK(data, recursive) end
 --- @return table
 function STR_UNPACK(str) end
 
---- Gets deflare-compressed file data. Returns nil if decompress failed
+--- Gets deflate-compressed file data. Returns nil if decompress failed
 --- @param file string
 --- @return string | nil
 function get_compressed(file) end

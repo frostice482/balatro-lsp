@@ -39,7 +39,7 @@ local IBlind = {}
 --- @param color? ColorHex
 function IBlind:change_colour(color) end
 
---- Sets locatization texts for `loc_name`, `loc_debuff_text`, `loc_debuff_lines
+--- Sets locatization texts for `loc_name`, `loc_debuff_text`, `loc_debuff_lines`
 function IBlind:set_text() end
 
 --- @param blind? balatro.Item.Blind
@@ -93,7 +93,7 @@ function IBlind:debuff_hand(cards, hand, handname, check) end
 --- Triggers effect when a card is drawn to hand
 function IBlind:drawn_to_hand() end
 
---- Checks whether a card should be stay flipped
+--- Checks whether a card should be stayed flipped
 --- @param area balatro.CardArea This should be `G.hand`, otherwise nil is always returned
 --- @param card balatro.Card
 --- @return boolean|nil

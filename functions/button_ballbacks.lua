@@ -123,17 +123,17 @@
 --- Helper function to re-add the resolution cycle UIE with updated data
 --- @field change_window_cycle_UI fun()
 --- Changes the speed that the game runs at, does not affect all timers, just G.TIMERS.TOTAL
---- @field change_gamespeed fun(args: {cycle_config: table, to_val: value})
+--- @field change_gamespeed fun(args: {cycle_config: table, to_val: any})
 --- Changes the relative position of play and discard buttons
---- @field change_play_discard_position fun(args: {cycle_config: table, to_key: value})
+--- @field change_play_discard_position fun(args: {cycle_config: table, to_key: any})
 --- Changes the Shadow setting
---- @field change_shadows fun(args: {cycle_config: table, to_val: value})
+--- @field change_shadows fun(args: {cycle_config: table, to_val: any})
 --- Changes the Pixel smoothing, all sprites need to be realoaded when this changes
---- @field change_pixel_smoothing fun(args: {cycle_config: table, to_key: key})
+--- @field change_pixel_smoothing fun(args: {cycle_config: table, to_key: any})
 --- Changes the Bloom amount for the CRT effect, number of samples to take for bloom
---- @field change_crt_bloom fun(args: {cycle_config: table, to_key: key})
+--- @field change_crt_bloom fun(args: {cycle_config: table, to_key: any})
 --- Changes collab
---- @field change_collab fun(args: {cycle_config: table, to_key: key})
+--- @field change_collab fun(args: {cycle_config: table, to_key: any})
 --- Passes a keyboard input to the controller when a key UI button is pressed
 --- @field key_button fun(e)
 --- Modifies the text input to show the current text value being modified. Shows the prompt text if\

@@ -122,7 +122,7 @@ function pseudoseed(key, predict_seed) end
 
 --- Generates a pseudo-random number between min and max.
 --- Uses `math.randomseed(seed)` to set randomness. \
---- If min or max is not specified, returns float between 0 to 1.
+--- If min or max is not specified, returns float between 0 and 1.
 --- Otherwise, returns integer between min (inc) and max (inc)
 --- @param seed string | number Seed to use. If string is passed, it will be converted to number through `pseudoseed`.
 --- @param min number? Inclusive
@@ -142,8 +142,8 @@ function tprint(tbl, indent) end
 --- @return boolean
 function sortingFunction(e1, e2) end
 
---- Converts hexadecimal string to number
---- @param hex string Hexadecimal string, in form of (rrggbbaa). Can contain only (rrggbb).
+--- Converts uppercase hexadecimal string to number, e.g. `F1F1F1`
+--- @param hex string Hexadecimal string, in form of `rrggbbaa`. Can also be `rrggbb`.
 --- @return ColorHex
 function HEX(hex) end
 
@@ -158,13 +158,13 @@ function get_blind_main_colour(blind) end
 function evaluate_poker_hand(hand) end
 
 --- Gets flush hand from given hand.
---- Hand size myst be at most 5, and atleast 5 (or 4 with four fingers)
+--- Hand size myst be at most 5, and at least 5 (or 4 with four fingers)
 --- @param hand balatro.Card[]
 --- @return balatro.Card[][]. Flush hand
 function get_flush(hand) end
 
 --- Gets straight hand from given hand.
---- Hand size myst be at most 5, and atleast 5 (or 4 with four fingers)
+--- Hand size myst be at most 5, and at least 5 (or 4 with four fingers)
 --- @param hand balatro.Card[]
 --- @return balatro.Card[][]. Straight hand
 function get_straight(hand) end
@@ -193,7 +193,7 @@ function add_to_drawhash(obj) end
 
 --- Mix color between 1 and 2 with specified proportion.
 --- @param C1 ColorHex Color 1
---- @param C2 ColorHex Coloe 2
+--- @param C2 ColorHex Color 2
 --- @param proportionC1 number Number of proportion in C1 (0 for C2, 1 for C1)
 --- @return ColorHex
 function mix_colours(C1, C2, proportionC1) end
@@ -286,13 +286,11 @@ function score_number_scale(scale, amt) end
 function copy_table(O) end
 
 --- Sends score to `HTTP_MANAGER`.\
---- Only effective when `F_HTTP_SCORES`, `SETTINGS.COMP`, and `F_STREAMER_EVENT` evaluates to true.\
---- Also does nothing unless `http_manager.lua` is also implemented, which in normal Balatro distribution it doesn't.
+--- Does nothing in vanilla.
 function send_score(_score) end
 
 --- Sends name to `HTTP_MANAGER`.\
---- Only effective when `F_HTTP_SCORES`, `SETTINGS.COMP`, and `F_STREAMER_EVENT` evaluates to true.\
---- Also does nothing unless `http_manager.lua` is also implemented, which in normal Balatro distribution it doesn't.
+--- Does nothing in vanilla.
 function send_name() end
 
 --- Sets high score for current profile's high score.
@@ -307,7 +305,7 @@ function set_joker_usage() end
 --- Adds joker win antes for current profile from `G.jokers`
 function set_joker_win() end
 
---- Gets highest sticker for which joker wins at.
+--- Gets the highest sticker for which joker wins at.
 --- @param _center balatro.Item.Joker
 --- @param index boolean? If true, returns the stake index (1 = White, 2 = Red, etc.), otherwise returns the stake name
 --- @return string|nil
@@ -326,7 +324,7 @@ function set_deck_win() end
 --- UNDOCUMENTED
 function set_challenge_unlock() end
 
---- Gets number of stakes winned in a deck from current profile
+--- Gets number of stakes won in a deck from current profile
 --- @param _deck_key? string
 --- @return number
 function get_deck_win_stake(_deck_key) end
@@ -347,7 +345,7 @@ function set_consumeable_usage(card) end
 --- @param card balatro.Card
 function set_voucher_usage(card) end
 
---- Adds a poke rhand to hand usage count to current profile
+--- Adds a poker hand to hand usage count to current profile
 --- @param hand PokerHand
 function set_hand_usage(hand) end
 
@@ -366,7 +364,7 @@ function stop_use() end
 --- @param _depth number Delay, possibly in number of event handles
 function dec_stop_use(_depth) end
 
---- Incrementss career stat.
+--- Increments career stat.
 --- Does not work if the game is currently seeded or in challenge.
 --- @param stat balatro.Profile.KnownCareerStat
 --- @param mod number
@@ -387,7 +385,7 @@ function save_run() end
 --- Removes saved run in current profile
 function remove_save() end
 
---- Gets colours from given key
+--- Gets color from given key
 --- @param _c balatro.misc.LocColor.KnownType
 --- @param _default? ColorHex
 --- @return ColorHex
@@ -457,7 +455,7 @@ function get_front_spriteinfo(_front) end
 --- @return ColorHex
 function get_stake_col(_stake) end
 
---- Gets ndex from given challenge id.
+--- Gets index from given challenge id.
 --- Return 0 if not found
 --- @param _id string
 --- @return number
