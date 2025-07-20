@@ -142,7 +142,7 @@ function tprint(tbl, indent) end
 --- @return boolean
 function sortingFunction(e1, e2) end
 
---- Converts uppercase hexadecimal string to number, e.g. `F1F1F1`
+--- Converts hexadecimal string to number, e.g. `F1F1F1`
 --- @param hex string Hexadecimal string, in form of `rrggbbaa`. Can also be `rrggbb`.
 --- @return ColorHex
 function HEX(hex) end
