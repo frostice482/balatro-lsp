@@ -34,7 +34,7 @@
 --- @field pop_cycle? boolean
 local IDynaText = {}
 
---- @param config balatro.DynaText.ConfigAsOptions
+--- @param config balatro.DynaText.Init
 function IDynaText:init(config) end
 
 function IDynaText:update(dt) end
@@ -58,7 +58,7 @@ function IDynaText:pulse(amt) end
 
 function IDynaText:draw() end
 
---- @type balatro.DynaText | fun(config: balatro.DynaText.Config?): balatro.DynaText
+--- @type balatro.DynaText | fun(config: balatro.DynaText.Init): balatro.DynaText
 DynaText = function() end
 
 --- @class balatro.DynaText.String
@@ -123,7 +123,7 @@ DynaText = function() end
 --- @field reset_pop_in? boolean
 
 --- @class balatro.DynaText.Init: balatro.DynaText.Config
---- @field string string | string[] String texts. If array size is more than one, this will cycle through them all.
+--- @field string string | (string|balatro.DynaText.StringEntry)[] String texts. If array size is more than one, this will cycle through them all.
 
 --- @class balatro.Dynatext.Config.Pulse
 --- @field speed number
@@ -132,5 +132,7 @@ DynaText = function() end
 --- @field amount number
 --- @field silent? boolean
 
---- @class balatro.DynaText.ConfigAsOptions: balatro.DynaText.Config
---- @field string? string[] | string
+--- @class balatro.DynaText.StringEntry
+--- @field ref_table? table
+--- @field ref_value? any
+--- @field string? string

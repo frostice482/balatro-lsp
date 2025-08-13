@@ -59,18 +59,20 @@ function ITag:remove() end
 --- @type balatro.Tag | fun(tag: string, forCollection?: boolean, blindType?: boolean): balatro.Tag
 Tag = ITag
 
+--- @alias balatro.Tag.ApplyType
+--- |`eval` useed when cashing out
+--- |`immediate` immediately uses the tag
+--- |`new_blind_choice` used when selecting a new blind choice
+--- |`tag_add` useed when a tag is added, includes `tag`
+--- |`round_start_bonus` used when a new round starts
+--- |`shop_start` used when entering a shop
+--- |`voucher_add` used to add a new voucher when entering a shop
+--- |`store_joker_create` used to add a card when entering a shop
+--- |`store_joker_modify` used to modify a card in the shop, includes `card`
+--- |`shop_final_pass` finalization for the shop
+
 --- @class balatro.Tag.ApplyContext
---- - `eval` useed when cashing out
---- - `immediate` immediately uses the tag
---- - `new_blind_choice` used when selecting a new blind choice
---- - `tag_add` useed when a tag is added, includes `tag`
---- - `round_start_bonus` used when a new round starts
---- - `shop_start` used when entering a shop
---- - `voucher_add` used to add a new voucher when entering a shop
---- - `store_joker_create` used to add a card when entering a shop
---- - `store_joker_modify` used to modify a card in the shop, includes `card`
---- - `shop_final_pass` finalization for the shop
---- @field type 'eval'
+--- @field type balatro.Tag.ApplyType
 --- @field tag? balatro.Tag
 --- @field card? balatro.Card
 local x = {}

@@ -128,18 +128,18 @@ function level_up_hand(card, hand, instant, amount) end
 --- @field modded? boolean
 
 --- @class balatroUpdateHandValsArg
---- @field chips? number | string
---- @field mult? number | string
+--- @field chips? number | string | boolean
+--- @field mult? number | string | boolean
 --- @field handname? string
 --- @field chip_total? number
---- @field level? number | string
+--- @field level? number | string | boolean
 
 --- Updates poker hand text (poker hand name, chips, mults, total chips, hand level)
 --- @param config balatro.UpdateHandConfigArg
 --- @param vals balatroUpdateHandValsArg
 function update_hand_text(config, vals) end
 
---- @class balatro.EvalCardContext
+--- @class balatro.EvalCardContext: balatro.Card.CalculateJokerContext
 --- @field cardarea balatro.CardArea
 --- @field full_hand balatro.Card[]
 --- @field poker_hands balatro.PokerHandsEvalInfo
@@ -163,12 +163,15 @@ local a = {
 --- @field chips? number
 --- @field mult? number
 --- @field x_mult? number
+--- @field dollars? number
 --- @field p_dollars? number
 --- @field h_mult? number
 --- @field h_x_mult? number
 --- @field h_dollars? number
 --- @field jokers? balatro.Card.CalcJokerRet | balatro.Card.CalcEditionRet
 --- @field edition? balatro.Card.CalcEditionRet
+--- @field message? string
+--- @field card? balatro.Card
 
 --- Evaluates a card
 --- @param card balatro.Card
@@ -207,7 +210,7 @@ function set_main_menu_UI() end
 --- @param amt? number
 --- @param percent? number Pitch increase
 --- @param dir? 'down' Negates percent parameter to `1-percent`
---- @param extra? balatro.CardEvalStatusExtra | balatro.CardEvalStatusExtra.Extra
+--- @param extra? table
 function card_eval_status_text(card, eval_type, amt, percent, dir, extra) end
 
 --- @class balatro.AddRoundEvalRowParams

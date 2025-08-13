@@ -79,6 +79,9 @@ function IBlind:press_play() end
 --- @param text string
 --- @param mult number
 --- @param hand_chips number
+--- @return number mult
+--- @return number chips
+--- @return boolean modified
 function IBlind:modify_hand(cards, poker_hands, text, mult, hand_chips) end
 
 --- Checks if played hand is debuffed (not allowed).

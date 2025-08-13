@@ -415,7 +415,7 @@ local x = {
 --- @class balatro.Card.CalcJokerRet.Extra
 --- @field mult_mod? number
 --- @field chip_mod? number
---- @field boolean? number
+--- @field swap? boolean
 --- @field func? fun()
 
 --- @class balatro.Card.CalcSealRet

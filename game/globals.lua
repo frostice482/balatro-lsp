@@ -120,6 +120,8 @@ VERSION = ""
 --- @field UPTIME number
 --- @field BACKGROUND number
 
+--- `TOTAL` may be affected by game speed.
+--- `REAL` is actual time.
 --- @alias balatro.TimerType 'TOTAL' | 'REAL' | 'REAL_SHADER' | 'UPTIME' | 'BACKGROUND'
 
 --- @class balatro.ExpTimes

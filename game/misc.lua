@@ -1,15 +1,16 @@
 --- @class balatro.Game
---- @field consumeables? balatro.CardArea
---- @field deck? balatro.CardArea
---- @field discard? balatro.CardArea
---- @field hand? balatro.CardArea
---- @field jokers? balatro.CardArea
---- @field play? balatro.CardArea
---- @field playing_cards? balatro.CardArea
---- @field shop_vouchers? balatro.CardArea
---- @field shop_booster? balatro.CardArea
---- @field shop_jokers? balatro.CardArea
---- @field pack_cards? balatro.CardArea
+--- @field consumeables? balatro.CardArea Consumables slot
+--- @field deck? balatro.CardArea Stacked cards in deck
+--- @field discard? balatro.CardArea Off-screen discard area
+--- @field hand? balatro.CardArea Cards in current hand
+--- @field jokers? balatro.CardArea Jokers slot
+--- @field play? balatro.CardArea Cards being played
+--- @field playing_cards? balatro.Card[] List of cards in the deck
+--- @field shop_vouchers? balatro.CardArea Vouchers slot within shop
+--- @field shop_booster? balatro.CardArea Boosters slot within shop
+--- @field shop_jokers? balatro.CardArea Jokers slot within shop
+--- @field pack_cards? balatro.CardArea Cards slot when a booster pack is opened
+--- @field title_top? balatro.CardArea Cards shown in the main menu
 ---
 --- @field ACC number
 --- @field ACC_state balatro.Game.StateEnum
@@ -21,9 +22,7 @@
 --- @field FILE_HANDLER balatro.Game.FileHandler
 --- @field FRAMES { DRAW: number, MOVE: number }
 --- @field ID number
---- @field JUDDLE_VIBRATION number
---- @field MAJORS number
---- @field MINORS number
+--- @field JIGGLE_VIBRATION number
 --- @field PREV_GARB number
 --- @field PROFILE_BUTTON balatro.UIBox
 --- @field RESET_JIGGLES boolean
@@ -64,6 +63,8 @@
 --- @field OVERLAY_TUTORIAL? balatro.UIBox
 --- @field NO_MOD_CURSOR_STACK? boolean
 --- @field jimboed? boolean
+---- @field MAJORS number
+---- @field MINORS number
 
 --- @class balatro.Game.DiscoverTallies: { [string]: balatro.Tally }
 --- @field backs balatro.Tally

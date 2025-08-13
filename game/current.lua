@@ -40,7 +40,7 @@
 --- @field perishable_rounds number
 --- @field perscribed_bosses table<number, balatro.Item.Blind>
 --- @field planet_rate number
---- @field playind_card_rate number
+--- @field playing_card_rate number
 --- @field pool_flags table
 --- @field previous_round balatro.Game.Current.PreviousRound
 --- @field probabilities balatro.Game.Current.Probabilities

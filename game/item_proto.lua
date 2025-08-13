@@ -18,21 +18,21 @@
 --- @field pos Position
 
 --- @class balatro.Item.Discoverable: balatro.Item
---- @field discovered boolean
---- @field alerted boolean
+--- @field discovered? boolean
+--- @field alerted? boolean
 
 --- @class balatro.Item.DiscoverableUnlockable: balatro.Item.Discoverable, balatro.Item
---- @field unlocked boolean
+--- @field unlocked? boolean
 
 --- @class balatro.Item.Blind: balatro.Item.Discoverable
---- @field set nil
---- @field defeated boolean
+--- @field set? nil
+--- @field defeated? boolean
 --- @field dollars number
 --- @field mult number
---- @field debuff table
---- @field vars table
---- @field boss MinMax | {showdown: boolean?}
---- @field boss_colour ColorHex
+--- @field debuff? table
+--- @field vars? table
+--- @field boss? MinMax | {showdown: boolean?}
+--- @field boss_colour? ColorHex
 
 --- @class balatro.Item.Tag: balatro.Item.Discoverable
 --- @field set 'Tag'
@@ -47,7 +47,7 @@
 
 --- @class balatro.Item.Stake: balatro.Item
 --- @field set 'Stake'
---- @field unlocked boolean
+--- @field unlocked? boolean
 --- @field stake_level number
 
 --- @class balatro.Item.Card
@@ -55,41 +55,45 @@
 --- @field suit Suit
 --- @field value string
 --- @field pos Position
+--- @field atlas? string
 
 --- @class balatro.Item.Effect
---- @field effect string
+--- @field effect? string
 --- @field config table
 
 --- @class balatro.Item.Buyable: balatro.Item.Effect, balatro.Item.Discoverable
 --- @field cost number
---- @field cost_mult number
+--- @field cost_mult? number
 
 --- @class balatro.Item.Joker: balatro.Item.Buyable
 --- @field set 'Joker'
---- @field unlocked boolean
---- @field blueprint_compat boolean
---- @field perishable_compat boolean
---- @field eternal_compat boolean
+--- @field unlocked? boolean
+--- @field blueprint_compat? boolean
+--- @field perishable_compat? boolean
+--- @field eternal_compat? boolean
 --- @field rarity number
---- @field cost_mult number? Not present for all jokers
 --- @field enhancement_gate? string
 
 --- @class balatro.Item.Consumable: balatro.Item.Buyable
 --- @field consumeable boolean
 
+--- @class balatro.Item.Tarot.Config: table
+--- @field mod_conv? string
+--- @field suit_conv? string
+--- @field max_highlighted? number
+
 --- @class balatro.Item.Tarot: balatro.Item.Consumable
 --- @field set 'Tarot'
---- @field config table | { max_highlighted: number? }
+--- @field config balatro.Item.Tarot.Config
 
 --- @class balatro.Item.Planet: balatro.Item.Consumable
 --- @field set 'Planet'
---- @field freq number
+--- @field freq? number
 --- @field config { hand_type: string, softlock: boolean? }
 
 --- @class balatro.Item.Spectral: balatro.Item.Consumable
 --- @field set 'Spectral'
 --- @field hidden? boolean
---- @field cost_mult nil
 --- @field effect nil
 
 --- @class balatro.Item.Voucher: balatro.Item.DiscoverableUnlockable
@@ -97,33 +101,52 @@
 --- @field available boolean
 --- @field cost number
 --- @field config table
---- @field requires string]
+--- @field requires? string
 --- @field unlock_condition? balatro.Item.UnlockCondition
+
+--- @class balatro.Item.BackConfig: { [string]: any }
+--- @field discards? number
+--- @field hands? number
+--- @field dollars? number
+--- @field extra_discard_bonus? number
+--- @field extra_hand_bonus? number
+--- @field no_interest? boolean
+--- @field joker_slow? number
+--- @field consumables? string[]
+--- @field voucher? string
+--- @field vouchers? string[]
+--- @field consumable_slot? number
+--- @field spectral_rate? number
+--- @field remove_faces? boolean
+--- @field hand_size? number
+--- @field joker_slot? number
+--- @field ante_scaling? number
+--- @field randomize_rank_suit? boolean
 
 --- @class balatro.Item.Back: balatro.Item.DiscoverableUnlockable
 --- @field set 'Back'
---- @field stake number
---- @field config table
+--- @field stake? number
+--- @field config balatro.Item.BackConfig
 --- @field unlock_condition? balatro.Item.UnlockCondition
 --- @field omit boolean? For challenge deck
 
 --- @class balatro.Item.EnhancedCard: balatro.Item, balatro.Item.Effect
 --- @field set 'Enhanced'
---- @field max number
---- @field label string
+--- @field max? number
+--- @field label? string
 
 --- @class balatro.Item.Edition: balatro.Item.DiscoverableUnlockable
 --- @field set 'Edition'
---- @field atlas 'Joker'
+--- @field atlas? string
 --- @field config { extra: number? }
 
 --- @class balatro.Item.Booster: balatro.Item.Discoverable
 --- @field set 'Booster'
---- @field weight number
---- @field kind balatro.Item.BoosterKind
+--- @field weight? number
+--- @field kind? balatro.Item.BoosterKind
 --- @field cost number
---- @field atlas 'Booster'
---- @field config { extra: number, choost: number }
+--- @field atlas string
+--- @field config { extra: number, choose: number }
 
 --- @alias balatro.Item.BoosterKind 'Arcana' | 'Celestial' | 'Spectral' | 'Standard' | 'Buffoon' | string
 
