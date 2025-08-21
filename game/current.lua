@@ -18,6 +18,7 @@
 --- @field current_round balatro.Game.Current.CurrentRound
 --- @field discount_percent number
 --- @field dollars number
+--- @field dollar_buffer? number
 --- @field ecto_minus number
 --- @field edition_rate number
 --- @field first_shop_buffoon boolean

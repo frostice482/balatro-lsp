@@ -133,7 +133,7 @@ VERSION = ""
 --- @field frames number
 
 --- @class balatro.AssetAtlas: balatro.Atlas
---- @field type unknown
+--- @field type? unknown
 
 --- @enum balatro.Game.StateEnum
 local _a = {

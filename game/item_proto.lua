@@ -4,6 +4,8 @@
 --- @field set string
 --- @field order number
 --- @field pos Position
+--- @field skip_pool? boolean
+--- @field omit? boolean
 
 --- @class balatro.Item.Default
 --- @field max number
@@ -20,6 +22,7 @@
 --- @class balatro.Item.Discoverable: balatro.Item
 --- @field discovered? boolean
 --- @field alerted? boolean
+--- @field start_alerted? boolean
 
 --- @class balatro.Item.DiscoverableUnlockable: balatro.Item.Discoverable, balatro.Item
 --- @field unlocked? boolean

@@ -9,7 +9,7 @@
 --- @field P_CARDS balatro.ItemList.Card
 --- @field P_CENTERS balatro.ItemCenters | table
 --- @field P_CENTER_POOLS balatro.CenterPools
---- @field P_JOKER_RARITY_POOLS balatro.Item.Joker[] Pool based on joker's rarity. Size = 4
+--- @field P_JOKER_RARITY_POOLS balatro.Item.Joker[][] Pool based on joker's rarity. Size = 4
 --- @field P_LOCKED any[]
 ---
 --- @field tag_undiscovered { name: string, order: number, config: {type: string}, pos: Position }

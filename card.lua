@@ -392,7 +392,11 @@ Card = ICard
 local x = {
     --- If true, includes `glass_shattered`
     --- @deprecated Use `remove_playing_cards` instead
-    cards_destroyed = nil
+    --- @type boolean?
+    cards_destroyed = nil,
+    --- @type balatro.Card[]?
+    --- @deprecated Use `removed` from `remove_playing_cards` instead
+    glass_shattered = nil
 }
 
 --- @class balatro.Card.CalcJokerRet
@@ -494,7 +498,7 @@ local x = {
 --- @field nine_tally? number
 --- @field stone_tally? number
 --- @field sell_cost_label? string | number
---- @field extra number
+--- @field extra any
 --- @field extra_value number Extra value from selling
 --- @field order? number
 --- @field consumeable? table

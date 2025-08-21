@@ -246,7 +246,7 @@ function update_canvas_juice(dt) end
 --- Can be seen when DNA, Loyalty Card Joker, etc. is active.
 --- The function must return false to stop the juice effect.
 --- @param card balatro.Card
---- @param eval_func fun(): boolean
+--- @param eval_func fun(card: balatro.Card): boolean
 --- @param first? boolean
 --- @param delay? number
 function juice_card_until(card, eval_func, first, delay) end
@@ -333,7 +333,7 @@ function get_next_tag_key(append) end
 --- @param area balatro.CardArea The card area where the card will be added
 --- @param skip_materialize? boolean
 --- @param silent? boolean
---- @param colours? ColorHex
+--- @param colours? ColorHex[]
 --- @return balatro.Card
 --- @see balatro.ItemList.Centers.EnhancedCard
 function create_playing_card(card_init, area, skip_materialize, silent, colours) end
@@ -445,11 +445,30 @@ function get_new_boss() end
 --- @param _c balatro.Center Card center
 function get_type_colour(_c, card) end
 
+--- @alias balatro.CardUI.Type 'Locked' | 'Undiscovered' | 'Default' | 'Enhanced' | 'Booster'
+
+--- @class balatro.CardUI.InfoLine
+--- @field [number] balatro.UIElement.Definition
+--- @field name string
+
+--- @class balatro.CardUI
+--- The card name UI.
+--- This may be other than a table to hide the name, e.g. Stone Card.
+--- @field name true | balatro.UIElement.Definition[]
+--- Main card description UI.
+--- @field main balatro.UIElement.Definition[]
+--- Additional card info (enhancement, edition, seal, rental, perishable, etc.)
+--- @field info balatro.CardUI.InfoLine[]
+--- Unknown use
+--- @field type table
+--- @field card_type balatro.CardUI.Type
+--- @field badges CardBadges[]
+
 --- Creates an interface when the card is hovered over
 --- @param _c balatro.Center Card center
---- @param full_UI_table? table
+--- @param full_UI_table? balatro.CardUI.InfoLine
 --- @param specific_vars? unknown
---- @param card_type? 'Locked' | 'Undiscovered' | 'Default' | 'Enhanced' | 'Booster'
+--- @param card_type? balatro.CardUI.Type
 --- @param badges? CardBadges[]
 --- @param hide_desc boolean? Replaces card description with undiscovered
 --- @param main_start? unknown

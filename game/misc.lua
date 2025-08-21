@@ -63,6 +63,7 @@
 --- @field OVERLAY_TUTORIAL? balatro.UIBox
 --- @field NO_MOD_CURSOR_STACK? boolean
 --- @field jimboed? boolean
+--- @field RESET_BLIND_STATES? boolean
 ---- @field MAJORS number
 ---- @field MINORS number
 
