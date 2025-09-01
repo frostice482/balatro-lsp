@@ -95,7 +95,7 @@ UIBox = function() end
 --- @field UIT balatro.UITypeEnum
 --- @field config balatro.UIElement.Config
 --- @field content_dimensions WidthHeight
---- @field children balatro.Node[] | balatro.UIElement[]
+--- @field children balatro.Node[] | balatro.UIElement[] | table<string, balatro.Node | balatro.UIElement>
 --- @field button_clicked? boolean
 --- @field last_clicked? number
 --- @field disable_button? boolean
@@ -174,7 +174,7 @@ function IUIElement:release(other) end
 --- @type balatro.UIElement | fun(parent, new_UIBox, new_UIT, config): balatro.UIElement
 UIElement = IUIElement
 
---- @class balatro.UIBox.Config: balatro.Moveable.AlignmentArg
+--- @class balatro.UIBox.Config: balatro.Moveable.AlignmentParam
 --- @field parent? balatro.Moveable
 --- @field align balatro.Moveable.AlignmentType? Alias for type
 --- @field can_collide  boolean?
@@ -341,19 +341,19 @@ UIElement = IUIElement
 ---
 --- Createa a tooltip when hovered. \
 --- Supported for all types.
---- @field tooltip? balatro.CreateTooltipParam
+--- @field tooltip? balatro.UI.TooltipParam
 --- Createa a tooltip when hovered.
 --- Automatically sets popup's Y position at the bottom of the element if at the top half,
 --- or at the top of the element if at the bottom half. \
 --- Supported for all types.
---- @field on_demand_tooltip? balatro.CreateTooltipParam
+--- @field on_demand_tooltip? balatro.UI.TooltipParam
 --- Creates a detailed tooltip from given Center when hovered. \
 --- Supported for all types.
 --- @field detailed_tooltip? balatro.Center
 ---
 --- Contains information on how the element should be focused when navigating via gamepad. \
 --- Supported for all types.
---- @field focus_args?  balatro.UIElement.FocusArgData
+--- @field focus_args?  balatro.UIElement.FocusParamData
 --- Allows this element to be focused.
 --- @field force_focus? boolean
 --- Allows collision. Also makes `object` collidable if specified.\
@@ -391,7 +391,7 @@ UIElement = IUIElement
 --- Role to set on given `object`.
 --- Defaults to `{role_type = 'Minor', major = self, xy_bond = 'Strong', wh_bond = 'Weak', scale_bond = 'Weak'}`. \
 --- **Supported: Object**
---- @field role? balatro.Moveable.RoleArg
+--- @field role? balatro.Moveable.RoleParam
 --- Also highlights the object if current element is focused. \
 --- **Supported: Object**
 --- @field focus_with_object? boolean
@@ -423,7 +423,7 @@ UIElement = IUIElement
 --- @field ref_value? any
 --- @field max number Maximum value
 
---- @class balatro.UIElement.FocusArgData
+--- @class balatro.UIElement.FocusParamData
 --- Gamepad button to add to registry.
 --- Setting this will call `Controller:add_to_registry`
 --- @field button? love.GamepadButton

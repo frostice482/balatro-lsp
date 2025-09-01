@@ -426,17 +426,18 @@ function card_from_control(control) end
 --- @return balatro.Loc.ParsedEntry
 function loc_parse_string(line) end
 
---- @alias balatro.LocalizeTypeArg "other" | "descriptions" | "tutorial" | "quips" | "raw_descriptions" | "text" | "variable" | "name_text" | "name" | "unlocks"
+--- @alias balatro.LocalizeTypeParam "other" | "descriptions" | "tutorial" | "quips" | "raw_descriptions" | "text" | "variable" | "name_text" | "name" | "unlocks"
 
---- @class balatro.LocalizeArg
---- @field type balatro.LocalizeTypeArg
+--- @class balatro.LocalizeParam
+--- @field type balatro.LocalizeTypeParam
 --- @field key string
 --- @field set? string
 --- @field vars? any[]
 
 --- UNDOCUMENTED
---- @param args balatro.LocalizeArg | string
+--- @param args balatro.LocalizeParam | string
 --- @param misc_cat? string
+--- @return any
 function localize(args, misc_cat) end
 
 --- Gets stake sprite

@@ -23,6 +23,24 @@
 --- @field zh_CN balatro.Language
 --- @field zh_TW balatro.Language
 
+--- @alias balatro.KnownLang
+--- | 'de'
+--- | 'en'
+--- | 'es_419'
+--- | 'es_ES'
+--- | 'fr'
+--- | 'id'
+--- | 'it'
+--- | 'ja'
+--- | 'ko'
+--- | 'nl'
+--- | 'pl'
+--- | 'pt_BR'
+--- | 'ru'
+--- | 'zh_CN'
+--- | 'zh_TW'
+--- | string
+
 --- @class balatro.Language
 --- Note that in the base game font is the index position for FONTS, but later it is indexed then changed to love.Font
 --- @field font balatro.Font

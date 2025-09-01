@@ -118,7 +118,7 @@ function play_area_status_text(text, silent, delay) end
 --- @param amount number? How much level up, defaults to 1
 function level_up_hand(card, hand, instant, amount) end
 
---- @class balatro.UpdateHandConfigArg
+--- @class balatro.UpdateHandConfigParam
 --- @field delay? number
 --- @field immediate? boolean
 --- @field nopulse? boolean
@@ -135,7 +135,7 @@ function level_up_hand(card, hand, instant, amount) end
 --- @field level? number | string | boolean
 
 --- Updates poker hand text (poker hand name, chips, mults, total chips, hand level)
---- @param config balatro.UpdateHandConfigArg
+--- @param config balatro.UpdateHandConfigParam
 --- @param vals balatroUpdateHandValsArg
 function update_hand_text(config, vals) end
 
@@ -466,13 +466,14 @@ function get_type_colour(_c, card) end
 
 --- Creates an interface when the card is hovered over
 --- @param _c balatro.Center Card center
---- @param full_UI_table? balatro.CardUI.InfoLine
+--- @param full_UI_table? balatro.CardUI
 --- @param specific_vars? unknown
 --- @param card_type? balatro.CardUI.Type
 --- @param badges? CardBadges[]
 --- @param hide_desc boolean? Replaces card description with undiscovered
 --- @param main_start? unknown
 --- @param main_end? unknown
+--- @return balatro.CardUI
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end) end
 
 --- @alias CardBadges 'foil' | 'holographic'  | 'polychrome'  | 'negative'  | 'negative_consumable'  | 'gold_seal'  | 'blue_seal'  | 'red_seal'  | 'purple_seal'  | 'eternal'  | 'perishable'  | 'rental'  | 'pinned_left'

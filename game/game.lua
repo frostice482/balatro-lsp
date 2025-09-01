@@ -96,14 +96,14 @@ function IGame:demo_cta() end
 --- @return balatro.Game.Current
 function IGame:init_game_object() end
 
---- @class balatro.Game.StartRunArg
+--- @class balatro.Game.StartRunParam
 --- @field stake? number
 --- @field savetext? balatro.Game.Current
 --- @field challenge? balatro.Challenge
 --- @field seed string?
 
 --- Starts a new / saved run
---- @param args? balatro.Game.StartRunArg
+--- @param args? balatro.Game.StartRunParam
 function IGame:start_run(args) end
 
 function IGame:update(dt) end

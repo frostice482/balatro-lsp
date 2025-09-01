@@ -19,7 +19,7 @@ function IBack:get_name() end
 --- @param ui_scale? number
 --- @param min_dims? number
 --- @param challenge? string
---- @return balatro.UIElement.Config
+--- @return balatro.UIElement.Definition
 function IBack:generate_UI(other, ui_scale, min_dims, challenge) end
 
 --- @param back balatro.Item.Back

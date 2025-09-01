@@ -83,7 +83,7 @@
 
 --- @class balatro.Game.FileHandler
 --- @field force boolean
---- @field last_sent_pause balatro.Moveable.AlignmentArg
+--- @field last_sent_pause balatro.Moveable.AlignmentParam
 --- @field last_sent_stage number
 --- @field last_sent_time number
 --- @field update_queued boolean

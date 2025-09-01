@@ -72,7 +72,7 @@ function IMoveable:init(X,Y,W,H) end
 function IMoveable:draw() end
 
 ---Sets the alignment of moveable using roles
----@param args balatro.Moveable.AlignmentArg?
+---@param args balatro.Moveable.AlignmentParam?
 --- - `major` The moveable this moveable will attach to
 --- - `bond` The bond type, either 'Strong' or 'Weak'. Strong instantly adjusts VT, Weak manually calculates VT changes
 --- - `offset` {x , y} offset from the alignment
@@ -137,7 +137,7 @@ function IMoveable:move_r(dt, vel) end
 
 function IMoveable:calculate_parrallax() end
 
---- @param args balatro.Moveable.RoleArg
+--- @param args balatro.Moveable.RoleParam
 function IMoveable:set_role(args) end
 
 --- @return balatro.Node.Frame.Major
@@ -171,7 +171,7 @@ Moveable = function() end
 --- @field lr_clamp? boolean
 --- @field type_list? table<'a' | 'm' | 'c' | 'b' | 't' | 'l' | 'r' | 'i'>
 
---- @class balatro.Moveable.AlignmentArg
+--- @class balatro.Moveable.AlignmentParam
 --- @field major? balatro.Moveable
 --- @field offset? Position
 --- @field bond? 'Weak' | 'Strong'
@@ -182,7 +182,7 @@ Moveable = function() end
 --- @field scale_bond? balatro.Moveable.AlignmentType
 --- @field lr_clamp? boolean
 
---- @class balatro.Moveable.RoleArg
+--- @class balatro.Moveable.RoleParam
 --- @field role_type 'Major' | 'Minor'? Major dictates movement, Minor is welded to some major
 --- @field offset Position? Offset from Minor to Major
 --- @field major? balatro.Moveable

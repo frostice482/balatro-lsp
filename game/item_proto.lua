@@ -114,7 +114,6 @@
 --- @field extra_discard_bonus? number
 --- @field extra_hand_bonus? number
 --- @field no_interest? boolean
---- @field joker_slow? number
 --- @field consumables? string[]
 --- @field voucher? string
 --- @field vouchers? string[]

@@ -297,7 +297,7 @@
 --- Cash out button handler when a round has ended
 --- @field cash_out fun(e)
 --- Starts new run
---- @field start_run fun(e, args: balatro.Game.StartRunArg)
+--- @field start_run fun(e, args: balatro.Game.StartRunParam)
 --- Exits from current run to main menu
 --- @field go_to_menu fun()
 --- Demo use.

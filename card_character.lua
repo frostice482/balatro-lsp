@@ -27,7 +27,7 @@ function ICardChar:add_button(button, func, colour, update_func, snap_to, yoff) 
 
 ---@param text_key string
 ---@param align balatro.Moveable.AlignmentType
----@param loc_vars table
+---@param loc_vars? table
 function ICardChar:add_speech_bubble(text_key, align, loc_vars) end
 
 function ICardChar:remove_button() end
@@ -35,7 +35,7 @@ function ICardChar:remove_button() end
 function ICardChar:remove_speech_bubble() end
 
 --- @param n number
---- @param not_first boolean
+--- @param not_first? boolean
 function ICardChar:say_stuff(n, not_first) end
 
 function ICardChar:draw(dt) end
