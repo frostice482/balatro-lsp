@@ -45,9 +45,12 @@ function ITag:load(tag_savetable) end
 --- @param _rot? number
 function ITag:juice_up(_scale, _rot) end
 
+--- @return balatro.UIElement.Definition
+--- @return balatro.Sprite
 function ITag:generate_UI(_size) end
 
 --- @param tag_sprite? balatro.Sprite
+--- @return balatro.Sprite
 function ITag:get_uibox_table(tag_sprite) end
 
 --- Removes the tag from `G.GAME.tags`

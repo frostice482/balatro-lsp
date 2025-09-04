@@ -433,6 +433,7 @@ function loc_parse_string(line) end
 --- @field key string
 --- @field set? string
 --- @field vars? any[]
+--- @field nodes? balatro.UIElement.Definition[][]
 
 --- UNDOCUMENTED
 --- @param args balatro.LocalizeParam | string

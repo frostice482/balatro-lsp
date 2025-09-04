@@ -41,7 +41,9 @@ function ISprite:reset() end
 --- @param sprite_pos? balatro.Sprite.SpritePos
 function ISprite:set_sprite_pos(sprite_pos) end
 
---- Gets pixel position
+--- Gets pixel position.
+--- X, Y is the position in atlas dimension unit.
+--- W, H is the atlas dimension.
 --- @return [number, number, number, number] dim X, Y, W, H
 function ISprite:get_pos_pixel() end
 

@@ -229,6 +229,7 @@ UIElement = IUIElement
 --- Supported for all types.
 --- @field padding? number
 --- Element scaling. \
+--- **Required for text.**
 --- Supported for all types.
 --- @field scale? number
 --- Draws this element only after drawing all the children. \

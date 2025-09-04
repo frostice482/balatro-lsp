@@ -164,7 +164,7 @@
 --- The overlay menu is a full screen menu interface, and is usually called from button presses. The base Overlay menu function here\
 --- creates a global G.OVERLAY_MENU that represents this full screen UIBox. The game may be paused at this time as well\
 --- The generated UIBox is created below the visible screen area and eased up to the center of the screen
---- @field overlay_menu fun()
+--- @field overlay_menu fun(args: { definition: balatro.UIElement.Definition, config?: balatro.UIElement.Config })
 --- Removes the overlay menu if one exists, unpauses the game, and saves the settings to file
 --- @field exit_overlay_menu fun()
 --- Removes overlay menu and immediately generates the next unlock menu if there is one

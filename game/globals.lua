@@ -87,8 +87,8 @@ VERSION = ""
 --- @field ARGS table
 --- @field FUNCS balatro.Global.Functions
 --- @field I balatro.Global.Instances.I
---- @field ANIMATION_ATLAS balatro.AnimationAtlas[]
---- @field ASSET_ATLAS balatro.AssetAtlas[]
+--- @field ANIMATION_ATLAS table<string, balatro.AnimationAtlas>
+--- @field ASSET_ATLAS table<string, balatro.AssetAtlas>
 --- @field MOVEABLES balatro.Moveable[]
 --- @field ANIMATIONS balatro.Sprite[]
 --- @field DRAW_HASH balatro.Node[]
