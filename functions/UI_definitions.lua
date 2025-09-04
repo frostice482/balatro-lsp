@@ -487,7 +487,7 @@ function create_UIBox_main_menu_competittion_name() end
 --- @field snap_back? any
 --- @field back_button? any
 ---
---- @field contents? balatro.UIElement.Definition[][]
+--- @field contents? balatro.UIElement.Definition[]
 --- @field infotip? string[]
 --- @field colour? ColorHex
 --- @field bg_colour? ColorHex
