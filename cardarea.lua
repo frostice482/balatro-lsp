@@ -106,6 +106,7 @@ CardArea = ICardArea
 --- @class balatro.CardArea.Config
 --- @field card_count number Number of cards currently
 --- @field card_limit number Limits number of cards
+--- @field real_card_limit? number
 --- @field highlighted_limit number Limits highlighted cards
 --- @field lr_padding number Undocumented
 --- @field sort balatro.CardArea.Sort Sorting method

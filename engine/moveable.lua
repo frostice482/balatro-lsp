@@ -145,7 +145,7 @@ function IMoveable:get_major() end
 
 function IMoveable:remove() end
 
---- @type balatro.Moveable | fun(X?: number, Y?: number, W?: number, H?: number): balatro.Moveable | fun(args: {T: balatro.Node.TransformInit, container: balatro.Node}): balatro.Moveable
+--- @type balatro.Moveable | (fun(X?: number, Y?: number, W?: number, H?: number): balatro.Moveable) | (fun(args: {T: balatro.Node.TransformInit, container: balatro.Node}): balatro.Moveable)
 Moveable = function() end
 
 --- @class balatro.Moveable.Velocity: Position

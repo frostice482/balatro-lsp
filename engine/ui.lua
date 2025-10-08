@@ -67,8 +67,8 @@ function IUIBox:move(dt) end
 function IUIBox:drag(offset) end
 
 --- Adds a new child, then recalculate.
---- @param node balatro.UIElement.Config
---- @param parent balatro.UIElement If not set, then this will be the root of this box
+--- @param node balatro.UIElement.Definition
+--- @param parent? balatro.UIElement If not set, then this will be the root of this box
 function IUIBox:add_child(node, parent) end
 
 --- @param container balatro.Node

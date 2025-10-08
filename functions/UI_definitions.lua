@@ -175,10 +175,17 @@ function create_UIBox_card_alert(args) end
 --- @return balatro.UIElement.Definition
 function create_slider(args) end
 
+--- @class balatro.UI.CycleCallbackParam
+--- @field from_val any
+--- @field to_val any
+--- @field from_key any
+--- @field to_key any
+--- @field cycle_config any
+
 --- @class balatro.UI.ToggleParam
 --- @field active_colour? ColorHex
 --- @field inactive_colour? ColorHex
---- @field col? ColorHex
+--- @field col? boolean
 --- @field w? number
 --- @field h? number
 --- @field label? string
@@ -513,7 +520,7 @@ function UIBox_dyn_container(inner_table, horizontal, colour_override, backgroun
 --- @class balatro.UI.TextContainerParam
 --- @field scale? number
 --- @field colour? ColorHex
---- @field col? ColorHex
+--- @field col? boolean
 --- @field padding? number
 --- @field shadow? boolean
 
@@ -535,7 +542,7 @@ function simple_text_container(_loc, args) end
 --- @field scale? number
 --- @field focus_args? balatro.UIElement.FocusParamData
 --- @field text_colour? ColorHex
---- @field col? ColorHex
+--- @field col? boolean
 --- @field count? balatro.Tally
 --- @field shadow? boolean
 --- @field ref_table? table

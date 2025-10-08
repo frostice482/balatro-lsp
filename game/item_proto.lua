@@ -6,6 +6,7 @@
 --- @field pos Position
 --- @field skip_pool? boolean
 --- @field omit? boolean
+--- @field atlas? string
 
 --- @class balatro.Item.Default
 --- @field max number
@@ -24,8 +25,10 @@
 --- @field alerted? boolean
 --- @field start_alerted? boolean
 
---- @class balatro.Item.DiscoverableUnlockable: balatro.Item.Discoverable, balatro.Item
+--- @class balatro.Item.Unlockable
 --- @field unlocked? boolean
+
+--- @class balatro.Item.DiscoverableUnlockable: balatro.Item.Discoverable, balatro.Item, balatro.Item.Unlockable
 
 --- @class balatro.Item.Blind: balatro.Item.Discoverable
 --- @field set? nil
@@ -64,11 +67,13 @@
 --- @field effect? string
 --- @field config table
 
---- @class balatro.Item.Buyable: balatro.Item.Effect, balatro.Item.Discoverable
+--- @class balatro.Item.CardCenterBase
 --- @field cost number
 --- @field cost_mult? number
 
---- @class balatro.Item.Joker: balatro.Item.Buyable
+--- @class balatro.Item.CardCenter: balatro.Item.CardCenterBase, balatro.Item.Effect, balatro.Item.Discoverable
+
+--- @class balatro.Item.Joker: balatro.Item.CardCenter
 --- @field set 'Joker'
 --- @field unlocked? boolean
 --- @field blueprint_compat? boolean
@@ -77,7 +82,7 @@
 --- @field rarity number
 --- @field enhancement_gate? string
 
---- @class balatro.Item.Consumable: balatro.Item.Buyable
+--- @class balatro.Item.Consumable: balatro.Item.CardCenter
 --- @field consumeable boolean
 
 --- @class balatro.Item.Tarot.Config: table
@@ -97,15 +102,34 @@
 --- @class balatro.Item.Spectral: balatro.Item.Consumable
 --- @field set 'Spectral'
 --- @field hidden? boolean
---- @field effect nil
+--- @field effect? nil
 
---- @class balatro.Item.Voucher: balatro.Item.DiscoverableUnlockable
+--- @class balatro.Item.Voucher: balatro.Item.CardCenter, balatro.Item.Unlockable
 --- @field set 'Voucher'
 --- @field available boolean
---- @field cost number
 --- @field config table
 --- @field requires? string
 --- @field unlock_condition? balatro.Item.UnlockCondition
+--- @field effect? nil
+
+--- @class balatro.Item.EnhancedCard: balatro.Item.CardCenterBase, balatro.Item, balatro.Item.Effect
+--- @field set 'Enhanced'
+--- @field max? number
+--- @field label? string
+
+--- @class balatro.Item.Edition: balatro.Item.DiscoverableUnlockable
+--- @field set 'Edition'
+--- @field atlas? string
+--- @field config table | { extra: number? }
+
+--- @class balatro.Item.Booster: balatro.Item.CardCenter
+--- @field set 'Booster'
+--- @field weight? number
+--- @field kind? balatro.Item.BoosterKind
+--- @field atlas string
+--- @field config { extra: number, choose: number }
+
+--- @alias balatro.Item.BoosterKind 'Arcana' | 'Celestial' | 'Spectral' | 'Standard' | 'Buffoon' | string
 
 --- @class balatro.Item.BackConfig: { [string]: any }
 --- @field discards? number
@@ -131,26 +155,6 @@
 --- @field config balatro.Item.BackConfig
 --- @field unlock_condition? balatro.Item.UnlockCondition
 --- @field omit boolean? For challenge deck
-
---- @class balatro.Item.EnhancedCard: balatro.Item, balatro.Item.Effect
---- @field set 'Enhanced'
---- @field max? number
---- @field label? string
-
---- @class balatro.Item.Edition: balatro.Item.DiscoverableUnlockable
---- @field set 'Edition'
---- @field atlas? string
---- @field config { extra: number? }
-
---- @class balatro.Item.Booster: balatro.Item.Discoverable
---- @field set 'Booster'
---- @field weight? number
---- @field kind? balatro.Item.BoosterKind
---- @field cost number
---- @field atlas string
---- @field config { extra: number, choose: number }
-
---- @alias balatro.Item.BoosterKind 'Arcana' | 'Celestial' | 'Spectral' | 'Standard' | 'Buffoon' | string
 
 --- @class balatro.Item.UnlockCondition
 --- @field type string

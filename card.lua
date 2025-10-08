@@ -307,7 +307,7 @@ function ICard:remove() end
 --- @type balatro.Card | fun(X?: number, Y?: number, W?: number, H?: number, card?: balatro.Item.Card, center: balatro.Card.CenterType, params?: balatro.Card.Param): balatro.Card
 Card = ICard
 
---- @alias balatro.Card.CenterType balatro.Item.Consumable | balatro.Item.Joker
+--- @alias balatro.Card.CenterType balatro.Item.Consumable | balatro.Item.Joker | balatro.Item.Voucher | balatro.Item.Booster
 
 --- @class balatro.Card.CalculateJokerContext
 --- Triggered when a card is sold.
