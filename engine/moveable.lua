@@ -176,10 +176,10 @@ Moveable = function() end
 --- @field offset? Position
 --- @field bond? 'Weak' | 'Strong'
 --- @field type? balatro.Moveable.AlignmentType
---- @field xy_bond? balatro.Moveable.AlignmentType
---- @field wh_bond? balatro.Moveable.AlignmentType
---- @field r_bond? balatro.Moveable.AlignmentType
---- @field scale_bond? balatro.Moveable.AlignmentType
+--- @field xy_bond? 'Weak' | 'Strong'
+--- @field wh_bond? 'Weak' | 'Strong'
+--- @field r_bond? 'Weak' | 'Strong'
+--- @field scale_bond? 'Weak' | 'Strong'
 --- @field lr_clamp? boolean
 
 --- @class balatro.Moveable.RoleParam
@@ -212,36 +212,3 @@ Moveable = function() end
 ---   - `i` for inner
 --- - Exactly "a": Do not align
 --- @alias balatro.Moveable.AlignmentType "a" | "m" | "c" | "b" | "t" | "l" | "r" | "i" | string
-
--- More info on Moveable's Mid, because this is too big to fit in LSP
--- e.g. #1=Major, #2=Minor (align = cm), #3=Minor (align = br)
--- ```
--- #1
--- +---------+
--- | #2      |
--- | +-----+ |
--- | |     | |
--- | |  #3 | |
--- | |  +-+| |
--- | |  | || |
--- | |  +-+| |
--- | +-----+ |
--- |         |
--- +---------+
--- ```
--- When #2's mid is set to #3, then it should look like:
--- ```
--- #1
--- +---------+
--- |+-----+  |
--- ||     |  |
--- ||  #3 |  |
--- ||  +-+|  |
--- ||  | ||  |
--- ||  +-+|  |
--- |+-----+  |
--- |#2       |
--- |         |
--- +---------+
--- ```
--- where #3 is used as a center point for #2.

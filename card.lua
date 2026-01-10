@@ -414,7 +414,7 @@ local x = {
 --- @field saved? boolean Prevents death. Only effective when `game_over` is true
 --- @field delay? number
 --- @field extra? balatro.Card.CalcJokerRet.Extra
---- @field card balatro.Card
+--- @field card? balatro.Card
 
 --- @class balatro.Card.CalcJokerRet.Extra
 --- @field mult_mod? number

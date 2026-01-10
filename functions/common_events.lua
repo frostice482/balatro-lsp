@@ -194,7 +194,7 @@ function set_main_menu_UI() end
 --- @field no_juice? boolean
 --- @field playing_cards_created? balatro.Card[]
 
---- @class balatro.CardEvalStatusExtra.Extra
+--- @class balatro.CardEvalStatusExtra.Extra: balatro.CardEvalStatusExtra
 --- @field edition? any
 --- @field chip_mod? number
 --- @field mult_mod? number

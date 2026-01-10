@@ -48,8 +48,8 @@
 
 --- @class balatro.Item.Seal: balatro.Item.Discoverable
 --- @field set 'Seal'
---- @field name nil
---- @field pos nil
+--- @field name? nil
+--- @field pos? nil
 
 --- @class balatro.Item.Stake: balatro.Item
 --- @field set 'Stake'
@@ -70,6 +70,21 @@
 --- @class balatro.Item.CardCenterBase
 --- @field cost number
 --- @field cost_mult? number
+--- @field config balatro.Item.Config
+
+--- @class balatro.Item.Config
+--- @field mult? number
+--- @field h_mult? number
+--- @field h_x_mult? number
+--- @field h_dollars? number
+--- @field p_dollars? number
+--- @field t_mult? number
+--- @field t_chips? number
+--- @field Xmult? number
+--- @field h_size? number
+--- @field d_size? number
+--- @field extra? any
+--- @field type? string
 
 --- @class balatro.Item.CardCenter: balatro.Item.CardCenterBase, balatro.Item.Effect, balatro.Item.Discoverable
 
@@ -108,11 +123,12 @@
 --- @field set 'Voucher'
 --- @field available boolean
 --- @field config table
---- @field requires? string
+--- @field requires? string[]
 --- @field unlock_condition? balatro.Item.UnlockCondition
 --- @field effect? nil
 
 --- @class balatro.Item.EnhancedCard: balatro.Item.CardCenterBase, balatro.Item, balatro.Item.Effect
+--- @field cost? nil
 --- @field set 'Enhanced'
 --- @field max? number
 --- @field label? string

@@ -73,6 +73,7 @@
 --- @field capslock? boolean
 --- @field L_cursor_queue? Position
 --- @field screen_keyboard? balatro.UIBox
+--- @field COYOTE_FOCUS? boolean
 local IController = {}
 
 function IController:init() end

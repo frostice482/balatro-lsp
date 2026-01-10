@@ -192,6 +192,7 @@ function create_slider(args) end
 --- @field label_scale? number
 --- @field ref_table? table
 --- @field ref_value? any
+--- @field callback? fun(value: boolean)
 
 --- @param args? balatro.UI.ToggleParam
 --- @return balatro.UIElement.Definition
@@ -259,6 +260,7 @@ function create_tabs(args) end
 --- @field prompt_text? string
 --- @field ref_table table
 --- @field ref_value any
+--- @field extended_corpus? boolean
 
 --- @param args? balatro.UI.TextInputParam
 --- @return balatro.UIElement.Definition
