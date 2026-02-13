@@ -60,16 +60,19 @@
 --- @field STATIONARY? boolean
 ---
 --- @field NEW_ALIGNMENT? boolean
-local IMoveable = {}
+---
+--- @overload fun(X?: number, Y?: number, W?: number, H?: number): balatro.Moveable
+--- @overload fun(args: balatro.Node.Init): balatro.Moveable
+Moveable = {}
 
 --- @param X? number
 --- @param Y? number
 --- @param W? number
 --- @param H? number
---- @overload fun(self: self, args: {T: balatro.Node.TransformInit, container: balatro.Node})
-function IMoveable:init(X,Y,W,H) end
+--- @overload fun(self: self, args: balatro.Node.Init)
+function Moveable:init(X,Y,W,H) end
 
-function IMoveable:draw() end
+function Moveable:draw() end
 
 ---Sets the alignment of moveable using roles
 ---@param args balatro.Moveable.AlignmentParam?
@@ -77,10 +80,10 @@ function IMoveable:draw() end
 --- - `bond` The bond type, either 'Strong' or 'Weak'. Strong instantly adjusts VT, Weak manually calculates VT changes
 --- - `offset` {x , y} offset from the alignment
 --- - `type` the alignment type.
-function IMoveable:set_alignment(args) end
+function Moveable:set_alignment(args) end
 
 --- Aligns this role offset to this major
-function IMoveable:align_to_major() end
+function Moveable:align_to_major() end
 
 --- Sets current transformation to given X, Y, W, and H.
 --- This also sets visual transformation.
@@ -88,65 +91,62 @@ function IMoveable:align_to_major() end
 --- @param Y number
 --- @param W number
 --- @param H number
-function IMoveable:hard_set_T(X, Y, W, H) end
+function Moveable:hard_set_T(X, Y, W, H) end
 
 --- Sets current visual transformation to current transformation
-function IMoveable:hard_set_VT() end
+function Moveable:hard_set_VT() end
 
 --- Handles dragging effect.
 --- Called by Controller each frame when the current Moveable is currently dragged.
 --- @param offset Position
-function IMoveable:drag(offset) end
+function Moveable:drag(offset) end
 
 --- Creates a pulse (juice up) effect.
 --- @param amount? number Scale amount, defaults to `
 --- @param rot_amt? number Rotation amount, defaults to -0.6 ot +0.6
-function IMoveable:juice_up(amount, rot_amt) end
+function Moveable:juice_up(amount, rot_amt) end
 
 --- Handles juice up effect.
 --- Automatically called by `move` or `move_with_major`.
-function IMoveable:move_juice() end
+function Moveable:move_juice() end
 
 --- Handles moving this node.
 --- @param dt number
-function IMoveable:move(dt) end
+function Moveable:move(dt) end
 
 --- Clamps left and right.
-function IMoveable:lr_clamp() end
+function Moveable:lr_clamp() end
 
 --- Copies transformation effect from major.
 --- @param major_tab balatro.Moveable
-function IMoveable:glue_to_major(major_tab) end
+function Moveable:glue_to_major(major_tab) end
 
 --- Moves current Moveable with current Major, only when current role is Minor
 --- @param dt number
-function IMoveable:move_with_major(dt) end
+function Moveable:move_with_major(dt) end
 
 --- @param dt number
-function IMoveable:move_xy(dt) end
+function Moveable:move_xy(dt) end
 
 ---- @param dt number
-function IMoveable:move_scale(dt) end
+function Moveable:move_scale(dt) end
 
 --- @param dt number
-function IMoveable:move_wh(dt) end
+function Moveable:move_wh(dt) end
 
 --- @param dt number
 --- @param vel Position
-function IMoveable:move_r(dt, vel) end
+function Moveable:move_r(dt, vel) end
 
-function IMoveable:calculate_parrallax() end
+function Moveable:calculate_parrallax() end
 
 --- @param args balatro.Moveable.RoleParam
-function IMoveable:set_role(args) end
+function Moveable:set_role(args) end
 
 --- @return balatro.Node.Frame.Major
-function IMoveable:get_major() end
+function Moveable:get_major() end
 
-function IMoveable:remove() end
-
---- @type balatro.Moveable | (fun(X?: number, Y?: number, W?: number, H?: number): balatro.Moveable) | (fun(args: {T: balatro.Node.TransformInit, container: balatro.Node}): balatro.Moveable)
-Moveable = function() end
+function Moveable:remove() end
 
 --- @class balatro.Moveable.Velocity: Position
 --- @field r number

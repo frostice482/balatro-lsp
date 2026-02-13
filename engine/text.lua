@@ -32,34 +32,33 @@
 --- @field reset_pop_in? boolean
 --- @field pop_out_time? number
 --- @field pop_cycle? boolean
-local IDynaText = {}
+---
+--- @overload fun(config: balatro.DynaText.Init): balatro.DynaText
+DynaText = {}
 
 --- @param config balatro.DynaText.Init
-function IDynaText:init(config) end
+function DynaText:init(config) end
 
-function IDynaText:update(dt) end
+function DynaText:update(dt) end
 
 --- @param first_pass? boolean
-function IDynaText:update_text(first_pass) end
+function DynaText:update_text(first_pass) end
 
 --- @param pop_out_timer number
-function IDynaText:pop_out(pop_out_timer) end
+function DynaText:pop_out(pop_out_timer) end
 
 --- @param pop_in_timer number
-function IDynaText:pop_in(pop_in_timer) end
+function DynaText:pop_in(pop_in_timer) end
 
-function IDynaText:align_letters() end
+function DynaText:align_letters() end
 
 --- @param amt? number Defaults to 0.7
-function IDynaText:set_quiver(amt) end
+function DynaText:set_quiver(amt) end
 
 --- @param amt? number Defaults to 0.2
-function IDynaText:pulse(amt) end
+function DynaText:pulse(amt) end
 
-function IDynaText:draw() end
-
---- @type balatro.DynaText | fun(config: balatro.DynaText.Init): balatro.DynaText
-DynaText = function() end
+function DynaText:draw() end
 
 --- @class balatro.DynaText.String
 --- @field string string

@@ -6,42 +6,41 @@
 --- @field loc_name string
 --- @field name string
 --- @field pos Position
-local IBack = {}
+---
+--- @overload fun(selected_back: balatro.Item.Back): balatro.Back
+Back = {}
 
 --- @param selected_back balatro.Item.Back
-function IBack:init(selected_back) end
+function Back:init(selected_back) end
 
 --- Gets localized name
 --- @return string
-function IBack:get_name() end
+function Back:get_name() end
 
 --- @param other? balatro.Item.Back
 --- @param ui_scale? number
 --- @param min_dims? number
 --- @param challenge? string
 --- @return balatro.UIElement.Definition
-function IBack:generate_UI(other, ui_scale, min_dims, challenge) end
+function Back:generate_UI(other, ui_scale, min_dims, challenge) end
 
 --- @param back balatro.Item.Back
-function IBack:change_to(back) end
+function Back:change_to(back) end
 
 --- Triggers back effect after eval or final scoring
 --- @param args balatro.Back.TriggerEffectParam
-function IBack:trigger_effect(args) end
+function Back:trigger_effect(args) end
 
 --- Applies back effect to current run
-function IBack:apply_to_run() end
+function Back:apply_to_run() end
 
 --- Saves this back to be stored
 --- @return balatro.Back.Save
-function IBack:save(back) end
+function Back:save(back) end
 
 --- Loads back info from saved table
 --- @param table balatro.Back.Save
-function IBack:load(table) end
-
---- @type balatro.Back | fun(selected_back: balatro.Item.Back): balatro.Back
-Back = function() end
+function Back:load(table) end
 
 --- @class balatro.Back.Effect
 --- @field center balatro.Item.Back

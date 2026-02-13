@@ -39,16 +39,15 @@
 --- @field condition? balatro.Event.Condition
 --- If false, sets `time` to current timer value when handle is called, then sets to true.
 --- @field start_timer boolean
-local IEvent = {}
+---
+--- @overload fun(config: balatro.Event.Config): balatro.Event
+Event = {}
 
 --- @param config balatro.Event.Config
-function IEvent:init(config) end
+function Event:init(config) end
 
 --- @param resultTarget balatro.Event.Result Result object to return to
-function IEvent:handle(resultTarget) end
-
---- @type balatro.Event | fun(config: balatro.Event.Config): balatro.Event
-Event = function() end
+function Event:handle(resultTarget) end
 
 --- @class balatro.Event.Config
 --- Determines how an event is triggered.

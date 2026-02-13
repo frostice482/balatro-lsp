@@ -10,7 +10,9 @@
 --- @field offset_seconds number The time when the animation started.
 --- @field atlas balatro.AnimationAtlas Sprite atlas data.
 --- @field float? boolean Creates a floating effect, slightly rotating and offsetting the sprite. This is used in Blinds collection.
-local IAnimatedSprite = {}
+---
+--- @overload fun(X: number, Y: number, W: number, H: number, new_sprite_atlas: balatro.AnimationAtlas, sprite_pos: Position): balatro.AnimatedSprite
+AnimatedSprite = {}
 
 --- @param X number
 --- @param Y number
@@ -18,33 +20,30 @@ local IAnimatedSprite = {}
 --- @param H number
 --- @param new_sprite_atlas balatro.AssetAtlas
 --- @param sprite_pos Position
-function IAnimatedSprite:init(X, Y, W, H, new_sprite_atlas, sprite_pos) end
+function AnimatedSprite:init(X, Y, W, H, new_sprite_atlas, sprite_pos) end
 
 --- Resets the `scale_mag`.
-function IAnimatedSprite:rescale() end
+function AnimatedSprite:rescale() end
 
-function IAnimatedSprite:reset() end
+function AnimatedSprite:reset() end
 
 --- Sets sprite position in atlas dimension unit.
 ---
 --- _X is currently obsolete, and first animation frame will always start at X=0_
 --- @param sprite_pos? Position
-function IAnimatedSprite:set_sprite_pos(sprite_pos) end
+function AnimatedSprite:set_sprite_pos(sprite_pos) end
 
 --- Gets pixel position for the sprite. Returns `[current, y, w, h]`
 --- @return [number, number, number, number]
-function IAnimatedSprite:get_pos_pixel() end
+function AnimatedSprite:get_pos_pixel() end
 
-function IAnimatedSprite:draw_self() end
+function AnimatedSprite:draw_self() end
 
 --- Animates to next sprite.
 --- Also handles floating effect is `float` is true.
-function IAnimatedSprite:animate() end
+function AnimatedSprite:animate() end
 
-function IAnimatedSprite:remove() end
-
---- @type balatro.AnimatedSprite | fun(X: number, Y: number, W: number, H: number, new_sprite_atlas: balatro.AnimationAtlas, sprite_pos: Position): balatro.AnimatedSprite
-AnimatedSprite = function() end
+function AnimatedSprite:remove() end
 
 --- @class balatro.AnimatedSprite.CurrentAnimation: WidthHeight
 --- @field current number Current frame that is being animated

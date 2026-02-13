@@ -38,32 +38,31 @@
 --- @field colours ColorHex[]
 --- Particles created
 --- @field particles balatro.Particles.Particle[]
-local IParticles = {}
+---
+--- @overload fun(X: number, Y: number, W: number, H: number, config: balatro.Particles.Config): balatro.Particles
+Particles = {}
 
 --- @param X number
 ---@param Y number
 ---@param W number
 ---@param H number
 ---@param config balatro.Particles.Config
-function IParticles:init(X, Y, W, H, config) end
+function Particles:init(X, Y, W, H, config) end
 
 ---- @param dt number
-function IParticles:update(dt) end
+function Particles:update(dt) end
 
 --- @param dt number
-function IParticles:move(dt) end
+function Particles:move(dt) end
 
 --- @param delay? number
 --- @param to? number
-function IParticles:fade(delay, to) end
+function Particles:fade(delay, to) end
 
 --- @param alpha? number
-function IParticles:draw(alpha) end
+function Particles:draw(alpha) end
 
-function IParticles:remove() end
-
---- @type balatro.Particles | fun(X: number, Y: number, W: number, H: number, config: balatro.Particles.Config): balatro.Particles
-Particles = function() end
+function Particles:remove() end
 
 --- @class balatro.Particles.Particle
 --- @field draw boolean

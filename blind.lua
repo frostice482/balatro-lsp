@@ -34,44 +34,46 @@
 --- @field block_play? boolean Blocks the play button
 --- @field dissolve? number Dissolve progress (0-1)
 --- @field dissolve_colours ColorHex[] Dissolve colors
-local IBlind = {}
+---
+--- @overload fun(X?: number, Y?: number, W?: number, H?: number): balatro.Blind
+Blind = {}
 
 --- @param color? ColorHex
-function IBlind:change_colour(color) end
+function Blind:change_colour(color) end
 
 --- Sets locatization texts for `loc_name`, `loc_debuff_text`, `loc_debuff_lines`
-function IBlind:set_text() end
+function Blind:set_text() end
 
 --- @param blind? balatro.Item.Blind
 --- @param reset? boolean If true, do not set new blind; resets current blind instead
 --- @param silent? boolean Do not play sound
-function IBlind:set_blind(blind, reset, silent) end
+function Blind:set_blind(blind, reset, silent) end
 
 --- Alerts blind's debuff
-function IBlind:alert_debuff(first) end
+function Blind:alert_debuff(first) end
 
 --- @return string
-function IBlind:get_loc_debuff_text() end
+function Blind:get_loc_debuff_text() end
 
 --- Creates defeat effect and removes blind info
 --- @param silent? boolean
-function IBlind:defeat(silent) end
+function Blind:defeat(silent) end
 
 --- Gets blind type
 --- @return BlindType
-function IBlind:get_type() end
+function Blind:get_type() end
 
-function IBlind:disable() end
+function Blind:disable() end
 
-function IBlind:hover() end
+function Blind:hover() end
 
-function IBlind:stop_hover() end
+function Blind:stop_hover() end
 
-function IBlind:draw() end
+function Blind:draw() end
 
 --- Triggers effect when scoring started
 --- @return boolean|nil hasEffect True if the blind caused some effect
-function IBlind:press_play() end
+function Blind:press_play() end
 
 --- Modifies played hand
 --- @param cards balatro.Card[]
@@ -82,7 +84,7 @@ function IBlind:press_play() end
 --- @return number mult
 --- @return number chips
 --- @return boolean modified
-function IBlind:modify_hand(cards, poker_hands, text, mult, hand_chips) end
+function Blind:modify_hand(cards, poker_hands, text, mult, hand_chips) end
 
 --- Checks if played hand is debuffed (not allowed).
 --- This also triggers some effects, e.g. The Arm level down played poker hand.
@@ -91,40 +93,37 @@ function IBlind:modify_hand(cards, poker_hands, text, mult, hand_chips) end
 --- @param handname PokerHand
 --- @param check? boolean Only check, do not apply effects
 --- @return boolean|nil
-function IBlind:debuff_hand(cards, hand, handname, check) end
+function Blind:debuff_hand(cards, hand, handname, check) end
 
 --- Triggers effect when a card is drawn to hand
-function IBlind:drawn_to_hand() end
+function Blind:drawn_to_hand() end
 
 --- Checks whether a card should be stayed flipped
 --- @param area balatro.CardArea This should be `G.hand`, otherwise nil is always returned
 --- @param card balatro.Card
 --- @return boolean|nil
-function IBlind:stay_flipped(area, card) end
+function Blind:stay_flipped(area, card) end
 
 --- Sets debuff for a card
 --- @param card balatro.Card
-function IBlind:debuff_card(card) end
+function Blind:debuff_card(card) end
 
-function IBlind:move(dt) end
+function Blind:move(dt) end
 
 --- Changes dimension for this blind
 --- @param w? number
 --- @param h? number
-function IBlind:change_dim(w, h) end
+function Blind:change_dim(w, h) end
 
-function IBlind:align() end
+function Blind:align() end
 
 --- Saves this blind to be stored
 --- @return balatro.Blind.Save
-function IBlind:save() end
+function Blind:save() end
 
 --- Loads saved table
 --- @param blindTable balatro.Blind.Save
-function IBlind:load(blindTable) end
-
---- @type balatro.Blind | fun(X?: number, Y?: number, W?: number, H?: number): balatro.Blind
-Blind = function() end
+function Blind:load(blindTable) end
 
 --- @class balatro.Blind.Children: { [string]: balatro.Node }
 --- @field animatedSprite balatro.AnimatedSprite

@@ -1,13 +1,14 @@
 --- @meta
 
 --- @class balatro.Game: balatro.Object
-local IGame = {}
+--- @overload fun(): balatro.Game
+Game = {}
 
 --- Sets global G.
 --- Calls set_globals(), implemented in globals.lua
 ---
 --- @see balatro.Global
-function IGame:init() end
+function Game:init() end
 
 --- Called when love.load() is executed.
 --- - Loads settings
@@ -39,62 +40,62 @@ function IGame:init() end
 --- @see balatro.Game.set_language
 --- @see balatro.Game.init_item_prototypes
 --- @see balatro.Game.splash_screen
-function IGame:start_up() end
+function Game:start_up() end
 
 --- Load item prototypes.
 --- @see balatro.GameDefs.InitItemProto
-function IGame:init_item_prototypes() end
+function Game:init_item_prototypes() end
 
 --- Loads profile
 --- @param profile number Which profile to load, 1 or 2 or 3
-function IGame:load_profile(profile) end
+function Game:load_profile(profile) end
 
 --- Set languages.
 --- Tnitializes LANGAUGES and FONTS if not exist.
 --- @see balatro.GameDefs.Language
-function IGame:set_language() end
+function Game:set_language() end
 
 --- Initializes animation atlas and asset atlas
-function IGame:set_render_settings() end
+function Game:set_render_settings() end
 
 --- Creates window configuration.
 --- Also calls `G.FUNCS.apply_window_changes`
-function IGame:init_window(reset) end
+function Game:init_window(reset) end
 
 --- Removes all game UI
-function IGame:delete_run() end
+function Game:delete_run() end
 
 --- Queues to save progress (settings `G.SETTINGS` and profile `G.PROFILES[profile]`)
-function IGame:save_progress() end
+function Game:save_progress() end
 
-function IGame:save_notify(card) end
+function Game:save_notify(card) end
 
 --- Queues to save settings (`G.SETTINGS`)
-function IGame:save_settings() end
+function Game:save_settings() end
 
 --- Queues to save metrics (`G.METRICS`)
-function IGame:save_metrics() end
+function Game:save_metrics() end
 
 --- Prepares new `G.ROOM` and `G.ROOM_ATTACH`.
 --- if `new_game_obj` is true, sets `G.GAME` to `init_game_object()`
 --- @param new_stage balatro.Game.StagesObject
 --- @param new_state balatro.Game.StateObject
-function IGame:prep_stage(new_stage, new_state, new_game_obj) end
+function Game:prep_stage(new_stage, new_state, new_game_obj) end
 
-function IGame:sandbox() end
+function Game:sandbox() end
 
 --- Shows splash screen
-function IGame:splash_screen() end
+function Game:splash_screen() end
 
 --- Shows main menu
 --- @param change_context? 'game' | 'splash' 'splash' if from splash, 'game' if from game
-function IGame:main_menu(change_context) end
+function Game:main_menu(change_context) end
 
 --- Shows demo end screen, showing link to "playbalatro.com"
-function IGame:demo_cta() end
+function Game:demo_cta() end
 
 --- @return balatro.Game.Current
-function IGame:init_game_object() end
+function Game:init_game_object() end
 
 --- @class balatro.Game.StartRunParam
 --- @field stake? number
@@ -104,31 +105,31 @@ function IGame:init_game_object() end
 
 --- Starts a new / saved run
 --- @param args? balatro.Game.StartRunParam
-function IGame:start_run(args) end
+function Game:start_run(args) end
 
-function IGame:update(dt) end
+function Game:update(dt) end
 
-function IGame:draw() end
+function Game:draw() end
 
 --- Gets color state, used for debugging
 --- @param _state number
-function IGame:state_col(_state) end
+function Game:state_col(_state) end
 
-function IGame:update_selecting_hand(dt) end
-function IGame:update_shop(dt) end
-function IGame:update_play_tarot(dt) end
-function IGame:update_hand_played(dt) end
-function IGame:update_draw_to_hand(dt) end
-function IGame:update_new_round(dt) end
-function IGame:update_blind_select(dt) end
-function IGame:update_round_eval(dt) end
-function IGame:update_arcana_pack(dt) end
-function IGame:update_spectral_pack(dt) end
-function IGame:update_standard_pack(dt) end
-function IGame:update_buffoon_pack(dt) end
-function IGame:update_celestial_pack(dt) end
-function IGame:update_game_over(dt) end
-function IGame:update_menu(dt) end
+function Game:update_selecting_hand(dt) end
+function Game:update_shop(dt) end
+function Game:update_play_tarot(dt) end
+function Game:update_hand_played(dt) end
+function Game:update_draw_to_hand(dt) end
+function Game:update_new_round(dt) end
+function Game:update_blind_select(dt) end
+function Game:update_round_eval(dt) end
+function Game:update_arcana_pack(dt) end
+function Game:update_spectral_pack(dt) end
+function Game:update_standard_pack(dt) end
+function Game:update_buffoon_pack(dt) end
+function Game:update_celestial_pack(dt) end
+function Game:update_game_over(dt) end
+function Game:update_menu(dt) end
 
 --- @class balatro.Game: balatro.Game.AfterStartUp
 
@@ -174,8 +175,4 @@ function IGame:update_menu(dt) end
 --- @field vortex love.Shader
 --- @field voucher love.Shader
 
---- @type balatro.Game | fun(): balatro.Game
-Game = function() end
-
---- @type balatro.Game
-G = IGame
+G = Game

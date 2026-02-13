@@ -50,7 +50,9 @@
 --- @field getting_sliced? boolean Used by Madness / Ceremonial Dagger
 --- @field vampired? boolean Used by vampire joker
 --- @field lucky_trigger? boolean True if lucky card is triggered
-local ICard = {}
+---
+--- @overload fun(X?: number, Y?: number, W?: number, H?: number, card?: balatro.Item.Card, center: balatro.Card.CenterType, params?: balatro.Card.Param): balatro.Card
+Card = {}
 
 --- @param X? number
 --- @param Y? number
@@ -59,253 +61,250 @@ local ICard = {}
 --- @param card? balatro.Item.Card
 --- @param center balatro.Card.CenterType
 --- @param params? balatro.Card.Param
-function ICard:init(X, Y, W, H, card, center, params) end
+function Card:init(X, Y, W, H, card, center, params) end
 
-function ICard:update_alert() end
+function Card:update_alert() end
 
 --- Sets base value for this card
 --- @param card? balatro.Item.Card
 --- @param initial? boolean
-function ICard:set_base(card, initial) end
+function Card:set_base(card, initial) end
 
 --- Sets sprite for this card
 --- @param _center? balatro.Card.CenterType
 --- @param _front? balatro.Card.CenterType
-function ICard:set_sprites(_center, _front) end
+function Card:set_sprites(_center, _front) end
 
 --- Sets ability for this card
 --- @param center? balatro.Card.CenterType Center. This should be a valid item from `G.P_CENTERS`
 --- @param initial? boolean
 --- @param delay_sprites? boolean
-function ICard:set_ability(center, initial, delay_sprites) end
+function Card:set_ability(center, initial, delay_sprites) end
 
 --- Updates cost for this card
-function ICard:set_cost() end
+function Card:set_cost() end
 
 --- Sets edition for this card
 --- @param edition? table<SpecialEdition, true|nil>
 --- @param immediate? boolean
 --- @param silent? boolean
-function ICard:set_edition(edition, immediate, silent) end
+function Card:set_edition(edition, immediate, silent) end
 
 --- Sets seal for this card
 --- @param _seal Seal
 --- @param immediate? boolean
 --- @param silent? boolean
-function ICard:set_seal(_seal, silent, immediate) end
+function Card:set_seal(_seal, silent, immediate) end
 
 --- Gets seal for this card
 --- @param bypass_debuff? boolean Bypasses debuff check
 --- @return Seal|nil
-function ICard:get_seal(bypass_debuff) end
+function Card:get_seal(bypass_debuff) end
 
 --- Applies eternal
 --- @param _eternal? boolean
-function ICard:set_eternal(_eternal) end
+function Card:set_eternal(_eternal) end
 
 --- Applies perishable
 --- @param _perishable? boolean
-function ICard:set_perishable(_perishable) end
+function Card:set_perishable(_perishable) end
 
 --- Applies rental
 --- @param _rental? boolean
-function ICard:set_rental(_rental) end
+function Card:set_rental(_rental) end
 
 --- Applies debuff
 --- @param should_debuff? boolean
-function ICard:set_debuff(should_debuff) end
+function Card:set_debuff(should_debuff) end
 
-function ICard:remove_UI() end
+function Card:remove_UI() end
 
 --- Changes suit for this card
 --- @param new_suit Suit
-function ICard:change_suit(new_suit) end
+function Card:change_suit(new_suit) end
 
 --- Adds this card to deck
-function ICard:add_to_deck(from_debuff) end
+function Card:add_to_deck(from_debuff) end
 
 --- Removes this card from deck
-function ICard:remove_from_deck(from_debuff) end
+function Card:remove_from_deck(from_debuff) end
 
-function ICard:generate_UIBox_unlock_table(hidden) end
+function Card:generate_UIBox_unlock_table(hidden) end
 
-function ICard:generate_UIBox_ability_table() end
+function Card:generate_UIBox_ability_table() end
 
 --- Gets nominal value from this card
 --- @param mod? 'suit'
 --- @return number
-function ICard:get_nominal(mod) end
+function Card:get_nominal(mod) end
 
 --- Gets ID from this card.
 --- This may be rank, or anything random if a stone card
-function ICard:get_id() end
+function Card:get_id() end
 
 --- Gets if this card is a face card
 --- @param from_boss? boolean Ignore debuffed
 --- @return true|nil
-function ICard:is_face(from_boss) end
+function Card:is_face(from_boss) end
 
 --- Gets actual rank
 --- @return number|nil
-function ICard:get_original_rank() end
+function Card:get_original_rank() end
 
 --- Gets chips bonus
 --- @return number
-function ICard:get_chip_bonus() end
+function Card:get_chip_bonus() end
 
 --- Gets mult bonus
 --- @return number
-function ICard:get_chip_mult() end
+function Card:get_chip_mult() end
 
 --- Gets X mult bonus
 --- @return number
-function ICard:get_chip_x_mult(context) end
+function Card:get_chip_x_mult(context) end
 
 --- Gets mult bonus when this card stays in hand
 --- @return number
-function ICard:get_chip_h_mult() end
+function Card:get_chip_h_mult() end
 
 --- Gets X mult bonus when this card stays in hand
 --- @return number
-function ICard:get_chip_h_x_mult() end
+function Card:get_chip_h_x_mult() end
 
 --- Gets edition info
 --- @return balatro.Card.CalcEditionRet
-function ICard:get_edition() end
+function Card:get_edition() end
 
 --- gets end of round effects (Blue seal, gold card)
 --- @return balatro.EvalCardContext.Return
-function ICard:get_end_of_round_effect() end
+function Card:get_end_of_round_effect() end
 
 --- Gets dollars when played
 --- @return number
-function ICard:get_p_dollars() end
+function Card:get_p_dollars() end
 
 --- Uses this card as a consumable
 --- @param area? balatro.CardArea This is unused
 --- @param copier? balatro.Card Which card to cause the juice up effect at
-function ICard:use_consumeable(area, copier) end
+function Card:use_consumeable(area, copier) end
 
 --- Checks if this card can be used as a consumable
 --- @param any_state? boolean Allows states other than `HAND_PLAYED`, `DRAW_TO_HAND`, `PLAY_TAROT`
 --- @param skip_check? boolean Skips checking for currently scoring / locked
-function ICard:can_use_consumeable(any_state, skip_check) end
+function Card:can_use_consumeable(any_state, skip_check) end
 
 --- Checks if the card can be used
 --- @return boolean|nil check True if the card can't be used
-function ICard:check_use() end
+function Card:check_use() end
 
 --- Sells this card
-function ICard:sell_card() end
+function Card:sell_card() end
 
 --- Checks if this card can be sold
-function ICard:can_sell_card() end
+function Card:can_sell_card() end
 
 --- Gets dollar bonus at the end of round
 --- @return number|nil
-function ICard:calculate_dollar_bonus() end
+function Card:calculate_dollar_bonus() end
 
 --- Opens this booster
-function ICard:open() end
+function Card:open() end
 
 --- Redeems this voucher
-function ICard:redeem() end
+function Card:redeem() end
 
 --- APplies voucher to current run
 --- @param center? balatro.Item.Voucher
-function ICard:apply_to_run(center) end
+function Card:apply_to_run(center) end
 
 --- Creates explode effect and removes this card
 --- @param dissolve_colours? ColorHex
 --- @param explode_time_fac? number
-function ICard:explode(dissolve_colours, explode_time_fac) end
+function Card:explode(dissolve_colours, explode_time_fac) end
 
 --- Creates shatter effect and removes this card
-function ICard:shatter() end
+function Card:shatter() end
 
 --- Creates dissolve effect (transition in) for this card and removes this card
 --- @param dissolve_colours? ColorHex[]
 --- @param silent? boolean Do not play sound
 --- @param dissolve_time_fac? number
 --- @param no_juice? boolean
-function ICard:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice) end
+function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice) end
 
 --- Creates materialize effect (transition in) for this card
 --- @param dissolve_colours? ColorHex[]
 --- @param silent? boolean Do not play sound
 --- @param timefac? number
-function ICard:start_materialize(dissolve_colours, silent, timefac) end
+function Card:start_materialize(dissolve_colours, silent, timefac) end
 
 --- Triggers seal effect
 --- @param context balatro.Card.CalculateJokerContext
 --- @return balatro.Card.CalcSealRet?
-function ICard:calculate_seal(context) end
+function Card:calculate_seal(context) end
 
 --- Triggers rental effect
-function ICard:calculate_rental() end
+function Card:calculate_rental() end
 
 --- Triggers perishable effect
-function ICard:calculate_perishable() end
+function Card:calculate_perishable() end
 
 --- Calculates / triggers card effect
 --- @param context balatro.Card.CalculateJokerContext | balatro.EvalCardContext
 --- @return balatro.Card.CalcJokerRet
-function ICard:calculate_joker(context) end
+function Card:calculate_joker(context) end
 
 --- Checks if suit is same.
 --- @param suit Suit
 --- @param bypass_debuff? boolean Bypasses debuff
 --- @param flush_calc? boolean Calculates for flush
-function ICard:is_suit(suit, bypass_debuff, flush_calc) end
+function Card:is_suit(suit, bypass_debuff, flush_calc) end
 
 --- Sets cardarea for this card
 --- @param area balatro.CardArea
-function ICard:set_card_area(area) end
+function Card:set_card_area(area) end
 
 --- Removes card from area
-function ICard:remove_from_area() end
+function Card:remove_from_area() end
 
-function ICard:align() end
+function Card:align() end
 
 --- Flips this card
-function ICard:flip() end
+function Card:flip() end
 
-function ICard:update(dt) end
+function Card:update(dt) end
 
-function ICard:hard_set_T(X, Y, W, H) end
+function Card:hard_set_T(X, Y, W, H) end
 
-function ICard:move(dt) end
+function Card:move(dt) end
 
-function ICard:align_h_popup() end
+function Card:align_h_popup() end
 
-function ICard:hover() end
+function Card:hover() end
 
-function ICard:stop_hover() end
+function Card:stop_hover() end
 
-function ICard:juice_up(scale, rot_amount) end
+function Card:juice_up(scale, rot_amount) end
 
-function ICard:draw(layer) end
+function Card:draw(layer) end
 
-function ICard:release(dragged) end
+function Card:release(dragged) end
 
 --- Highlights this card
 --- @param is_higlighted boolean
-function ICard:highlight(is_higlighted) end
+function Card:highlight(is_higlighted) end
 
-function ICard:click() end
+function Card:click() end
 
 --- Saves this card to be stored
 --- @return balatro.Card.Save
-function ICard:save() end
+function Card:save() end
 
 --- Loads card from saved table
 --- @param cardTable balatro.Card.Save
-function ICard:load(cardTable) end
+function Card:load(cardTable) end
 
-function ICard:remove() end
-
---- @type balatro.Card | fun(X?: number, Y?: number, W?: number, H?: number, card?: balatro.Item.Card, center: balatro.Card.CenterType, params?: balatro.Card.Param): balatro.Card
-Card = ICard
+function Card:remove() end
 
 --- @alias balatro.Card.CenterType balatro.Item.Consumable | balatro.Item.Joker | balatro.Item.Voucher | balatro.Item.Booster
 

@@ -22,7 +22,9 @@
 --- @field draw_steps balatro.Sprite.DrawStepDefined[]
 --- @field video? love.Video
 --- @field video_dims? WidthHeight
-local ISprite = {}
+---
+--- @overload fun(X: number, Y: number, W: number, H: number, new_sprite_atlas: balatro.Atlas, sprite_pos: Position): balatro.Sprite
+Sprite = {}
 
 --- @param X number
 --- @param Y number
@@ -30,30 +32,30 @@ local ISprite = {}
 --- @param H number
 --- @param new_sprite_atlas balatro.AssetAtlas
 --- @param sprite_pos balatro.Sprite.SpritePos
-function ISprite:init(X, Y, W, H, new_sprite_atlas, sprite_pos) end
+function Sprite:init(X, Y, W, H, new_sprite_atlas, sprite_pos) end
 
-function ISprite:reset() end
+function Sprite:reset() end
 
 --- Sets sprite position.
 ---
 --- Note that X and Y is in atlas dimension unit,
 --- See the `sprite_pos` property for more info.
 --- @param sprite_pos? balatro.Sprite.SpritePos
-function ISprite:set_sprite_pos(sprite_pos) end
+function Sprite:set_sprite_pos(sprite_pos) end
 
 --- Gets pixel position.
 --- X, Y is the position in atlas dimension unit.
 --- W, H is the atlas dimension.
 --- @return [number, number, number, number] dim X, Y, W, H
-function ISprite:get_pos_pixel() end
+function Sprite:get_pos_pixel() end
 
 --- Gets texture dimensions
 --- @return [number, number] dim
-function ISprite:get_image_dims() end
+function Sprite:get_image_dims() end
 
 --- Creates shader draw steps for this sprite
 --- @param draw_step_definitions balatro.Sprite.DrawStep[]
-function ISprite:define_draw_steps(draw_step_definitions) end
+function Sprite:define_draw_steps(draw_step_definitions) end
 
 --- Draws the sprite using specified shader
 --- @param _shader string Shader key. This should be a valid key from `G.SHADERS`. Defaults to `dissolve`
@@ -68,13 +70,13 @@ function ISprite:define_draw_steps(draw_step_definitions) end
 --- @param custom_shader? boolean If specified, uses `_send` as an array to send values to the shader
 --- @param tilt_shadow? number
 --- @overload fun(self: self, _shader: string, _shadow_height?: number, _send: balatro.Sprite.SendArray[], _no_tilt?: boolean, other_obj?: balatro.Sprite, ms?: number, mr?: number, mx?: number, my?: number, custom_shader: true, tilt_shadow?: number)
-function ISprite:draw_shader(_shader, _shadow_height, _send, _no_tilt, other_obj, ms, mr, mx, my, custom_shader, tilt_shadow) end
+function Sprite:draw_shader(_shader, _shadow_height, _send, _no_tilt, other_obj, ms, mr, mx, my, custom_shader, tilt_shadow) end
 
 --- @param overlay?  ColorHex
-function ISprite:draw_self(overlay) end
+function Sprite:draw_self(overlay) end
 
 --- @param overlay?  ColorHex
-function ISprite:draw(overlay) end
+function Sprite:draw(overlay) end
 
 --- Draws a sprite from other sprite, with applied transformation from this sprite.
 --- Commonly used by seals
@@ -83,12 +85,9 @@ function ISprite:draw(overlay) end
 --- @param mr? number Rotation
 --- @param mx? number X offset
 --- @param my? number Y offset
-function ISprite:draw_from(other_obj, ms, mr, mx, my) end
+function Sprite:draw_from(other_obj, ms, mr, mx, my) end
 
-function ISprite:remove() end
-
---- @type balatro.Sprite | fun(X: number, Y: number, W: number, H: number, new_sprite_atlas: balatro.Atlas, sprite_pos: Position): balatro.Sprite
-Sprite = function() end
+function Sprite:remove() end
 
 --- @class balatro.Sprite.SendArray
 --- @field name string

@@ -13,7 +13,9 @@
 --- @field definition balatro.UIElement.Definition
 --- @field Mid? balatro.UIElement
 --- @field config? balatro.UIBox.Config
-local IUIBox = {}
+---
+--- @overload fun(args: balatro.UIBox.Arg): balatro.UIBox
+UIBox = {}
 
 ---@param args balatro.UIBox.Arg
 --`T` A standard transform in game units describing the inital position and size of the object with x, y, w, h\
@@ -23,13 +25,13 @@ local IUIBox = {}
 --
 --`config` A configuration table for the UIBox
 --ex - `{ align = 'cm', offset = {x = 1, y = 1}, parent_rect = A, attach_rect = B, can_collide = true }`
-function IUIBox:init(args) end
+function UIBox:init(args) end
 
 --- Gets an element that matches `config.id` for given `id`.
 --- @param id? any
 --- @param node? balatro.UIElement
 --- @return balatro.UIElement
-function IUIBox:get_UIE_by_ID(id, node) end
+function UIBox:get_UIE_by_ID(id, node) end
 
 --- Calculates position and size for given element
 --- @param node balatro.UIElement
@@ -37,57 +39,54 @@ function IUIBox:get_UIE_by_ID(id, node) end
 --- @param recalculate? boolean If true, forcibly sets the element's transformation instead of calling `Moveable.init` again
 --- @param _scale? number
 --- @return number, number
-function IUIBox:calculate_xywh(node, _T, recalculate, _scale) end
+function UIBox:calculate_xywh(node, _T, recalculate, _scale) end
 
 --- Removes nodes that match `config.group` for given group.
 --- @param node? balatro.UIElement
 --- @param group? any
-function IUIBox:remove_group(node, group) end
+function UIBox:remove_group(node, group) end
 
 --- Gets nodes that match `config.group` for given group.
 --- @param node? balatro.UIElement
 --- @param group? any
 --- @param ingroup? balatro.UIElement[]
 --- @return balatro.UIElement[]
-function IUIBox:get_group(node, group, ingroup) end
+function UIBox:get_group(node, group, ingroup) end
 
 --- Creates an `UIElement` and sets its parent with given parent.1
 --- @param node balatro.UIElement.Definition
 --- @param parent? balatro.UIElement If not set, then this will be the root of this box
-function IUIBox:set_parent_child(node, parent) end
+function UIBox:set_parent_child(node, parent) end
 
-function IUIBox:remove() end
+function UIBox:remove() end
 
-function IUIBox:draw() end
+function UIBox:draw() end
 
 --- @param dt number
-function IUIBox:move(dt) end
+function UIBox:move(dt) end
 
 --- @param offset Position
-function IUIBox:drag(offset) end
+function UIBox:drag(offset) end
 
 --- Adds a new child, then recalculate.
 --- @param node balatro.UIElement.Definition
 --- @param parent? balatro.UIElement If not set, then this will be the root of this box
-function IUIBox:add_child(node, parent) end
+function UIBox:add_child(node, parent) end
 
 --- @param container balatro.Node
-function IUIBox:set_container(container) end
+function UIBox:set_container(container) end
 
 --- @param indent? number
 --- @return string
-function IUIBox:print_topology(indent) end
+function UIBox:print_topology(indent) end
 
 --- Recalculates the root's position and size.
-function IUIBox:recalculate() end
+function UIBox:recalculate() end
 
 --- @class balatro.UIBox.Arg
 --- @field T? balatro.Node.TransformUnit
 --- @field definition balatro.UIElement.Definition
 --- @field config balatro.UIBox.Config
-
---- @type balatro.UIBox | fun(args: balatro.UIBox.Arg): balatro.UIBox
-UIBox = function() end
 
 --- @class balatro.UIElement: balatro.Moveable
 --- @field parent? balatro.UIBox | balatro.UIElement
@@ -102,77 +101,76 @@ UIBox = function() end
 --- @field focus_timer? number
 --- @field object_focus_timer? number
 --- @field pixellated_rect? balatro.UIElement.PixellatedRect
-local IUIElement = {}
+---
+--- @overload fun(parent?: balatro.UIBox, new_UIBox: balatro.UIBox, new_UIT: balatro.UITypeEnum, config: balatro.UIElement.Config): balatro.UIElement
+UIElement = {}
 
 --- @param parent? balatro.UIBox
 --- @param new_UIBox balatro.UIBox
 --- @param new_UIT balatro.UITypeEnum
 --- @param config balatro.UIElement.Config
-function IUIElement:init(parent, new_UIBox, new_UIT, config) end
+function UIElement:init(parent, new_UIBox, new_UIT, config) end
 
 --- @param _T PositionAndSize
 --- @param recalculate? boolean If true, forcibly sets the element's transformation instead of calling `Moveable.init` again
-function IUIElement:set_values(_T, recalculate) end
+function UIElement:set_values(_T, recalculate) end
 
 --- @param indent number
 --- @return string
-function IUIElement:print_topology(indent) end
+function UIElement:print_topology(indent) end
 
-function IUIElement:initialize_VT() end
+function UIElement:initialize_VT() end
 
 --- @param amount? number
 --- @param rot_amt? number
-function IUIElement:juice_up(amount, rot_amt) end
+function UIElement:juice_up(amount, rot_amt) end
 
 --- @return balatro.UIElement?
-function IUIElement:can_drag() end
+function UIElement:can_drag() end
 
-function IUIElement:draw() end
+function UIElement:draw() end
 
-function IUIElement:draw_children(layer) end
+function UIElement:draw_children(layer) end
 
-function IUIElement:set_wh() end
+function UIElement:set_wh() end
 
 --- @param x number
 --- @param y number
-function IUIElement:align(x, y) end
+function UIElement:align(x, y) end
 
-function IUIElement:set_alignments() end
+function UIElement:set_alignments() end
 
-function IUIElement:update_text() end
+function UIElement:update_text() end
 
-function IUIElement:update_object() end
+function UIElement:update_object() end
 
-function IUIElement:draw_self() end
+function UIElement:draw_self() end
 
 --- @param _type balatro.UIElement.PixellatedRectType
 --- @param _parallax number
 --- @param _emboss? number
 --- @param _progress? number
-function IUIElement:draw_pixellated_rect(_type, _parallax, _emboss, _progress) end
+function UIElement:draw_pixellated_rect(_type, _parallax, _emboss, _progress) end
 
 --- @param dt number
-function IUIElement:update(dt) end
+function UIElement:update(dt) end
 
 --- @param cursor_trans Position
 --- @return boolean
-function IUIElement:collides_with_point(cursor_trans) end
+function UIElement:collides_with_point(cursor_trans) end
 
-function IUIElement:click() end
+function UIElement:click() end
 
 --- @return number, number
-function IUIElement:put_focused_cursor() end
+function UIElement:put_focused_cursor() end
 
-function IUIElement:remove() end
+function UIElement:remove() end
 
-function IUIElement:hover() end
+function UIElement:hover() end
 
-function IUIElement:stop_hover() end
+function UIElement:stop_hover() end
 
-function IUIElement:release(other) end
-
---- @type balatro.UIElement | fun(parent, new_UIBox, new_UIT, config): balatro.UIElement
-UIElement = IUIElement
+function UIElement:release(other) end
 
 --- @class balatro.UIBox.Config: balatro.Moveable.AlignmentParam
 --- @field parent? balatro.Moveable

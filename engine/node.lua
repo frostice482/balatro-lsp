@@ -1,5 +1,9 @@
 --- @meta
 
+--- @class balatro.Node.Init
+--- @field T? balatro.Node.TransformInit The transform ititializer, with keys of x|1, y|2, w|3, h|4, r|5
+--- @field container? balatro.Node optional container for this Node, defaults to G.ROOM
+
 --- Node represents any game object that needs to have some transform available in the game itself. \
 --- Everything that you see in the game is a Node, and some invisible things like the G.ROOM are also represented here.
 --- @class balatro.Node: balatro.Object
@@ -46,83 +50,80 @@
 --- @field DEBUG_VALUE? string
 ---
 --- @field REMOVED? boolean
-local INode = {}
+---
+--- @overload fun(args: balatro.Node.Init): balatro.Node
+Node = {}
 
---- @param args {T: balatro.Node.TransformInit, container: balatro.Node}
---- - `T` The transform ititializer, with keys of x|1, y|2, w|3, h|4, r|5\
---- - `container` optional container for this Node, defaults to G.ROOM
-function INode:init(args) end
+--- @param args balatro.Node.Init
+function Node:init(args) end
 
 --- Draw a bounding rectangle representing the transform of this node. Used in debugging.
-function INode:draw_boundingrect() end
+function Node:draw_boundingrect() end
 
 --- Draws self, then adds self the the draw hash, then draws all children
-function INode:draw() end
+function Node:draw() end
 
 --- Determines if this node collides with some point. Applies any container translations and rotations, then applies translations and rotations specific to this node. \
 --- This means the collision detection effectively determines if some point intersects this node regargless of rotation.
 --- @param point Position The coordinates of the cursor transformed into game units
 --- @return boolean
-function INode:collides_with_point(point) end
+function Node:collides_with_point(point) end
 
 --- Sets the offset of passed point in terms of this nodes T.x and T.y
 --- @param point Position The coordinates of the cursor transformed into game units
 --- @param type string The type of offset to set for this Node, either 'Click' or 'Hover'
-function INode:set_offset(point, type) end
+function Node:set_offset(point, type) end
 
 --- If the current container is being 'Dragged', usually by a cursor,
 --- determine if any drag popups need to be generated and do so
-function INode:drag(offset) end
+function Node:drag(offset) end
 
 --- Determines if this Node can be dragged. This is a simple function but more complex objects may redefine this to return a parent\
 --- if the parent needs to drag other children with it
 --- @return balatro.Node?
-function INode:can_drag() end
+function Node:can_drag() end
 
 --- Called by the CONTROLLER when this node is no longer being dragged, removes any d_popups
-function INode:stop_drag() end
+function Node:stop_drag() end
 
 --- If the current container is being 'Hovered', usually by a cursor,
 --- determine if any hover popups need to be generated and do so
-function INode:hover() end
+function Node:hover() end
 
 --- Called by the CONTROLLER when this node is no longer being hovered, removes any h_popups
-function INode:stop_hover() end
+function Node:stop_hover() end
 
 --- Called by the CONTROLLER to determine the position the cursor should be set to for this node
 --- @return number, number
-function INode:put_focused_cursor() end
+function Node:put_focused_cursor() end
 
 --- Sets the container of this node and all child nodes to be a new container node
 ---@param container balatro.Node The new node that will behave as this nodes container
-function INode:set_container(container) end
+function Node:set_container(container) end
 
 --- Translation function used before any draw calls,
 --- translates this node according to the transform of the container node
-function INode:translate_container() end
+function Node:translate_container() end
 
 --- When this Node needs to be deleted, removes self from any tables it may have been added to destroy any weak references.
 --- Also calls the remove method of all children to have them do the same
-function INode:remove() end
+function Node:remove() end
 
 --- returns the squared(fast) distance in game units from the center of this node to the center of another node
 --- @param other_node balatro.Node
 --- @return number
-function INode:fast_mid_dist(other_node) end
+function Node:fast_mid_dist(other_node) end
 
 --- Prototype for a click release function, when the cursor is released on this node
 --- @param dragged boolean
-function INode:release(dragged) end
+function Node:release(dragged) end
 --- Prototype for a click function
-function INode:click() end
+function Node:click() end
 --- Prototype animation function for any frame manipulation needed
-function INode:animate() end
+function Node:animate() end
 --- Prototype update function for any object specific logic that needs to occur every frame
 --- @param dt number
-function INode:update(dt) end
-
---- @type balatro.Node | fun(args: {T: balatro.Node.TransformInit, container: balatro.Node}): balatro.Node
-Node = function() end
+function Node:update(dt) end
 
 --- @class balatro.Node.TransformUnit: PositionAndSize
 --- @field r number

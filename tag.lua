@@ -11,56 +11,55 @@
 --- @field ID number Unique ID from `G.tagid`, incremented
 --- @field ability table Contains additional information about the tag. For Orbital tag, this contains the `orbital_hand` for poker hand to level up
 --- @field HUD_tag? balatro.UIBox
-local ITag = {}
+---
+--- @overload fun(tag: string, forCollection?: boolean, blindType?: boolean): balatro.Tag
+Tag = {}
 
 --- @param _tag string
 --- @param for_collection? boolean
 --- @param _blind_type? boolean
-function ITag:init(_tag, for_collection, _blind_type) end
+function Tag:init(_tag, for_collection, _blind_type) end
 
 --- Creates remove tag effect and removes this
-function ITag:nope() end
+function Tag:nope() end
 
 --- Creates applied tag effect and removes this
 --- @param message string
 --- @param _colour? ColorHex
 --- @param func fun(): boolean?
-function ITag:yep(message, _colour, func) end
+function Tag:yep(message, _colour, func) end
 
 --- Sets `self.ability` data
-function ITag:set_ability() end
+function Tag:set_ability() end
 
 --- Applies this tag to current run
 --- @param _context balatro.Tag.ApplyContext
-function ITag:apply_to_run(_context) end
+function Tag:apply_to_run(_context) end
 
 --- Saves this tag to be stored
 --- @return balatro.Tag.Save
-function ITag:save() end
+function Tag:save() end
 
 --- Loads tag info from saved table
-function ITag:load(tag_savetable) end
+function Tag:load(tag_savetable) end
 
 --- @param _scale? number
 --- @param _rot? number
-function ITag:juice_up(_scale, _rot) end
+function Tag:juice_up(_scale, _rot) end
 
 --- @return balatro.UIElement.Definition
 --- @return balatro.Sprite
-function ITag:generate_UI(_size) end
+function Tag:generate_UI(_size) end
 
 --- @param tag_sprite? balatro.Sprite
 --- @return balatro.Sprite
-function ITag:get_uibox_table(tag_sprite) end
+function Tag:get_uibox_table(tag_sprite) end
 
 --- Removes the tag from `G.GAME.tags`
-function ITag:remove_from_game() end
+function Tag:remove_from_game() end
 
 --- Removes this tag from current game and tags UI
-function ITag:remove() end
-
---- @type balatro.Tag | fun(tag: string, forCollection?: boolean, blindType?: boolean): balatro.Tag
-Tag = ITag
+function Tag:remove() end
 
 --- @alias balatro.Tag.ApplyType
 --- |`eval` useed when cashing out
