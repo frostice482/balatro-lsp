@@ -18,6 +18,7 @@
 --- @field config table
 
 --- @class balatro.Item.JustPos
+--- @field key string
 --- @field pos Position
 
 --- @class balatro.Item.Discoverable: balatro.Item
@@ -28,7 +29,7 @@
 --- @class balatro.Item.Unlockable
 --- @field unlocked? boolean
 
---- @class balatro.Item.DiscoverableUnlockable: balatro.Item.Discoverable, balatro.Item, balatro.Item.Unlockable
+--- @class balatro.Item.DiscoverableUnlockable: balatro.Item.Discoverable, balatro.Item.Unlockable
 
 --- @class balatro.Item.Blind: balatro.Item.Discoverable
 --- @field set? nil
@@ -40,16 +41,14 @@
 --- @field boss? MinMax | {showdown: boolean?}
 --- @field boss_colour? ColorHex
 
+--- @class balatro.Item.Tag.Config: { [any]: any }
+--- @field type string
+
 --- @class balatro.Item.Tag: balatro.Item.Discoverable
 --- @field set 'Tag'
 --- @field min_anite? number
 --- @field requires? string
---- @field config table | {type: string}
-
---- @class balatro.Item.Seal: balatro.Item.Discoverable
---- @field set 'Seal'
---- @field name? nil
---- @field pos? nil
+--- @field config balatro.Item.Tag.Config
 
 --- @class balatro.Item.Stake: balatro.Item
 --- @field set 'Stake'
@@ -62,15 +61,6 @@
 --- @field value string
 --- @field pos Position
 --- @field atlas? string
-
---- @class balatro.Item.Effect
---- @field effect? string
---- @field config table
-
---- @class balatro.Item.CardCenterBase
---- @field cost number
---- @field cost_mult? number
---- @field config balatro.Item.Config
 
 --- @class balatro.Item.Config
 --- @field mult? number
@@ -86,9 +76,19 @@
 --- @field extra? any
 --- @field type? string
 
---- @class balatro.Item.CardCenter: balatro.Item.CardCenterBase, balatro.Item.Effect, balatro.Item.Discoverable
+--- @class balatro.Item.Card.Center: balatro.Item.Discoverable
+--- @field cost number
+--- @field cost_mult? number
+--- @field config balatro.Item.Config
+--- @field effect? string
 
---- @class balatro.Item.Joker: balatro.Item.CardCenter
+--- @class balatro.Item.Calc
+--- @class balatro.Item.Calc.Center: balatro.Item.Calc
+--- @class balatro.Item.Calc.Card: balatro.Item.Calc
+
+--- @class balatro.Item.Card.Sellable
+
+--- @class balatro.Item.Joker: balatro.Item.Card.Center, balatro.Item.Calc.Center, balatro.Item.Card.Sellable
 --- @field set 'Joker'
 --- @field unlocked? boolean
 --- @field blueprint_compat? boolean
@@ -96,8 +96,10 @@
 --- @field eternal_compat? boolean
 --- @field rarity number
 --- @field enhancement_gate? string
+--- @field soul_pos? Position
+--- @field unlock_condition? balatro.Item.UnlockCondition
 
---- @class balatro.Item.Consumable: balatro.Item.CardCenter
+--- @class balatro.Item.Consumable: balatro.Item.Card.Center, balatro.Item.Calc.Center, balatro.Item.Card.Sellable
 --- @field consumeable boolean
 
 --- @class balatro.Item.Tarot.Config: table
@@ -119,7 +121,7 @@
 --- @field hidden? boolean
 --- @field effect? nil
 
---- @class balatro.Item.Voucher: balatro.Item.CardCenter, balatro.Item.Unlockable
+--- @class balatro.Item.Voucher: balatro.Item.Card.Center, balatro.Item.Unlockable
 --- @field set 'Voucher'
 --- @field available boolean
 --- @field config table
@@ -127,23 +129,27 @@
 --- @field unlock_condition? balatro.Item.UnlockCondition
 --- @field effect? nil
 
---- @class balatro.Item.EnhancedCard: balatro.Item.CardCenterBase, balatro.Item, balatro.Item.Effect
---- @field cost? nil
+--- @class balatro.Item.EnhancedCard: balatro.Item.Card.Center, balatro.Item.Calc.Card
+--- @field cost? number
 --- @field set 'Enhanced'
 --- @field max? number
 --- @field label? string
 
---- @class balatro.Item.Edition: balatro.Item.DiscoverableUnlockable
+--- @class balatro.Item.Edition: balatro.Item.Card.Center, balatro.Item.Calc.Card, balatro.Item.Calc.Center
+--- @field cost? number
 --- @field set 'Edition'
---- @field atlas? string
 --- @field config table | { extra: number? }
 
---- @class balatro.Item.Booster: balatro.Item.CardCenter
+--- @class balatro.Item.Booster: balatro.Item.Card.Center
 --- @field set 'Booster'
 --- @field weight? number
 --- @field kind? balatro.Item.BoosterKind
---- @field atlas string
 --- @field config { extra: number, choose: number }
+
+--- @class balatro.Item.Seal: balatro.Item.Discoverable, balatro.Item.Calc.Card
+--- @field set 'Seal'
+--- @field name? nil
+--- @field pos? nil
 
 --- @alias balatro.Item.BoosterKind 'Arcana' | 'Celestial' | 'Spectral' | 'Standard' | 'Buffoon' | string
 
@@ -179,6 +185,7 @@
 --- @field stake? number
 --- @field ante? number
 --- @field amount? number
+--- @field hidden? boolean
 
 --- @class balatro.Center
 --- @field key string

@@ -1,6 +1,8 @@
 --- @meta
 
 --- @class balatro.Calc.Filter<V>
+--- @field [string] V
+---
 --- Triggered when a card is sold.
 --- Includes `card`
 --- @field selling_card V
