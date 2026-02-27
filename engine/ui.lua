@@ -348,7 +348,7 @@ function UIElement:release(other) end
 --- @field on_demand_tooltip? balatro.UI.TooltipParam
 --- Creates a detailed tooltip from given Center when hovered. \
 --- Supported for all types.
---- @field detailed_tooltip? balatro.Center
+--- @field detailed_tooltip? balatro.Item.Bare
 ---
 --- Contains information on how the element should be focused when navigating via gamepad. \
 --- Supported for all types.

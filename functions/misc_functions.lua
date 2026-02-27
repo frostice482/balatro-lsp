@@ -330,7 +330,7 @@ function set_challenge_unlock() end
 function get_deck_win_stake(_deck_key) end
 
 --- Gets sticket key from given deck from current profile
---- @param _center balatro.Center
+--- @param _center balatro.Item.Bare
 --- @return string
 function get_deck_win_sticker(_center) end
 

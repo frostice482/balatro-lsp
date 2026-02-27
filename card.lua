@@ -306,7 +306,7 @@ function Card:load(cardTable) end
 
 function Card:remove() end
 
---- @alias balatro.Card.CenterType balatro.Item.Consumable | balatro.Item.Joker | balatro.Item.Voucher | balatro.Item.Booster
+--- @alias balatro.Card.CenterType balatro.Item.Card.Part | balatro.Item.Card.Center | balatro.Item.Joker | balatro.Item.Consumable | balatro.Item.Voucher | balatro.Item.Booster
 
 --- @class balatro.Card.Param
 --- @field playing_card? boolean

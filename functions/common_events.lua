@@ -408,7 +408,7 @@ function reset_blinds() end
 function get_new_boss() end
 
 --- Gets type color for card UI.
---- @param _c balatro.Center Card center
+--- @param _c balatro.Item.Bare Card center
 function get_type_colour(_c, card) end
 
 --- @alias balatro.CardUI.Type 'Locked' | 'Undiscovered' | 'Default' | 'Enhanced' | 'Booster'
@@ -431,7 +431,7 @@ function get_type_colour(_c, card) end
 --- @field badges CardBadges[]
 
 --- Creates an interface when the card is hovered over
---- @param _c balatro.Center Card center
+--- @param _c balatro.Item.Bare Card center
 --- @param full_UI_table? balatro.CardUI
 --- @param specific_vars? unknown
 --- @param card_type? balatro.CardUI.Type

@@ -90,7 +90,7 @@ function get_badge_colour(key) end
 --- @param scaling? number
 function create_badge(_string, _badge_col, _text_col, scaling) end
 
---- @param _center balatro.Center
+--- @param _center balatro.Item.Bare
 --- @return balatro.UIElement.Definition
 function create_UIBox_detailed_tooltip(_center) end
 
@@ -440,7 +440,7 @@ function create_UIBox_your_collection_blinds(exit) end
 --- @return balatro.UIElement.Definition
 function create_UIBox_blind_popup(blind, discovered, vars) end
 
---- @param card_center balatro.Center
+--- @param card_center balatro.Item.Bare
 --- @return balatro.UIElement.Definition
 function create_UIBox_card_unlock(card_center) end
 
