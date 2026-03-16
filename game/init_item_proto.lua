@@ -52,4 +52,4 @@
 --- @field Stake balatro.Item.Stake[]
 --- @field Demo unknown[]
 
---- @alias balatro.CenterPoolsType 'Booster' | 'Default' | 'Enhanced' | 'Edition' | 'Joker' | 'Tarot' | 'Planet' | 'Tarot_Planet' | 'Spectral' | 'Consumeables' | 'Voucher' | 'Back' | 'Tag' | 'Seal' | 'Stake' | 'Demo'
+--- @alias balatro.CenterPoolsType 'Booster' | 'Default' | 'Enhanced' | 'Edition' | 'Joker' | 'Tarot' | 'Planet' | 'Tarot_Planet' | 'Spectral' | 'Consumeables' | 'Voucher' | 'Back' | 'Tag' | 'Seal' | 'Stake' | 'Demo' | 'Base' | string

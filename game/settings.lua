@@ -11,7 +11,7 @@
 --- @field play_button_pos number
 --- @field GAMESPEED number
 --- @field paused boolean
---- @field SOUND balatro.ExpTimes
+--- @field SOUND balatro.Settings.Sound
 --- @field WINDOW balatro.Settings.Window
 --- @field CUSTOM_DECK balatro.Settings.CustomDecks
 --- @field GRAPHICS balatro.Settings.Graphics
@@ -27,6 +27,11 @@
 --- @class balatro.Settings.Display
 --- @field name string
 --- @field screen_res WidthHeight
+
+--- @class balatro.Settings.Sound
+--- @field volume number
+--- @field music_volume number
+--- @field game_sounds_volume number
 
 --- @class balatro.Settings.Window
 --- @field screenmode "Windowed" | "Fullscreen" | "Borderless"

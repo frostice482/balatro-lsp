@@ -3,7 +3,7 @@
 
 --- @class balatro.Game.Current: { [string]: any }
 --- @field bankrupt_at number
---- @field banned_keys string[]
+--- @field banned_keys table<string, boolean>
 --- @field base_reroll_cost number
 --- @field blind balatro.Blind
 --- @field blind_on_deck BlindType

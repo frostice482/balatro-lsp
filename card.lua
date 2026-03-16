@@ -331,7 +331,7 @@ function Card:remove() end
 --- @field sell_button? balatro.UIBox
 
 --- @class balatro.Card.Config: balatro.Node.Config
---- @field card balatro.Item.Card
+--- @field card balatro.Item.Card.Base
 --- @field center? balatro.Card.CenterType
 --- @field card_key? string
 --- @field center_key? string
