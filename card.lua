@@ -1,29 +1,17 @@
 --- @meta
 
 --- @class balatro.Card: balatro.Moveable
---- @field children balatro.Card.Children Undocumented
---- @field params balatro.Card.Param Undocumented
 --- @field config balatro.Card.Config Card configuration, containing card / center info
---- @field tilt_var table Undocumented
---- @field ambient_tilt number Undocumented
 --- @field playing_card? boolean True if is a playing card
---- @field sort_id number Undocumented
---- @field back 'viewed_back' | 'selected_back' Undocumented
---- @field bypass_discovery_center? boolean Undocumented
---- @field bypass_discovery_ui? boolean Undocumented
---- @field bypass_lock? boolean Undocumented
---- @field no_ui? boolean Undocumented
 --- @field base_cost number Base card cost
 --- @field extra_cost number Additional cost, from inflation and editions
 --- @field cost number Applied cost from base cost, extra code, and discount in percentage
 --- @field sell_cost number Dollars earned from selling this card
---- @field sell_cost_label number | string Undocumented
 --- @field unique_val number Unique value
 --- @field edition? balatro.Card.Edition Edition info
 --- @field facing 'front' | 'back' Facing direction
 --- @field sprite_facing 'front' | 'back' Sprite facing direction
 --- @field discard_pos Position | { r: number } Discard position
---- @field flipping nil | 'f2b' | 'b2f' Undocumented
 --- @field area? balatro.CardArea The area this card is in
 --- @field parent? balatro.CardArea Same as `area`
 --- @field highlighted boolean True if highlighted
@@ -36,13 +24,11 @@
 --- @field dissolve? number Dissolving progress (0-1)
 --- @field dissolve_colours? ColorHex[] Dissolve colors
 --- @field base balatro.Card.Base Base card info, containing nominal values, rank, and suit
---- @field label string Undocumented
 --- @field mouse_damping? number Damoing effect when hovered. Lower than 1 = more aggressive
 --- @field pinned? boolean Pins this joker to left
 --- @field seal? Seal Card seal
 --- @field sticker_run? Sticker | "NONE" Highest sticker run for this joker
 --- @field sticker? Sticker Sticker to display
---- @field hover_tilt? number Undocumented
 --- @field greyed? boolean Creates opaque effect, used when the card is already drawn
 --- @field vortex? boolean Creates a spinning effect, used in splash screen effect
 --- @field no_shadow? boolean Hides shadow
@@ -50,23 +36,37 @@
 --- @field getting_sliced? boolean Used by Madness / Ceremonial Dagger
 --- @field vampired? boolean Used by vampire joker
 --- @field lucky_trigger? boolean True if lucky card is triggered
+--- @field children balatro.Card.Children Child nodes
+--- @field params balatro.Card.Param Initial parameters used in creating this card
+--- @field tilt_var table Tilting effect
+--- @field ambient_tilt number How much tilting effect when not hovered or focused
+--- @field sort_id number Incremental # of cards created this run
+--- @field back 'viewed_back' | 'selected_back' Back key to use for drawing the flipped side of the card
+--- @field bypass_discovery_center? boolean Undocumented
+--- @field bypass_discovery_ui? boolean Undocumented
+--- @field bypass_lock? boolean If true, card's tooltip will show the actual info regardless if it's locked / undiscovered
+--- @field no_ui? boolean If true, this card will not show tooltip UI when hovered
+--- @field sell_cost_label number | string Undocumented
+--- @field flipping nil | 'f2b' | 'b2f' Undocumented
+--- @field label string Undocumented
+--- @field hover_tilt? number Undocumented
 ---
---- @overload fun(X?: number, Y?: number, W?: number, H?: number, card?: balatro.Item.Card, center: balatro.Card.CenterType, params?: balatro.Card.Param): balatro.Card
+--- @overload fun(X?: number, Y?: number, W?: number, H?: number, card?: balatro.Item.Card.Base, center: balatro.Card.CenterType, params?: balatro.Card.Param): balatro.Card
 Card = {}
 
 --- @param X? number
 --- @param Y? number
 --- @param W? number
 --- @param H? number
---- @param card? balatro.Item.Card
+--- @param card? balatro.Item.Card.Base
 --- @param center balatro.Card.CenterType
 --- @param params? balatro.Card.Param
 function Card:init(X, Y, W, H, card, center, params) end
 
 function Card:update_alert() end
 
---- Sets base value for this card
---- @param card? balatro.Item.Card
+--- Sets base rank/suit for this card
+--- @param card? balatro.Item.Card.Base
 --- @param initial? boolean
 function Card:set_base(card, initial) end
 
@@ -75,7 +75,7 @@ function Card:set_base(card, initial) end
 --- @param _front? balatro.Card.CenterType
 function Card:set_sprites(_center, _front) end
 
---- Sets ability for this card
+--- Sets center for this card
 --- @param center? balatro.Card.CenterType Center. This should be a valid item from `G.P_CENTERS`
 --- @param initial? boolean
 --- @param delay_sprites? boolean
@@ -133,7 +133,7 @@ function Card:generate_UIBox_unlock_table(hidden) end
 
 function Card:generate_UIBox_ability_table() end
 
---- Gets nominal value from this card
+--- Gets nominal value from this card. Used for sorting.
 --- @param mod? 'suit'
 --- @return number
 function Card:get_nominal(mod) end
@@ -144,22 +144,22 @@ function Card:get_id() end
 
 --- Gets if this card is a face card
 --- @param from_boss? boolean Ignore debuffed
---- @return true|nil
+--- @return boolean?
 function Card:is_face(from_boss) end
 
 --- Gets actual rank
---- @return number|nil
+--- @return string|nil
 function Card:get_original_rank() end
 
---- Gets chips bonus
+--- Gets chips bonus when played
 --- @return number
 function Card:get_chip_bonus() end
 
---- Gets mult bonus
+--- Gets mult bonus when played
 --- @return number
 function Card:get_chip_mult() end
 
---- Gets X mult bonus
+--- Gets X mult bonus when played
 --- @return number
 function Card:get_chip_x_mult(context) end
 
@@ -172,11 +172,11 @@ function Card:get_chip_h_mult() end
 function Card:get_chip_h_x_mult() end
 
 --- Gets edition info
---- @return balatro.Card.CalcEditionRet
+--- @return balatro.Calc.Ret.Edition
 function Card:get_edition() end
 
 --- gets end of round effects (Blue seal, gold card)
---- @return balatro.EvalCardContext.Return
+--- @return balatro.Eval.Return
 function Card:get_end_of_round_effect() end
 
 --- Gets dollars when played
@@ -239,8 +239,8 @@ function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_jui
 function Card:start_materialize(dissolve_colours, silent, timefac) end
 
 --- Triggers seal effect
---- @param context balatro.Card.CalculateJokerContext
---- @return balatro.Card.CalcSealRet?
+--- @param context balatro.Calc
+--- @return balatro.Calc.Ret.Seal?
 function Card:calculate_seal(context) end
 
 --- Triggers rental effect
@@ -250,8 +250,8 @@ function Card:calculate_rental() end
 function Card:calculate_perishable() end
 
 --- Calculates / triggers card effect
---- @param context balatro.Card.CalculateJokerContext | balatro.EvalCardContext
---- @return balatro.Card.CalcJokerRet
+--- @param context balatro.Calc | balatro.Eval.Context
+--- @return balatro.Calc.Ret.Joker
 function Card:calculate_joker(context) end
 
 --- Checks if suit is same.
@@ -384,7 +384,6 @@ function Card:remove() end
 --- @field suit Suit
 --- Rank
 --- @field value Rank
---- Rank in number
 --- @field nominal number
 --- Rank in number
 --- @field id number

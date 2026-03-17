@@ -447,7 +447,7 @@ function localize(args, misc_cat) end
 function get_stake_sprite(_stake, _scale) end
 
 --- Gets asset atlas from given card info
---- @param _front balatro.Item.Card
+--- @param _front balatro.Item.Card.Base
 --- @return balatro.AssetAtlas
 --- @return Position
 function get_front_spriteinfo(_front) end

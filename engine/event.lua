@@ -1,14 +1,6 @@
 --- @meta
 
 --- @class balatro.Event: balatro.Object
---- Determines how an event is triggered.
---- - `immediate` Executes handler immediately
---- - `before` Executes handler immediately, but only after some delay the event is fully marked as completed
---- - `afterward` Executes handler after specified delay
---- - `condition` Same as immediate, but only used when default handler is used
---- - `ease` Eases value and modifies value in table.
----   Function is called back with eased value during that time.
----   Handler return value determines the value to set on the table.
 --- @field trigger balatro.Event.TriggerType
 --- Prevents subsequent events  in queues from being handled
 --- @field blocking boolean
@@ -50,15 +42,6 @@ function Event:init(config) end
 function Event:handle(resultTarget) end
 
 --- @class balatro.Event.Config
---- Determines how an event is triggered.
---- - `immediate` Executes handler immediately
---- - `before` Executes handler immediately, but only after some delay the event is fully marked as completed
---- - `afterward` Executes handler after specified delay
---- - `condition` Same as immediate, but only used when default handler is used
---- - `ease` Eases value and modifies value in table.
----   Function is called back with eased value during that time.
----   Handler return value determines the value to set on the table.
----
 --- Default: `immediate`
 --- @field trigger balatro.Event.TriggerType?
 --- Prevents subsequent events in queues from being handled.
@@ -129,5 +112,12 @@ function Event:handle(resultTarget) end
 --- Requires `completed` to be also true.
 --- @field time_done boolean
 
---- @alias balatro.Event.TriggerType 'immediate' | 'ease' | 'condition' | 'after' | 'before'
---- @alias balatro.Event.EaseType 'lerp' | 'elastic' | "quad"
+--- Determines how an event is triggered.
+--- @alias balatro.Event.TriggerType
+--- | 'immediate' Executes handler immediately
+--- | 'before' Executes handler immediately, but only after some delay the event is fully marked as completed
+--- | 'after' Executes handler after specified delay
+--- | 'condition' Same as immediate, but only used when default handler is used
+--- | 'ease' Eases value and modifies value in table. Function is called back with eased value during that time. Handler return value determines the value to set on the table.
+
+--- @alias balatro.Event.EaseType string | 'lerp' | 'elastic' | "quad"

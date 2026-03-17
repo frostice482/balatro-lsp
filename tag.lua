@@ -1,35 +1,48 @@
 --- @meta
 
 --- @class balatro.Tag: balatro.Object
---- @field key string The tag key, based in `G.P_TAGS`
---- @field config table The config table from `G.P_TAGS[tag].config`. This is copied.
---- @field proto balatro.Item.Tag The prototype tag `G.P_TAGS[tag]`
---- @field pos Position Undocumented
---- @field name string Tag name
---- @field tally number Undocumented
---- @field triggered boolean True if the tag is already applied to current run (`apply_to_run`)
---- @field ID number Unique ID from `G.tagid`, incremented
---- @field ability table Contains additional information about the tag. For Orbital tag, this contains the `orbital_hand` for poker hand to level up
+--- The tag key, based in `G.P_TAGS`
+--- @field key string
+--- The config table from `G.P_TAGS[tag].config`. This is copied.
+--- @field config table
+--- The prototype tag `G.P_TAGS[tag]`
+--- @field proto balatro.Item.Tag
+--- Tag sprite position, matching the prototype's `pos`
+--- @field pos Position
+--- Tag name, matching the prototype's `name`
+--- @field name string
+--- True if the tag is already applied to current run (`apply_to_run`)
+--- @field triggered boolean
+--- Contains additional information about the tag.
+--- For Orbital tag, this contains the `orbital_hand` for poker hand to level up
+--- @field ability table
+--- Incremental tag # from `G.GAME.tag_tally`
+--- @field tally number
+--- Incremental tag # from `G.tagid`
+--- @field ID number
+---
 --- @field HUD_tag? balatro.UIBox
 ---
 --- @overload fun(tag: string, forCollection?: boolean, blindType?: boolean): balatro.Tag
 Tag = {}
 
---- @param _tag string
---- @param for_collection? boolean
---- @param _blind_type? boolean
+--- @param _tag string Tag key
+--- @param for_collection? boolean If true, don't call `set_ability`. Used for collection display.
+--- @param _blind_type? BlindType
 function Tag:init(_tag, for_collection, _blind_type) end
 
---- Creates remove tag effect and removes this
+--- Creates removed tag effect and removes this
 function Tag:nope() end
 
 --- Creates applied tag effect and removes this
 --- @param message string
---- @param _colour? ColorHex
---- @param func fun(): boolean?
+--- @param _colour? ColorHex Defaults to green
+--- @param func? fun(): boolean? Triggered after effect is displayed but before the tag is removed
 function Tag:yep(message, _colour, func) end
 
---- Sets `self.ability` data
+--- Sets `self.ability` data.
+--- Called during initialization.
+--- This is ignored if the Tag is created with `for_collection` set to true.
 function Tag:set_ability() end
 
 --- Applies this tag to current run

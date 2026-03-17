@@ -141,8 +141,8 @@ function update_hand_text(config, vals) end
 
 --- Evaluates a card
 --- @param card balatro.Card
---- @param context balatro.EvalCardContext | balatro.Card.CalculateJokerContext
---- @return balatro.EvalCardContext.Return
+--- @param context balatro.Eval.Context | balatro.Calc
+--- @return balatro.Eval.Return
 function eval_card(card, context) end
 
 --- Sets alerts, used for newly unlocked jokers, tarots, etc.
@@ -242,7 +242,7 @@ function juice_card_until(card, eval_func, first, delay) end
 function check_for_unlock(args) end
 
 --- Unlocks a card. Does not work if the game is currently seeded or in challenge.
---- @param card balatro.Item.Card
+--- @param card balatro.Item
 function unlock_card(card) end
 
 --- Initializes `G.ACHIEVEMENTS`
@@ -273,7 +273,7 @@ function unlock_notify() end
 function create_unlock_overlay(key) end
 
 --- Makes a card discovered, used when the undiscovered card is bought in the shop. Does not work if the game is currently seeded or in challenge.
---- @param card? balatro.Item.Card
+--- @param card? balatro.Item
 function discover_card(card) end
 
 --- Gets data possible from `balatro.ItemCenters` from given name
@@ -293,7 +293,7 @@ function get_next_voucher_key(_from_tag) end
 function get_next_tag_key(append) end
 
 --- Creates a playing card
---- @param card_init { front: balatro.Item.Card?, center: balatro.Item.EnhancedCard | balatro.Item.Default? }? -
+--- @param card_init { front: balatro.Item.Card.Base?, center: balatro.Item.EnhancedCard | balatro.Item.Default? }? -
 --- `front` is the playing card to add, e.g. 9 of Spades, King of Hearts, etc. Can be obtained from `G.P_CARDS`\
 --- `center` is the enhancement effect, e.g. glass, stone, etc. Can also be c_base for no effect. `G.P_CENTERS.m_*` or `G.P_CENTER_POOLS.Enhanced`
 --- @param area balatro.CardArea The card area where the card will be added

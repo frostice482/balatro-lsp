@@ -39,6 +39,7 @@
 --- Triggered before game over occurs. Can be used to cancel game over.
 --- @field game_over V
 --- Triggered when this card is being sold.
+--- Context triggers only for this card,
 --- @field selling_self V
 --- Triggered when exiting from shop.
 --- @field ending_shop V
@@ -141,7 +142,7 @@ local x = {
 --- Calculates seal effects.
 --- `cardarea` is `G.hand` or `G.play`.
 --- @field repetition_only? boolean
---- Calculates edition effect. `jokers` will be `balatro.Card.CalcEditionRet`.
+--- Calculates edition effect. `jokers` will be `balatro.Calc.Ret.Edition`.
 --- `cardarea` is `G.jokers`
 --- @field edition? boolean
 --- @field card_effects? table

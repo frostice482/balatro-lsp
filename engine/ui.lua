@@ -217,6 +217,8 @@ function UIElement:release(other) end
 --- @field mid? boolean
 --- Determines the layer this element should be drawn on.
 --- This allows control over stacked elements. \
+--- Muse be unique across all elements within a UIBox.
+--- Draw layers cannot contain layer holes. \
 --- Supported for all types.
 --- @field draw_layer? number
 --- Do not fill children's row and column. \

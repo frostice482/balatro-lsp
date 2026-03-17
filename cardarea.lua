@@ -1,10 +1,15 @@
 --- @meta
 
 --- @class balatro.CardArea: balatro.Moveable
---- @field cards balatro.Card[] Cards
---- @field config balatro.CardArea.Config Card area configuration, containing card limit, highlighted limit, sort method, etc.
---- @field highlighted balatro.Card[] Highlighted cards
---- @field shuffle_amt number Undocumented
+--- Cards
+--- @field cards balatro.Card[]
+--- Card area configuration, containing card limit, highlighted limit, sort method, etc.
+--- @field config balatro.CardArea.Config
+--- Highlighted cards
+--- @field highlighted balatro.Card[]
+--- Effective only for `deck` type. Controls how shuffled the card is.
+--- Higher values will create a spiral effect.
+--- @field shuffle_amt number
 ---
 --- @overload fun(X?: number, Y?: number, W?: number, H?: number, config?: balatro.CardArea.ConfigParam): balatro.CardArea
 CardArea = {}
@@ -28,7 +33,8 @@ function CardArea:emplace(card, location, stay_flipped) end
 --- @return balatro.Card?
 function CardArea:remove_card(card, discarded_only) end
 
---- Changes card limit
+--- Changes card limit.
+--- The new card limit may depend on delta value from `real_card_limit`, if present.
 --- @param delta number
 function CardArea:change_size(delta) end
 
@@ -103,16 +109,31 @@ function CardArea:load(cardAreaTable) end
 function CardArea:remove() end
 
 --- @class balatro.CardArea.Config
---- @field card_count number Number of cards currently
---- @field card_limit number Limits number of cards
+--- Number of cards currently
+--- @field card_count number
+--- Limits number of cards.
+--- This value may be reset by `change_size` if `real_card_limit` is present.
+--- @field card_limit number
+--- Limits highlighted cards
+--- @field highlighted_limit number
+--- Sorting method
+--- @field sort balatro.CardArea.Sort
+--- Card area type. Determines transformation effect for cards
+--- @field type balatro.CardArea.Type
+--- Actual card limit, set when `change_size` is called
 --- @field real_card_limit? number
---- @field highlighted_limit number Limits highlighted cards
---- @field lr_padding number Undocumented
---- @field sort balatro.CardArea.Sort Sorting method
---- @field temp_limit number Undocumented
---- @field type balatro.CardArea.Type Card area type. Determines transformation effect for cards
+--- Undocumented
+--- @field lr_padding number
+--- Undocumented
+--- @field temp_limit number
 
---- @alias balatro.CardArea.Sort "desc" | "asc" | "suit desc" | "suit asc" | "order"
+--- @alias balatro.CardArea.Sort
+--- | "desc"
+--- | "asc"
+--- | "suit desc"
+--- | "suit asc"
+--- | "order"
+
 --- @alias balatro.CardArea.Type
 --- | "deck" Stacks all cards to one, flipped
 --- | "discard" Spreads all cards, flipped
