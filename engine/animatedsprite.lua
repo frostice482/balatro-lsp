@@ -1,15 +1,19 @@
 --- @meta
 
 --- Sprite, but animated.
---- Animation rate is affected by `G.ANIMATION_FPS`.
----
 --- @class balatro.AnimatedSprite: balatro.Sprite
---- @field animation balatro.AnimatedSprite.Animation The sprite animation data, containing sprite's position, size, and frame count.
---- @field current_animation balatro.AnimatedSprite.CurrentAnimation The current sprite animation data, containing size, frame count, and current frame
---- @field frame_offset number The horizontal offset in the sprite for current animation frame, defined as `width * frame`.
---- @field offset_seconds number The time when the animation started.
---- @field atlas balatro.AnimationAtlas Sprite atlas data.
---- @field float? boolean Creates a floating effect, slightly rotating and offsetting the sprite. This is used in Blinds collection.
+--- The sprite animation data, containing sprite's position, size, and frame count.
+--- @field animation balatro.AnimatedSprite.Animation
+--- The current sprite animation data, containing size, frame count, and current frame
+--- @field current_animation balatro.AnimatedSprite.CurrentAnimation
+--- The horizontal offset in the sprite for current animation frame, defined as `width * frame`.
+--- @field frame_offset number
+--- The time when the animation started.
+--- @field offset_seconds number
+--- Sprite atlas data.
+--- @field atlas balatro.AnimationAtlas
+--- Creates a floating effect, slightly rotating and offsetting the sprite. This is used in Blinds collection.
+--- @field float? boolean
 ---
 --- @overload fun(X: number, Y: number, W: number, H: number, new_sprite_atlas: balatro.AnimationAtlas, sprite_pos: Position): balatro.AnimatedSprite
 AnimatedSprite = {}
@@ -27,20 +31,19 @@ function AnimatedSprite:rescale() end
 
 function AnimatedSprite:reset() end
 
---- Sets sprite position in atlas dimension unit.
----
---- _X is currently obsolete, and first animation frame will always start at X=0_
+--- Sets sprite position in atlas dimension unit. \
+--- x is currently obsolete, and first animation frame will always start at x=0
 --- @param sprite_pos? Position
 function AnimatedSprite:set_sprite_pos(sprite_pos) end
 
---- Gets pixel position for the sprite. Returns `[current, y, w, h]`
+--- Gets pixel position for the sprite. Returns `[x, y, w, h]`
 --- @return [number, number, number, number]
 function AnimatedSprite:get_pos_pixel() end
 
 function AnimatedSprite:draw_self() end
 
 --- Animates to next sprite.
---- Also handles floating effect is `float` is true.
+--- Animation rate is affected by `G.ANIMATION_FPS`.
 function AnimatedSprite:animate() end
 
 function AnimatedSprite:remove() end

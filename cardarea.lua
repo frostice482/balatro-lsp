@@ -68,6 +68,7 @@ function CardArea:remove_from_highlighted(card, force) end
 --- If this card area is `G.hand`, `parse_highlighted` will be called
 function CardArea:unhighlight_all() end
 
+--- Updates all card's sorting order (`rank`)
 function CardArea:set_ranks() end
 
 function CardArea:move(dt) end
@@ -76,6 +77,7 @@ function CardArea:update(dt) end
 
 function CardArea:draw() end
 
+--- Moves card position to this area
 function CardArea:align_cards() end
 
 function CardArea:hard_set_T(X, Y, W, H) end
@@ -142,7 +144,9 @@ function CardArea:remove() end
 --- | "consumeable" Consumable cards, wavy
 --- | "shop" Shop cards, rotates less aggressively
 --- | "play" Same as "shop"
+--- | "title" Same as "joker"
 --- | "title_2" Same as "joker"
+--- | "voucher"
 
 --- @class balatro.CardArea.Save
 --- @field config balatro.CardArea.Config

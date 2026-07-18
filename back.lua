@@ -7,10 +7,10 @@
 --- @field name string
 --- @field pos Position
 ---
---- @overload fun(selected_back: balatro.Item.Back): balatro.Back
+--- @overload fun(selected_back?: balatro.Item.Back): balatro.Back
 Back = {}
 
---- @param selected_back balatro.Item.Back
+--- @param selected_back? balatro.Item.Back
 function Back:init(selected_back) end
 
 --- Gets localized name
@@ -36,7 +36,7 @@ function Back:apply_to_run() end
 
 --- Saves this back to be stored
 --- @return balatro.Back.Save
-function Back:save(back) end
+function Back:save() end
 
 --- Loads back info from saved table
 --- @param table balatro.Back.Save

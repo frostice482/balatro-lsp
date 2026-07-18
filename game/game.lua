@@ -99,7 +99,7 @@ function Game:init_game_object() end
 
 --- @class balatro.Game.StartRunParam
 --- @field stake? number
---- @field savetext? balatro.Game.Current
+--- @field savetext? balatro.Save
 --- @field challenge? balatro.Challenge
 --- @field seed string?
 

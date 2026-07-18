@@ -81,7 +81,7 @@ function Card:set_sprites(_center, _front) end
 --- @param delay_sprites? boolean
 function Card:set_ability(center, initial, delay_sprites) end
 
---- Updates cost for this card
+--- Updates cost & sell cost for this card
 function Card:set_cost() end
 
 --- Sets edition for this card
@@ -123,10 +123,12 @@ function Card:remove_UI() end
 --- @param new_suit Suit
 function Card:change_suit(new_suit) end
 
---- Adds this card to deck
+--- Adds this card's effect to current run, if applicable
+--- @param from_debuff? boolean True if caused by debuff
 function Card:add_to_deck(from_debuff) end
 
---- Removes this card from deck
+--- Removes this card's effect from current run, if applicable
+--- @param from_debuff? boolean True if caused by debuff
 function Card:remove_from_deck(from_debuff) end
 
 function Card:generate_UIBox_unlock_table(hidden) end
@@ -250,7 +252,7 @@ function Card:calculate_rental() end
 function Card:calculate_perishable() end
 
 --- Calculates / triggers card effect
---- @param context balatro.Calc | balatro.Eval.Context
+--- @param context balatro.Calc
 --- @return balatro.Calc.Ret.Joker
 function Card:calculate_joker(context) end
 
@@ -260,11 +262,13 @@ function Card:calculate_joker(context) end
 --- @param flush_calc? boolean Calculates for flush
 function Card:is_suit(suit, bypass_debuff, flush_calc) end
 
---- Sets cardarea for this card
+--- Sets cardarea for this card. Called by `CardArea.emplace` automatically.
+--- Note that this card is not added to its area. Use `area:emplace(card)` instead.
 --- @param area balatro.CardArea
 function Card:set_card_area(area) end
 
---- Removes card from area
+--- Sets cardarea for this card. Called by `CardArea.remove_card` automatically.
+--- Note that this card is not removed to its area. Use `area:remove_card(card)` instead.
 function Card:remove_from_area() end
 
 function Card:align() end
@@ -290,7 +294,8 @@ function Card:draw(layer) end
 
 function Card:release(dragged) end
 
---- Highlights this card
+--- Highlights this card. Called by `CardArea.add_to_highlighted` / `CardArea.remove_from_highlighted` automatically.
+--- Note that this card is not added to highlighted list. Use `area:add_to_highlighted(card)` / `area:remove_from_highlighted(card)` instead.
 --- @param is_higlighted boolean
 function Card:highlight(is_higlighted) end
 

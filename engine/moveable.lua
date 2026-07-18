@@ -75,14 +75,15 @@ function Moveable:init(X,Y,W,H) end
 function Moveable:draw() end
 
 ---Sets the alignment of moveable using roles
----@param args balatro.Moveable.AlignmentParam?
 --- - `major` The moveable this moveable will attach to
---- - `bond` The bond type, either 'Strong' or 'Weak'. Strong instantly adjusts VT, Weak manually calculates VT changes
+--- - `bond` The bond type, either `Strong` or `Weak`. Strong instantly adjusts VT, Weak manually calculates VT changes
 --- - `offset` {x , y} offset from the alignment
 --- - `type` the alignment type.
+---@param args balatro.Moveable.AlignmentParam?
 function Moveable:set_alignment(args) end
 
---- Aligns this role offset to this major
+--- Aligns this role offset to this major.
+--- This will not update if alignment and alignment offset is equal
 function Moveable:align_to_major() end
 
 --- Sets current transformation to given X, Y, W, and H.
@@ -117,11 +118,11 @@ function Moveable:move(dt) end
 --- Clamps left and right.
 function Moveable:lr_clamp() end
 
---- Copies transformation effect from major.
+--- Copies visual transformation effect from major.
 --- @param major_tab balatro.Moveable
 function Moveable:glue_to_major(major_tab) end
 
---- Moves current Moveable with current Major, only when current role is Minor
+--- Moves current Moveable with current Major
 --- @param dt number
 function Moveable:move_with_major(dt) end
 

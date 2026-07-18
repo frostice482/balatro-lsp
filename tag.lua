@@ -22,6 +22,7 @@
 --- @field ID number
 ---
 --- @field HUD_tag? balatro.UIBox
+--- @field tag_sprite? balatro.Sprite
 ---
 --- @overload fun(tag: string, forCollection?: boolean, blindType?: boolean): balatro.Tag
 Tag = {}
@@ -45,7 +46,7 @@ function Tag:yep(message, _colour, func) end
 --- This is ignored if the Tag is created with `for_collection` set to true.
 function Tag:set_ability() end
 
---- Applies this tag to current run
+--- Applies this tag's effect to current run, if applicable
 --- @param _context balatro.Tag.ApplyContext
 function Tag:apply_to_run(_context) end
 
@@ -68,7 +69,7 @@ function Tag:generate_UI(_size) end
 --- @return balatro.Sprite
 function Tag:get_uibox_table(tag_sprite) end
 
---- Removes the tag from `G.GAME.tags`
+--- Removes the tag from list of tags (`G.GAME.tags`)
 function Tag:remove_from_game() end
 
 --- Removes this tag from current game and tags UI

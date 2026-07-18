@@ -95,7 +95,7 @@ function Blind:modify_hand(cards, poker_hands, text, mult, hand_chips) end
 --- @return boolean|nil
 function Blind:debuff_hand(cards, hand, handname, check) end
 
---- Triggers effect when a card is drawn to hand
+--- Triggers effect when cards are drawn to hand
 function Blind:drawn_to_hand() end
 
 --- Checks whether a card should be stayed flipped

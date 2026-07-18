@@ -36,7 +36,9 @@ function Card_Character:remove_button() end
 
 function Card_Character:remove_speech_bubble() end
 
---- @param n number
+--- Makes jimbo say stuff.
+--- This makes `talking` to `true` for a while
+--- @param n number Number of voice sounds to play
 --- @param not_first? boolean
 function Card_Character:say_stuff(n, not_first) end
 

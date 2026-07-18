@@ -184,6 +184,8 @@ function UIElement:release(other) end
 --- @field config? balatro.UIElement.Config
 
 --- @class balatro.UIElement.Config: balatro.Node.Config
+--- @field [any] any
+--- @
 --- `UIElement` identifier, to be used in ``get_UIE_by_ID`. \
 --- Supported for all types.
 --- @field id? any

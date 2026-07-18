@@ -141,7 +141,7 @@ function update_hand_text(config, vals) end
 
 --- Evaluates a card
 --- @param card balatro.Card
---- @param context balatro.Eval.Context | balatro.Calc
+--- @param context balatro.Calc
 --- @return balatro.Eval.Return
 function eval_card(card, context) end
 
@@ -171,7 +171,7 @@ function set_main_menu_UI() end
 
 --- Creates card eval effect,
 --- used during card evaluation to create scoring effects (+chips, +mult, x mult, etc.)
---- @param card balatro.Card
+--- @param card balatro.Moveable
 --- @param eval_type balatro.CardEvalStatysType
 --- @param amt? number
 --- @param percent? number Pitch increase
@@ -422,7 +422,7 @@ function get_type_colour(_c, card) end
 --- This may be other than a table to hide the name, e.g. Stone Card.
 --- @field name true | balatro.UIElement.Definition[]
 --- Main card description UI.
---- @field main balatro.UIElement.Definition[]
+--- @field main balatro.UIElement.Definition[][]
 --- Additional card info (enhancement, edition, seal, rental, perishable, etc.)
 --- @field info balatro.CardUI.InfoLine[]
 --- Unknown use
@@ -437,9 +437,9 @@ function get_type_colour(_c, card) end
 --- @param card_type? balatro.CardUI.Type
 --- @param badges? CardBadges[]
 --- @param hide_desc boolean? Replaces card description with undiscovered
---- @param main_start? unknown
---- @param main_end? unknown
+--- @param main_start? balatro.UIElement.Definition[]
+--- @param main_end? balatro.UIElement.Definition[]
 --- @return balatro.CardUI
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end) end
 
---- @alias CardBadges 'foil' | 'holographic'  | 'polychrome'  | 'negative'  | 'negative_consumable'  | 'gold_seal'  | 'blue_seal'  | 'red_seal'  | 'purple_seal'  | 'eternal'  | 'perishable'  | 'rental'  | 'pinned_left'
+--- @alias CardBadges 'foil' | 'holographic'  | 'polychrome'  | 'negative'  | 'negative_consumable'  | 'gold_seal'  | 'blue_seal'  | 'red_seal'  | 'purple_seal'  | 'eternal'  | 'perishable'  | 'rental'  | 'pinned_left' | string

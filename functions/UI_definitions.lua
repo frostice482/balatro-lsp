@@ -37,6 +37,7 @@ function create_shop_card_ui(card, type, area) end
 --- @field pos? Position
 --- @field align? balatro.Moveable.AlignmentType
 --- @field emboss? number
+--- @field major? balatro.Moveable
 
 --- @param args balatro.AttentionTextParam
 function attention_text(args) end

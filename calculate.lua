@@ -3,92 +3,114 @@
 --- @class balatro.Calc.Filter<V>
 --- @field [string] V
 ---
---- Triggered when a card is sold.
+--- Triggered when a card is sold. \
 --- Includes `card`
 --- @field selling_card V
---- Triggered when a card is bought.
+--- Triggered when a card is bought. \
 --- Includes `card`
 --- @field buying_card V
---- Triggererd when a consumable is used.
+--- Triggererd when a consumable is used. \
 --- Includes `consumeable`
 --- @field using_consumeable V
---- Triggered when a new blind is set.
+--- Triggered when a new blind is set. \
 --- Includes `blind`
 --- @field setting_blind V
---- Triggered when a playing card is added.
+--- Triggered when a playing card is added. \
 --- Includes `cards`. Note that `cards` may be `{true}` if e.g. created by DNA
 --- @field playing_card_added V
---- Triggered when a booster pack is opened.
+--- Triggered when a booster pack is opened. \
 --- Includes `card`
 --- @field open_booster V
---- Triggered when a card is destroyed.
---- Includes `full_hand`
---- @field destroying_card V
---- Triggered when a card is destroyed.
+--- Triggered when a card is destroyed. \
 --- Includes `removed`. `cardarea` is `G.jokers`
 --- @field remove_playing_cards V
---- Triggered when a playing hand is debuffed (not allowed)
---- Iontains scoring information. `cardarea` is `G.jokers`
---- @field debuffed_hand V
---- Triggered before discard.
+--- Triggered before discard. \
 --- Includes `full_hand`
 --- @field pre_discard V
---- Triggered when discarded.
+--- Triggered when discarded. \
 --- Includes `full_hand` and `other_card`
 --- @field discard V
---- Triggered before game over occurs. Can be used to cancel game over.
---- @field game_over V
---- Triggered when this card is being sold.
---- Context triggers only for this card,
---- @field selling_self V
---- Triggered when exiting from shop.
+--- Triggered when exiting from shop. \
 --- @field ending_shop V
---- Triggered when skipping a booster.
+--- Triggered when skipping a booster. \
 --- @field skipping_booster V
---- Triggered when skipping a blind.
+--- Triggered when skipping a blind. \
 --- @field skip_blind V
---- Triggered when rerolling a shop.
+--- Triggered when rerolling a shop. \
 --- @field reroll_shop V
---- Triggered when first hand has been drawn, when the round starts
+--- Triggered when first hand has been drawn, when the round starts \
 --- @field first_hand_drawn V
 ---
---- Calculates how many times to retrigger the card.
---- `cardarea` is `G.hand` or `G.play`.
---- @field repetition V
---- Triggered before evaluation.
+--- Triggered when this card is being sold. \
+--- Context triggers only for this card,
+--- @field selling_self V
+---
+--- Calculation: Triggered before evaluation. \
 --- `cardarea` is `G.jokers`
 --- @field before V
---- Triggered when each card is being evaluated.
---- Includes `other_card`. `cardarea` may be `G.hand` or `G.play`.
---- Can also include `end_of_round` when triggered at the end of round.
---- @field individual V
---- Triggered after evaluation.
+--- Calculation: Triggered after evaluation. \
 --- `cardarea` is `G.jokers`
 --- @field after V
---- Triggered when the joker / consumable itself is being evaluated,
---- e.g. Observatory voucher + planet cards.
---- `cardarea` is `G.jokers`, however evaluated card may be in `G.jokers` / `G.consumeables`
+--- Triggered when a playing hand is debuffed (not allowed). \
+--- Iontains scoring information. `cardarea` is `G.jokers`
+--- @field debuffed_hand V
+--- Calculates seal effects. \
+--- `cardarea` is `G.hand` or `G.play`.
+--- @field repetition_only V
+--- Calculation: Calculates how many times to retrigger the card. \
+--- Includes `other_card`. `cardarea` is `G.hand` or `G.play`. \
+--- Effective return: `repetitions`
+--- @field repetition V
+--- Calculation: Triggered when each card is being evaluated. \
+--- Includes `other_card`. `cardarea` may be `G.hand` or `G.play`. \
+--- Can also include `end_of_round` when triggered at the end of round. \
+--- Effective return: calculation
+--- @field individual V
+--- Calculation: Triggered when the joker / consumable itself is being evaluated, \
+--- e.g. Observatory voucher + planet cards. \
+--- `cardarea` is `G.jokers`, however evaluated card may be in `G.jokers` / `G.consumeables` \
+--- Effective return: calculation
 --- @field joker_main V
---- Triggered at the end of round.
+--- Calculation: Triggered when checking if a card should be destroyed. \
+--- Includes `full_hand` \
+--- Effective return: boolean (true = destroy)
+--- @field destroying_card V
+--- Calculates edition effect. `jokers` will be `balatro.Calc.Ret.Edition`. \
+--- `cardarea` is `G.jokers`
+--- @field edition V
+---
+--- End of round: Triggered at the end of round. \
 --- May include `other_card`. `cardarea` is `G.hand`
 --- @field end_of_round V
+--- End of round: Triggered before game over occurs. \
+--- Can be used to cancel game over. \
+--- Effective return: `saved`
+--- @field game_over V
 
 --- @class balatro.Calc: balatro.Calc.Filter<boolean|nil>
+--- @field [string] any
 ---
 --- Triggered when a card is destroyed.
 --- Includes `full_hand`
 --- @field destroying_card? balatro.Card
 ---
+--- @field blueprint? number
+--- @field blueprint_card? balatro.Card
 --- @field other_card? balatro.Card
---- @field cards? balatro.Card[] | [true]
+--- @field other_joker? balatro.Card
+--- @field cards? balatro.Card[]
 --- @field card? balatro.Card
 --- @field consumeable? balatro.Card
 --- @field removed? balatro.Card[]
----
 --- @field blind? balatro.Item.Blind
---- @field blueprint? number
---- @field blueprint_card? balatro.Card
---- @field other_joker? balatro.Card
+---
+--- @field cardarea? balatro.CardArea
+--- @field full_hand? balatro.Card[]
+--- @field poker_hands? balatro.PokerHandsEvalInfo
+--- @field poker_hand? PokerHand
+--- @field scoring_hand? balatro.Card[]
+--- @field scoring_name? PokerHand
+--- @field card_effects? table
 local x = {
     --- If true, includes `glass_shattered`
     --- @deprecated Use `remove_playing_cards` instead
@@ -132,28 +154,8 @@ local x = {
 --- @field mult_mod? number
 --- @field x_mult_mod? number
 
-
---- @class balatro.Eval.Context: balatro.Calc
---- @field cardarea balatro.CardArea
---- @field full_hand balatro.Card[]
---- @field poker_hands balatro.PokerHandsEvalInfo
---- @field scoring_hand balatro.Card[]
---- @field scoring_name PokerHand
---- Calculates seal effects.
---- `cardarea` is `G.hand` or `G.play`.
---- @field repetition_only? boolean
---- Calculates edition effect. `jokers` will be `balatro.Calc.Ret.Edition`.
---- `cardarea` is `G.jokers`
---- @field edition? boolean
---- @field card_effects? table
-local a = {
-    --- @deprecated Redundant
-    --- @type PokerHand
-    poker_hand = nil
-}
-
 --- @class balatro.Eval.Return
---- @field seals? balatro.Calc.Ret.Seal Only when `repetition_only` is true and given card has red seal
+--- @field seals? balatro.Calc.Ret.Seal
 --- @field chips? number
 --- @field mult? number
 --- @field x_mult? number

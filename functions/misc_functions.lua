@@ -380,6 +380,7 @@ function save_with_action(action) end
 
 --- Culls current run and queue to save.
 --- Ignored if `F_NO_SAVING` is true
+--- @return balatro.Save
 function save_run() end
 
 --- Removes saved run in current profile
@@ -413,7 +414,7 @@ function convert_save_to_meta() end
 
 --- @class CardControlArg
 --- @field r RankChar
---- @field s RankChar
+--- @field s SuitChar
 --- @field e string? Enhancement
 --- @field d string? Edition
 --- @field g string? Seal
